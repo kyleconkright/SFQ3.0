@@ -1,0 +1,91 @@
+// VARIABLES
+$spacefix: 16px;
+$space: 2%;
+
+$light: #ededed;
+$white:  #f6f6f6;
+$pink: #f1a1b3;
+$sfqblue: #91C3DD;
+$dark: #26272b;
+
+
+
+* {
+	font-size: 102%;
+	color: inherit;
+	font-weight: 400;
+	font-family: inherit;
+	line-height: 1.25em;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	text-decoration: none;
+}
+
+*, *:before, *:after { 
+  box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+}
+
+body {
+	background: $dark;
+	color: $white;
+	font-family: 'Sentinel SSm A', 'Sentinel SSm B';
+}
+
+
+
+h1, h2, h3 {
+	font-weight: 400;
+}
+
+h1 {
+	font-family: 'Knockout 30 A', 'Knockout 30 B';
+	font-size: 1.75em;
+}
+
+h3 {
+	font-family: 'Knockout 34 A', 'Knockout 34 B';
+	font-size: 1.25em;
+}
+
+div#container {
+	width: 100%;
+	max-width: 1800px;
+	margin: 0 auto;
+	div.wrapper {
+		width: 95%;
+		margin: 0 auto;
+	}
+	div#header {
+		background: $light;
+		padding: $spacefix + 5 0 $spacefix 0;
+		a {
+
+			img {
+				height: $spacefix*1.75;
+			}
+		}
+	}
+	.hero {
+		background: $sfqblue url('http://cdn.soundfreaq.com/brand/type-wthl-light.svg') no-repeat center;
+		background-size: 20%;
+		padding: $space 0;
+		height: 65vh;
+		min-height: 200px;
+		max-height: 600px;
+	}
+}
+
+
+@media only screen 
+and (max-width : 980px)
+and (orientation: portrait) {
+
+
+}
+
+

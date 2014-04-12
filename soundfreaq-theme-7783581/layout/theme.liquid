@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Starter</title>
+        {{ 'style.css' | asset_url | stylesheet_tag }}
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+        {{ content_for_header }}
+    </head>
+    <body>
+
+    <div id="container" class="frame">
+        {{ content_for_layout }}
+    </div>
+
+    {{ 'script.js' | asset_url | script_tag }}
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6966432/744402/css/fonts.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    </body>
+</html>
