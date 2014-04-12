@@ -1,6 +1,7 @@
 (function() {
   $(function() {
-    return alert('hello');
+    console.log('scripts are working');
+    return $('div#header').scrollToFixed();
   });
 
 }).call(this);

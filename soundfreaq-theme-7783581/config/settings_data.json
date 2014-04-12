@@ -1,9 +1,13 @@
 {
-  "current": "Slate",
-  "presets": {
-    "Slate": {
-      "use_logo": false,
-      "customer_layout": "theme"
-    }
+  "current": {
+    "customer_layout": "theme",
+    "sound-kick-home-headline": "On-the-Go Portable",
+    "sound-platform-2-home-headline": "Big Stereo Sound and More",
+    "sound-spot-home-headline": "Mini Home Portable",
+    "sound-rise-home-headline": "The Alarm Clock Reimagined",
+    "pocket-kick-home-headline": "Pocketable Stereo",
+    "double-spot-home-headline": "Twice as Nice",
+    "banner": "Check us out at <a href=\"#\">Dwell on Design</a>. June 14-16",
+    "banner-switch": true
   }
 }

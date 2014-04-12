@@ -8,7 +8,14 @@
     </head>
     <body>
 
+
+
     <div id="container" class="frame">
+        {% if settings.banner-switch %}
+        <div id="custom-message">
+            <div class="wrapper"><p>{{ settings.banner }}</p></div>
+        </div>
+        {% endif %}
         {{ content_for_layout }}
     </div>
 

@@ -1,0 +1,14 @@
+<div class="frame" id="products-grid">    
+    <div class="wrapper">
+
+        {% for product in collections.frontpage.products %}
+        {% assign productName = {{product.title | handleize | append: '-home-headline' }} %}
+            <div class="bit-3 product">
+                <img src="http://cdn.soundfreaq.com/products/{{ product.title | downcase | replace: ' ', '' }}/{{ product.title | downcase | replace: ' ', '' }}-icon.svg" />
+                <h2>{{ product.title }}</h2>
+                <p>{{ settings[productName] }}</p>
+            </div><!--PRODUCT-->
+        {% endfor %}
+
+    </div><!--WRAPPER-->
+</div><!--PRODUCTS-->
