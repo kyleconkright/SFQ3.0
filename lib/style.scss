@@ -115,14 +115,29 @@ div#container {
 				padding: $space/2 $space;
 				.box {
 					background: $orange;
+					background-size: cover !important;
 					margin: $spacefix/2 auto;
 					height: 25vh;
 					max-height: 200px;
 					min-height: 120px;
-					display: flex;
-					justify-content: center;
-					align-items: center;
+					a {
+						display: flex;
+						width: 100%;
+						height: 100%;
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
+					}
 				}
+			}
+			.main-bucket:first-of-type .box {
+				font-family: 'Knockout 34 A', 'Knockout 34 B';
+			}
+			.main-bucket:nth-of-type(2) .box {
+				font-family: 'Knockout 30 A', 'Knockout 30 B';
+			}
+			.main-bucket:nth-of-type(3) .box {
+				font-family: 'Archer SSm A', 'Archer SSm B';
 			}
 			.sub-bucket {
 				padding: 0% 2%;
