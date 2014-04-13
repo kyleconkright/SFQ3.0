@@ -8,6 +8,20 @@
     "pocket-kick-home-headline": "Pocketable Stereo",
     "double-spot-home-headline": "Twice as Nice",
     "banner": "Check us out at <a href=\"#\">Dwell on Design</a>. June 14-16",
-    "banner-switch": true
+    "main-bucket-1": "Target",
+    "main-bucket-2": "Mashable Review",
+    "main-bucket-3": "The Novogratz",
+    "sub-bucket-1": "Shop all our Speakers. Just click here now.",
+    "sub-bucket-2": "<i class=\"fa fa-comments\"></i>",
+    "sub-bucket-3": "<i class=\"fa fa-map-marker\"></i>",
+    "sub-bucket-4": "<i class=\"fa fa-shopping-cart\"></i>",
+    "banner-switch": true,
+    "main-bucket-1-switch": true,
+    "main-bucket-2-switch": true,
+    "main-bucket-3-switch": true,
+    "sub-bucket-1-switch": true,
+    "sub-bucket-2-switch": true,
+    "sub-bucket-3-switch": true,
+    "sub-bucket-4-switch": true
   }
 }

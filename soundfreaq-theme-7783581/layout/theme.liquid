@@ -17,6 +17,7 @@
         </div>
         {% endif %}
         {{ content_for_layout }}
+        {% include 'footer' %}
     </div>
 
     {{ 'script.js' | asset_url | script_tag }}

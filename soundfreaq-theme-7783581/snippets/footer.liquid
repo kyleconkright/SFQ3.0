@@ -1,14 +1,56 @@
 <div class="frame" id="footer">    
     <div class="wrapper">
 
-        {% for product in collections.frontpage.products %}
+        <div class="bit-3 main-bucket">
+            <div class="box">
+                {% if settings.main-bucket-1-switch %}<p>{{ settings.main-bucket-1 }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="bit-3 main-bucket">
+            <div class="box">
+                {% if settings.main-bucket-2-switch %}<p>{{ settings.main-bucket-2 }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="bit-3 main-bucket test">
+            <div class="box">
+                {% if settings.main-bucket-3-switch %}<p>{{ settings.main-bucket-3 }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="bit-4 sub-bucket">
+            <div class="box">
+                {% if settings.sub-bucket-1-switch %}<p>{{ settings.sub-bucket-1 }}</p>{% endif %}
+            </div>
+        </div>
+
+         <div class="bit-4 sub-bucket">
+            <div class="box">
+                {% if settings.sub-bucket-2-switch %}<p>{{ settings.sub-bucket-2 }}</p>{% endif %}
+            </div>
+        </div>
+
+         <div class="bit-4 sub-bucket">
+            <div class="box">
+                {% if settings.sub-bucket-3-switch %}<p>{{ settings.sub-bucket-3 }}</p>{% endif %}
+            </div>
+        </div>
+
+         <div class="bit-4 sub-bucket">
+            <div class="box">
+                {% if settings.sub-bucket-4-switch %}<p>{{ settings.sub-bucket-4 }}</p>{% endif %}
+            </div>
+        </div>
+
+        {% comment %}{% for product in collections.frontpage.products %}
         {% assign productName = {{product.title | handleize | append: '-home-headline' }} %}
             <div class="bit-3 product">
                 <img src="http://cdn.soundfreaq.com/products/{{ product.title | downcase | replace: ' ', '' }}/{{ product.title | downcase | replace: ' ', '' }}-icon.svg" />
                 <h2>{{ product.title }}</h2>
                 <p>{{ settings[productName] }}</p>
             </div><!--PRODUCT-->
-        {% endfor %}
+        {% endfor %}{% endcomment %}
 
     </div><!--WRAPPER-->
 </div><!--footer-->

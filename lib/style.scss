@@ -107,6 +107,37 @@ div#container {
 			padding: $spacefix 0;
 		}
 	}
+	div#footer {
+		.wrapper {
+			width: 90%;
+			.main-bucket, .sub-bucket {
+				text-align: center;
+				padding: $space/2 $space;
+
+				.box {
+					background: $orange;
+					margin: $spacefix/2 auto;
+					height: 25vh;
+					max-height: 200px;
+					min-height: 120px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+			.sub-bucket {
+				padding: 0% 2%;
+				margin: 1% 0;
+				border-right: 1px solid $light;
+				.box {
+					background: transparent;
+				}
+			}
+			.sub-bucket:last-of-type {
+				border: none;
+			}
+		}
+	}
 }
 
 
