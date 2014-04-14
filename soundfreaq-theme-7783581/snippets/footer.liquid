@@ -1,47 +1,59 @@
 <div class="frame" id="footer">    
-    <div class="wrapper">
-
-        <div class="bit-3 main-bucket">
-            <div class="box" style="background: {% if settings.main-bucket-1-img %}url('{{ 'main-bucket-1-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-1-bg}}{% endif %}; color: {{settings.main-bucket-1-font-color}};">
-                {% if settings.main-bucket-1-switch %}<a href="{{settings.main-bucket-1-link}}">{{ settings.main-bucket-1-text }}</a>{% endif %}
+    
+    <div id="buckets" class="frame">    
+        <div class="wrapper">
+            <div class="bit-3 main-bucket">
+                <div class="box" style="background: {% if settings.main-bucket-1-img %}url('{{ 'main-bucket-1-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-1-bg}}{% endif %}; color: {{settings.main-bucket-1-font-color}};">
+                    {% if settings.main-bucket-1-switch %}<a href="{{settings.main-bucket-1-link}}">{{ settings.main-bucket-1-text }}</a>{% endif %}
+                </div>
             </div>
-        </div>
 
-        <div class="bit-3 main-bucket">
-            <div class="box" style="background: {% if settings.main-bucket-2-img %}url('{{ 'main-bucket-2-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-2-bg}}{% endif %}; color: {{settings.main-bucket-2-font-color}};">
-                {% if settings.main-bucket-2-switch %}<a href="{{settings.main-bucket-2-link}}">{{ settings.main-bucket-2-text }}</a>{% endif %}
+            <div class="bit-3 main-bucket">
+                <div class="box" style="background: {% if settings.main-bucket-2-img %}url('{{ 'main-bucket-2-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-2-bg}}{% endif %}; color: {{settings.main-bucket-2-font-color}};">
+                    {% if settings.main-bucket-2-switch %}<a href="{{settings.main-bucket-2-link}}">{{ settings.main-bucket-2-text }}</a>{% endif %}
+                </div>
             </div>
-        </div>
 
-        <div class="bit-3 main-bucket">
-            <div class="box" style="background: {% if settings.main-bucket-3-img %}url('{{ 'main-bucket-3-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-3-bg}}{% endif %}; color: {{settings.main-bucket-3-font-color}};">
-                {% if settings.main-bucket-3-switch %}<a href="{{settings.main-bucket-3-link}}">{{ settings.main-bucket-3-text }}</a>{% endif %}
+            <div class="bit-3 main-bucket">
+                <div class="box" style="background: {% if settings.main-bucket-3-img %}url('{{ 'main-bucket-3-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-3-bg}}{% endif %}; color: {{settings.main-bucket-3-font-color}};">
+                    {% if settings.main-bucket-3-switch %}<a href="{{settings.main-bucket-3-link}}">{{ settings.main-bucket-3-text }}</a>{% endif %}
+                </div>
             </div>
-        </div>
 
-        <div class="bit-4 sub-bucket">
-            <div class="box">
-                {% if settings.sub-bucket-1-switch %}<a>{{ settings.sub-bucket-1 }}</a>{% endif %}
+            <div class="bit-4 sub-bucket">
+                <div class="box">
+                    {% if settings.sub-bucket-1-switch %}<a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>{% endif %}
+                </div>
             </div>
-        </div>
 
-         <div class="bit-4 sub-bucket">
-            <div class="box">
-                {% if settings.sub-bucket-2-switch %}<a>{{ settings.sub-bucket-2 }}</a>{% endif %}
+             <div class="bit-4 sub-bucket">
+                <div class="box">
+                    {% if settings.sub-bucket-2-switch %}<a href="{{settings.sub-bucket-2-link}}">{{ settings.sub-bucket-2 }}</a>{% endif %}
+                </div>
             </div>
-        </div>
 
-         <div class="bit-4 sub-bucket">
-            <div class="box">
-                {% if settings.sub-bucket-3-switch %}<a>{{ settings.sub-bucket-3 }}</a>{% endif %}
+             <div class="bit-4 sub-bucket">
+                <div class="box">
+                    {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                </div>
             </div>
-        </div>
 
-         <div class="bit-4 sub-bucket">
-            <div class="box">
-                {% if settings.sub-bucket-4-switch %}<a>{{ settings.sub-bucket-4 }}</a>{% endif %}
+             <div class="bit-4 sub-bucket">
+                <div class="box">
+                    {% if settings.sub-bucket-4-switch %}<a href="{{settings.sub-bucket-4-link}}">{{ settings.sub-bucket-4 }}</a>{% endif %}
+                </div>
             </div>
+        </div><!--WRAPPER-->
+    </div><!--BUCKETS-->
+
+
+    <div id="newsletter" class="frame">
+        <div class="wrapper">
+        <label for="email_address">Join our mailing List</label>
+        <input type="text" placeholder="your email">
+        <input type="submit" value="signup">
         </div>
+    </div>
 
         {% comment %}{% for product in collections.frontpage.products %}
         {% assign productName = {{product.title | handleize | append: '-home-headline' }} %}
@@ -52,5 +64,5 @@
             </div><!--PRODUCT-->
         {% endfor %}{% endcomment %}
 
-    </div><!--WRAPPER-->
+    
 </div><!--footer-->
