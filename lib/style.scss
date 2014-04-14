@@ -153,6 +153,26 @@ div#container {
 		div#newsletter {
 			background: $dark;
 			color: $white;
+			.bit-2 {
+				padding: 0;
+			}
+			label, input {
+				padding: $space;
+			}
+			label {
+				text-align: right;
+				display: block;
+			}
+			input {
+				background: $light;
+				border: none;
+				text-align: center;
+			}
+			input[type=submit] {
+				background: $orange;
+				margin: 0 0 0 -4px;
+				cursor: pointer;
+			}
 		}
 	}
 }
@@ -160,8 +180,29 @@ div#container {
 
 @media only screen 
 and (max-width : 980px)
-and (orientation: portrait) {
+ {
 
+	div#container {
+
+		div#footer {
+			div#buckets {
+				div.wrapper {
+					.sub-bucket {
+						border: none;
+					}
+				}
+			}
+			div#newsletter {
+				padding: 0 0 $space*2 0;
+				div.wrapper {
+					.bit-2, label {
+						text-align: center;
+					}
+				}
+			}
+		}
+
+	} //container
 
 }
 
