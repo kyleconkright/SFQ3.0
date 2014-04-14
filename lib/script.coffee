@@ -10,7 +10,7 @@ $ ->
 		$this = $(@)
 		$.ajax
 			type: "GET"
-			url: 'http://erichutchinson.us7.list-manage.com/subscribe/post-json?u=c8c95e39b427209a753338e7a&amp;id=3e4a2c0d22&c=?'
+			url: 'http://erichutchinson.us7.list-manage.com/subscribe/post-json?u=1a463054a5823c402f5c28c6c&amp;id=fd0c707a7d&c=?'
 			data: $this.serialize()
 			dataType: 'json'
 			contentType: "application/json; charset=utf-8"
