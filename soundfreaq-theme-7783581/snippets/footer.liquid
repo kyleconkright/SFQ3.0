@@ -49,13 +49,16 @@
 
     <div id="newsletter" class="frame">
         <div class="wrapper">
-            <div class="bit-2">
-                <label for="email_address">{{ settings.mailing-list-message }}</label>
-            </div>
-            <div class="bit-2">
-                <input type="text" placeholder="your email">
-                <input type="submit" value="signup">
-            </div>
+            <form>
+                <div class="bit-2">
+                    <label for="email_address">{{ settings.mailing-list-message }}</label>
+                </div>
+                <div class="bit-2">
+                    <input type="text" placeholder="your email" name="EMAIL" id="mce-EMAIL">
+                    <input type="submit" value="signup">
+                    <input type="hidden" name="b_c8c95e39b427209a753338e7a_3e4a2c0d22" value="">
+                </div>
+            </form>
         </div>
     </div>
 

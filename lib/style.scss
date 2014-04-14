@@ -168,6 +168,9 @@ div#container {
 				border: none;
 				text-align: center;
 			}
+			input[type=text] {
+				color: $dark;
+			}
 			input[type=submit] {
 				background: $orange;
 				margin: 0 0 0 -4px;
