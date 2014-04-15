@@ -2,9 +2,19 @@
   $(function() {
     var $form;
     console.log('scripts are working');
+    $.getJSON('http://freegeoip.net/json/', function(location) {
+      if (location.country_code !== 'US') {
+        $('.intl').css({
+          'display': 'none'
+        });
+        return console.log('You are outside of the US');
+      } else {
+        return console.log('You are inside of the US');
+      }
+    });
     $('div#header').scrollToFixed();
     $form = $('#newsletter form');
-    return $form.submit(function(e) {
+    $form.submit(function(e) {
       var $this;
       e.preventDefault();
       $this = $(this);
@@ -25,6 +35,12 @@
           }
         }
       });
+    });
+    return $('.product-slider').slick({
+      'dots': true,
+      'arrows': false,
+      'centerPadding': 0,
+      'draggable': false
     });
   });
 

@@ -16,6 +16,13 @@
             <div class="wrapper"><p>{{ settings.banner }}</p></div>
         </div>
         {% endif %}
+
+        <div id="header" class="frame">
+            <div class="wrapper">
+            <a href="{{ shop.url }}"><img src="http://cdn.soundfreaq.com/brand/sfq-logo-dark.svg"></a>
+            </div>
+        </div><!--HEADER-->
+
         {{ content_for_layout }}
         {% include 'footer' %}
     </div>

@@ -2,11 +2,38 @@
     <div class="wrapper">
 
         {% for product in collections.frontpage.products %}
-        {% assign productName = {{product.title | handleize | append: '-home-headline' }} %}
+        {% assign productHeadline = {{product.title | handleize | append: '-home-headline' }} %}
             <div class="bit-3 product">
-                <img src="http://cdn.soundfreaq.com/products/{{ product.title | downcase | replace: ' ', '' }}/{{ product.title | downcase | replace: ' ', '' }}-icon.svg" />
-                <h2>{{ product.title }}</h2>
-                <p>{{ settings[productName] }}</p>
+
+                <ul class="hidden-product-info top frame">
+                    <li class="bit-2">
+                        {% if product.variants.size > 1 %}
+                            <ul>
+                                <li>1</li>
+                                <li>2</li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                    <li class="bit-2"><a href="{{ product.url }}" class="buy-btn intl">{{ product.price | money }}</a></li>
+                </ul>
+
+                <a href="{{ product.url }}">
+                    {% comment %}<img src="http://cdn.soundfreaq.com/products/{{ product.title | downcase | replace: ' ', '' }}/{{ product.title | downcase | replace: ' ', '' }}-icon.svg" />{% endcomment %}
+                    {% for image in product.images %}
+                        {% if image.alt == 'grid' %}
+                            <img src="{{ image | product_img_url: 'large' }}">
+                        {% endif %}
+                    {% endfor %}
+                    <h2>{{ product.title }}</h2>
+                    <p class="headline">{{ settings[productHeadline] }}</p>
+                </a>   
+                
+                <ul class="hidden-product-info bottom">
+                    <li><a href="{{ product.url }}" class="buy-btn intl">Buy</a></li>
+                    <li><a class="where-to-buy-btn">Where to Buy</a></li>
+                    <li><a href="{{ product.url }}" class="learn">Learn More</a></li>
+                </ul>
+
             </div><!--PRODUCT-->
         {% endfor %}
 

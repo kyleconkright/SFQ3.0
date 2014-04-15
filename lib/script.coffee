@@ -1,6 +1,14 @@
 $ ->
 	console.log 'scripts are working'
 
+	$.getJSON 'http://freegeoip.net/json/', (location) -> 
+	    if location.country_code isnt 'US' 
+	        $('.intl').css 'display':'none' 
+	        console.log 'You are outside of the US' 
+	    else
+	        console.log 'You are inside of the US'
+	    
+
 	$('div#header').scrollToFixed()
 
 	$form = $('#newsletter form')
@@ -21,3 +29,11 @@ $ ->
 					$('label').text('Thanks! Check your inbox to confirm.')
 				else 
 					alert 'not valid email'
+
+	$('.product-slider').slick(
+		'dots': true
+		'arrows': false
+		'centerPadding': 0
+		'draggable': false
+		)
+
