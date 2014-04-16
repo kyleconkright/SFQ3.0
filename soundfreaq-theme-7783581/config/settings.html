@@ -12,10 +12,42 @@
 
 <fieldset>
 <table>
-<legend>Mailing List Message</legend>  
+<legend>Mailing List Messaging</legend>  
   <tr>
     <td>
+      <h3>Popup Text</h3>
+      <label for="popup-switch">Turn Popup On or Off</label>
+      <input type="checkbox" id="popup-switch" name="popup-switch" value="1" /> 
+      <label for="mailing-list-popup-image">Use Header Image?</label>
+      <input type="checkbox" id="mailing-list-popup-image" name="mailing-list-popup-image" value="1" />
+      <input type="file" name="popup-img.png" id="mailing-list-popup-image" data-max-width="200" />
+      <label for="mailing-list-popup-header">Header (if no image is used)</label>
+      <input type="text" name="mailing-list-popup-header" id="mailing-list-popup-header" value="test" />
+      <label for="mailing-list-pupup-top">Main Copy</label>
+      <textarea name="mailing-list-popup-top" cols="50" rows="3" id="mailing-list-popup-top" value="test" />
+      <label for="mailing-list-pupup-top">Terms?</label>
+      <input type="checkbox" id="mailing-list-terms-switch" name="mailing-list-terms-switch" value="1" />
+      <textarea name="mailing-list-terms" cols="50" rows="3" id="mailing-list-terms" value="test" />
+      <label for="mailing-list-popup-bg-color">Background Color</label>
+      <input type="text" class="color" name="mailing-list-popup-bg-color" id="mailing-list-popup-bg-color" value="test" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="mailing-list-message">Bottom Stripe Text</label>
       <input type="text" name="mailing-list-message" id="mailing-list-message" value="test" />
+    </td>
+  </tr>
+</table>
+</fieldset>
+
+<fieldset>
+<table>
+<legend>Main Image</legend>  
+  <tr>
+    <td>
+      <input type="checkbox" id="main-img" name="main-img" value="1" />
+      <input type="file" name="hero.jpg" id="main-img" data-max-width="2000" />
     </td>
   </tr>
 </table>

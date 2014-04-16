@@ -1,0 +1,20 @@
+$(document).ready(function() {
+
+
+
+	// if ($.cookie('popup') != '1') {
+	    {% if settings.popup-switch %}
+	    	$(window).load(function() {
+	    		$.magnificPopup.open({
+	    			items: {
+	    			    src: '<div class="popup" style="background-color: {{ settings.mailing-list-popup-bg-color }}">{% if settings.mailing-list-popup-image %}<img src="{{ "popup-img.png" | asset_url }}">{% else %}<h2>{{ settings.mailing-list-popup-header }}</h2>{% endif %}<form><label>{{ settings.mailing-list-popup-top }}</label><input type="text" placeholder="your email" name="EMAIL" id="mce-EMAIL"><input type="submit" value="signup"><input type="hidden" name="b_1a463054a5823c402f5c28c6c_fd0c707a7d" value=""></form>{% if settings.mailing-list-terms-switch %}<p class="terms">{{ settings.mailing-list-terms }}</p>{% endif %}</div>',
+	    			    type: 'inline',
+	    			    preloader: false,
+	    			    modal: true
+	    			}
+	    		});
+	    	});
+	    {% endif %}
+	// $.cookie('popup', '1', { expires: 30}); }
+
+});

@@ -8,7 +8,39 @@ $white:  #f6f6f6;
 $dark: #26272b;
 $orange: #D8AA43;
 
-
+.popup {
+  position: relative;
+  background: $sfqblue;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  color: $white;
+  label {
+  	margin: $spacefix 0;
+  	display: block;
+  }
+  p.terms {
+  	font-size: .8em;
+  	opacity: .8;
+  	margin: $spacefix 0;
+  	font-family: 'Knockout 30 A', 'Knockout 30 B';
+  }
+  input {
+  	border:none;
+  	background: none;
+  	padding: $space;
+  }
+  input[type=text] {
+  	background: $light;
+  	color: $dark;
+  }
+  input[type="submit"] {
+  	background: $orange;
+  	cursor: pointer;
+  }
+}
 
 
 * {
@@ -190,7 +222,7 @@ div#container {
 						background: $orange;
 						background-size: cover !important;
 						margin: $spacefix/2 auto;
-						height: 25vh;
+						height: 35vh;
 						max-height: 200px;
 						min-height: 150px;
 						a {
