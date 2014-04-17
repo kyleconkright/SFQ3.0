@@ -11,7 +11,6 @@ $ ->
 
 	$('div#header').scrollToFixed()
 
-
 	$form = $('#newsletter form')
 
 	$form.submit (e)->
