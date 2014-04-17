@@ -26,9 +26,12 @@ $ ->
 				alert 'no'
 			success: (data) ->
 				if ($('input[name=EMAIL]').val().indexOf('@') != -1 and $('input[name=EMAIL]').val().indexOf('.') != -1)
-					$(@ 'label').text('Thanks! Check your inbox to confirm.')
+					$('label').text('Thanks! Check your inbox to confirm.')
 				else 
 					alert 'not valid email'
+
+			
+						
 
 	$('.product-slider').slick(
 		'dots': true

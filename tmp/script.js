@@ -29,7 +29,7 @@
         },
         success: function(data) {
           if ($('input[name=EMAIL]').val().indexOf('@') !== -1 && $('input[name=EMAIL]').val().indexOf('.') !== -1) {
-            return $(this('label')).text('Thanks! Check your inbox to confirm.');
+            return $('label').text('Thanks! Check your inbox to confirm.');
           } else {
             return alert('not valid email');
           }
