@@ -2,9 +2,24 @@
 <div id="hero" class="frame" style="background-image: url('{{ 'hero.jpg' | asset_url }}');">
 	<div class="wrapper">
 		<div class="bit-2">
-			<h1>Pocket Kick Available in Gold, Platinum, and Black</h1>
-			<h3>This is just some dumb text.</h3>
-			<h1>Double Spot is available in a limited Firehouse Red</h1>
+			
+			{% if settings.brand-img %}
+			<div class="entry brand-img">
+				<img src="{{ 'brand-img.png' | asset_url }}">
+			</div>
+			{% endif %}
+			<div class="entry">
+				<h1>{{ settings.main-feature-1-h1 }}</h1>
+				{% if settings.main-feature-1-h3-switch %}<h3>{{ settings.main-feature-1-h3 }}</h3>{% endif %}
+				<p>{{ settings.main-feature-1-text }}</p>
+				<a href="{{ settings.main-feature-1-link }}">{{ settings.main-feature-1-link-text }} <i class="fa fa-chevron-right"></i></a>
+			</div>	
+			<div class="entry">	
+				<h1>{{ settings.main-feature-2-h1 }}</h1>
+				{% if settings.main-feature-2-h3-switch %}<h3>{{ settings.main-feature-2-h3 }}</h3>{% endif %}
+				<p>{{ settings.main-feature-2-text }}</p>
+				<a href="{{ settings.main-feature-2-link }}">{{ settings.main-feature-2-link-text }} <i class="fa fa-chevron-right"></i></a>
+			</div>	
 		</div>
 		<div class="bit-2"></div>
 	</div>

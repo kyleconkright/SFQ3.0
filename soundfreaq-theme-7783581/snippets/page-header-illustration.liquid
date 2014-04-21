@@ -1,0 +1,15 @@
+
+
+{% assign pageh1 = {{page.title | handleize | append: '-page-h1' }} %}
+{% assign pagesub = {{page.title | handleize | append: '-page-sub' }} %}
+<div id="page-header" class="frame" style="background-image: url({{ 'comparebg.jpg' | asset_url }})">
+    <div class="wrapper">
+    	<div class="bit-1"><h1>{{ settings[pageh1] }}</h1></div>
+    	<div class="bit-3">
+    		<p>{{ settings[pagesub] }}</p>
+    	</div>
+    	<div class="bit-2">
+    		<h1></h1>
+    	</div>
+    </div><!--.wrapper-->
+</div><!--#page-heaeder-.frame-->

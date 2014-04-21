@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form;
+    var $form, btns, menus;
     console.log('scripts are working');
     $.getJSON('http://freegeoip.net/json/', function(location) {
       if (location.country_code !== 'US') {
@@ -13,6 +13,22 @@
       }
     });
     $('div#header').scrollToFixed();
+    menus = $('div#header #search, div#header #menu');
+    btns = $('div#header .menubtn, div#header .searchbtn');
+    $('div#header .nav').on('click', '.menubtn, .searchbtn', function(e) {
+      var id;
+      e.preventDefault();
+      id = $(this).data('name');
+      if ($(this).hasClass('on')) {
+        $('#' + id).hide();
+        return $(this).removeClass('on');
+      } else {
+        menus.hide();
+        btns.removeClass('on');
+        $('#' + id).slideDown(200);
+        return $(this).addClass('on');
+      }
+    });
     $form = $('#newsletter form');
     $form.submit(function(e) {
       var $this;

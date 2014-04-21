@@ -1,6 +1,6 @@
 <fieldset>
 <table>
-<h3>Custom Banner Message</h3>  
+<legend>Custom Banner Message</legend>  
   <tr>
     <td>
       <input type="checkbox" id="banner-switch" name="banner-switch" value="1" />On/Off
@@ -41,28 +41,53 @@
 </table>
 </fieldset>
 
-<fieldset>
-<table>
-<legend>Main Image</legend>  
-  <tr>
-    <td>
-      <input type="checkbox" id="main-img" name="main-img" value="1" />
-      <input type="file" name="hero.jpg" id="main-img" data-max-width="2000" />
-    </td>
-  </tr>
-</table>
-</fieldset>
+
 
 <fieldset>
-<table>
-<legend>Main Image</legend>  
+<legend>Featured Stories</legend> 
+<table> 
   <tr>
-    <td>
-      <input type="checkbox" id="main-img" name="main-img" value="1" />
+    <td>  
+      <label for="main-img">Hero Image</label>
       <input type="file" name="hero.jpg" id="main-img" data-max-width="2000" />
     </td>
   </tr>
-</table>
+  <tr>
+    <td>  
+      <label for="brand-img">Branding Image</label>
+      <input type="checkbox" id="brand-img" name="brand-img" value="1" />
+      <input type="file" name="brand-img.png" id="brand-img" data-max-width="600" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Main Feature 1</h3>
+      <label for="main-feature-1-h1">Header</label>
+      <input type="text" name="main-feature-1-h1" id="main-feature-1-h1" value="test" />
+      <label for="main-feature-1-h3">Sub Header</label>
+      <input type="checkbox" id="main-feature-1-h3-switch" name="main-feature-1-h3-switch" value="1" />
+      <input type="text" name="main-feature-1-h3" id="main-feature-1-h3" value="test" />
+      <label for="main-feature-1-text">Copy</label>
+      <textarea cols="40" rows="28" id="main-feature-1-text" name="main-feature-1-text" class="text" value="test" />
+      <label for="main-feature-1-link">Link</label>
+      <input type="text" name="main-feature-1-link" id="main-feature-1-link" value="test" />
+      <input type="text" name="main-feature-1-link-text" id="main-feature-1-link-text" value="test" />
+    </td>
+    <td>
+      <h3>Main Feature 2</h3>
+      <label for="main-feature-2-h1">Header</label>
+      <input type="text" name="main-feature-2-h1" id="main-feature-2-h1" value="test" />
+      <label for="main-feature-2-h3">Sub Header</label>
+      <input type="checkbox" id="main-feature-2-h3-switch" name="main-feature-2-h3-switch" value="1" />
+      <input type="text" name="main-feature-2-h3" id="main-feature-2-h3" value="test" />
+      <label for="main-feature-2-text">Copy</label>
+      <textarea cols="40" rows="28" id="main-feature-2-text" name="main-feature-2-text" class="text" value="test" />
+      <label for="main-feature-2-link">Link</label>
+      <input type="text" name="main-feature-2-link" id="main-feature-2-link" value="test" />
+      <input type="text" name="main-feature-2-link-text" id="main-feature-2-link-text" value="test" />
+    </td>
+  </tr>
+</table> 
 </fieldset>
 
 <!--START BUCKETS-->
@@ -273,6 +298,24 @@
     <td>  
       <label for="double-spot-home-headline">Home Headline</label>
       <input type="text" id="double-spot-home-headline" name="double-spot-home-headline" class="text" value="test" /> 
+    </td>
+  </tr>
+</table> 
+</fieldset>
+<!--END PRODUCTS-->
+
+<fieldset>
+<legend>Comparison Page</legend> 
+<table> 
+  <tr>
+    <td>  
+      <label for="compare-page-bg">Illustration Background</label>
+      <input type="checkbox" id="compare-page-bg" name="compare-page-bg" value="1" />
+      <input type="file" name="comparebg.jpg" id="compare-page-bg" value="test" />
+      <label for="compare-page-h1">Main Header Text</label>
+      <input type="text" id="compare-page-h1" name="compare-page-h1" class="text" value="test" />
+      <label for="compare-page-sub">Sub Header Text</label>
+      <textarea cols="60" rows="5" id="compare-page-sub" name="compare-page-sub" class="text" value="test" />
     </td>
   </tr>
 </table> 

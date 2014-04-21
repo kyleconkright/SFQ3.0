@@ -18,9 +18,46 @@
         {% endif %}
 
         <div id="header" class="frame">
-            <div class="wrapper">
-            <a href="{{ shop.url }}"><img src="http://cdn.soundfreaq.com/brand/sfq-logo-dark.svg"></a>
-            </div>
+
+            <div id="grip"><!--need this to make fixed header work-->
+
+                <div id="header-holder"><!--This is purely for styling-->
+                    <div class="wrapper">
+                        <div class="bit-3"><a href="{{ shop.url }}"><img src="http://cdn.soundfreaq.com/brand/sfq-logo-dark.svg"></a></div>
+                        <div class="bit-3 nav">
+                            <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                            <a href="#" class="searchbtn" data-name="search"><i class="fa fa-search"></i></a>
+                            <a href="#" class="menubtn" data-name="menu"><i class="fa fa-bars"></i></a>
+                        </div><!--NAV-->
+                    </div><!--WRAPPER-->
+                </div><!--HEADER-HOLDER-->
+
+                <div id="menu" class="bit-1">
+                    <div class="wrapper">
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                        </ul>
+                       <p>Hello</p>
+                       <p>Hello</p>
+                       <p>Hello</p>
+                       <p>Hello</p>
+                       <p>Hello</p>
+                       <p>Hello</p>
+                       <p>Hello</p> 
+                    </div><!--WRAPPER-->
+                </div><!--MENU-->
+
+                <div id="search" class="bit-1">
+                    <div class="wrapper">
+                       <form><input type="text" id="searchfield" name="search"><input type="submit" value="search"></form> 
+                    </div><!--WRAPPER-->
+                </div><!--MENU-->
+
+            </div><!--GRIP-->
+
         </div><!--HEADER-->
 
         {{ content_for_layout }}

@@ -11,6 +11,23 @@ $ ->
 
 	$('div#header').scrollToFixed()
 
+	menus = $('div#header #search, div#header #menu')
+	btns = $('div#header .menubtn, div#header .searchbtn')
+
+	$('div#header .nav').on 'click','.menubtn, .searchbtn', (e) ->
+		e.preventDefault()
+		id = $(@).data('name')
+		if $(@).hasClass 'on'
+			$('#' + id).hide()
+			$(@).removeClass 'on'
+		else
+			menus.hide()
+			btns.removeClass 'on'
+			$('#' + id).slideDown(200)
+			$(@).addClass 'on'
+
+
+
 	$form = $('#newsletter form')
 
 	$form.submit (e)->
