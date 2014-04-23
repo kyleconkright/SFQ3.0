@@ -23,9 +23,9 @@
 
                 <div id="header-holder"><!--This is purely for styling-->
                     <div class="wrapper">
-                        <div class="bit-3"><a href="{{ shop.url }}"><img src="http://cdn.soundfreaq.com/brand/sfq-logo-dark.svg"></a></div>
+                        <div class="bit-3 logo"><a href="{{ shop.url }}"></a></div>
                         <div class="bit-3 nav">
-                            <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                            <a href="cart"><i class="fa fa-shopping-cart"></i></a>
                             <a href="#" class="searchbtn" data-name="search"><i class="fa fa-search"></i></a>
                             <a href="#" class="menubtn" data-name="menu"><i class="fa fa-bars"></i></a>
                         </div><!--NAV-->
@@ -33,26 +33,56 @@
                 </div><!--HEADER-HOLDER-->
 
                 <div id="menu" class="bit-1">
-                    <div class="wrapper">
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                        </ul>
-                       <p>Hello</p>
-                       <p>Hello</p>
-                       <p>Hello</p>
-                       <p>Hello</p>
-                       <p>Hello</p>
-                       <p>Hello</p>
-                       <p>Hello</p> 
+                    <div class="wrapper frame">
+                       
+                       <div class="products bit-5">
+                            <ul>
+                            <h2>Products</h2>
+                            {% for product in collections.speakers.products %}
+                                <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                       </div>
+
+                       <div class="wire bit-5">
+                            <ul>
+                            <h2>{{ linklists.wire.title }}</h2>
+                            {% for link in linklists.wire.links %}
+                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                       </div>
+
+                       <div class="hl bit-5"><img src="http://cdn.soundfreaq.com/brand/happy_listening_white.png"></div>
+
+                       <div class="wire bit-5">
+                            <ul>
+                            <h2>{{ linklists.support.title }}</h2>
+                            {% for link in linklists.support.links %}
+                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                       </div>
+
+                       <div class="social bit-5">
+                            <ul>
+                                <h2>Social</h2>
+                                <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i> Pinterest</a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+                                <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                            </ul>
+                       </div>
+
                     </div><!--WRAPPER-->
                 </div><!--MENU-->
 
                 <div id="search" class="bit-1">
                     <div class="wrapper">
-                       <form><input type="text" id="searchfield" name="search"><input type="submit" value="search"></form> 
+                        <form action="/search" method="get" class="search-form" role="search">
+                            <input type="text" id="searchfield" name="q" value="{{ search.terms | escape }}" placeholder="Find what you're looking for here">
+                            <input type="submit" value="search">
+                        </form> 
                     </div><!--WRAPPER-->
                 </div><!--MENU-->
 

@@ -10,40 +10,6 @@ $orange: #D8AA43;
 
 $pfontsize: .9em;
 
-.popup {
-  position: relative;
-  background: $sfqblue;
-  padding: 20px;
-  width: auto;
-  max-width: 500px;
-  margin: 20px auto;
-  text-align: center;
-  color: $white;
-  label {
-  	margin: $spacefix 0;
-  	display: block;
-  }
-  p.terms {
-  	font-size: .8em;
-  	opacity: .8;
-  	margin: $spacefix 0;
-  	font-family: 'Knockout 30 A', 'Knockout 30 B';
-  }
-  input {
-  	border:none;
-  	background: none;
-  	padding: $space;
-  }
-  input[type=text] {
-  	background: $light;
-  	color: $dark;
-  }
-  input[type="submit"] {
-  	background: $orange;
-  	cursor: pointer;
-  }
-}
-
 
 * {
 	font-size: 101%;
@@ -138,19 +104,24 @@ div#container {
 
 	div#header {
 		background: $light;
+		
 		div#grip {
 			position: relative;
-		
+			
 			div#header-holder {
-				
-				height: 50px;
-				padding: 13px 0 0;
+		
 				div.wrapper {
+
+					div.nav, div.logo {
+						height: 60px;
+						line-height: 60px;
+					}
 
 					div.nav {
 						text-align: right;
 						a {
-							padding: 15px;
+							padding: 16px 20px 19px;
+							font-size: $pfontsize*1.35;
 							&:hover {
 								background: $white;
 							}
@@ -160,10 +131,13 @@ div#container {
 							color: $white;
 						}
 					}
-					a {
+					div.logo {
 
-						img {
-							height: $spacefix*1.5;
+						a {
+							background: url('http://cdn.soundfreaq.com/brand/sfq-logo-dark.svg') center no-repeat;
+							display: block;
+							height: 100%;
+							width: 70%;
 						}
 					}
 				}
@@ -172,18 +146,38 @@ div#container {
 		div#menu, div#search {
 			padding: $spacefix 0;
 			position: absolute;
-			top: 50px;
+			top: 60px;
 			display: none;
+			z-index: 101;
 		}
 		div#menu {
+			padding: $spacefix*2 0;
 			background: rgba(30,30,30,.95);
 			color: $white;
-			.social {
-				text-align: right;
-				display: block;
-				width: 100%;
+			ul {
+				width: 80%;
+				padding: $spacefix 0;
+				h2 {
+					margin: 0 0 $spacefix/2;
+					padding: 0 0 $spacefix/2;
+					border-bottom: 1px solid $sfqblue;
+				}
 				li {
-					display: inline;
+					display: block;
+				}
+			}
+			.hl {
+				padding: 0 $spacefix 0 0;
+				img {
+					width: 85%;
+					display: block;
+				}
+			}
+			.social {
+				i {
+					margin: 0 5px 0 0;
+					width: 20px;
+					font-size: 1.05em;
 				}
 			}
 		}
@@ -329,7 +323,7 @@ div#container {
 		background-position: bottom;
 		background-repeat: no-repeat;
 		h1 {
-			font-size: 2.75em;
+			font-size: 3em;
 			padding: 0 0 $space 0;
 		}
 		p {
@@ -348,8 +342,8 @@ div#container {
 						background: $orange;
 						background-size: cover !important;
 						margin: $spacefix/2 auto;
-						height: 35vh;
-						max-height: 200px;
+						height: 40vh;
+						max-height: 220px;
 						min-height: 150px;
 						a {
 							display: flex;
@@ -410,7 +404,7 @@ div#container {
 		}
 	}
 
-	// ---------------------------- PAGES ---------------------------- //
+	// ---------------------------- PRODUCT PAGES ---------------------------- //
 
 	div#product-page {
 		.product-name {
@@ -448,8 +442,29 @@ div#container {
 				font-size: 20px;
 			}
 		}
+		.quote-slider {
+			.slide {
+				text-align: center;
+				padding: $spacefix *10;
+				min-height: 0;
+			}
+		}
 	}
-}
+
+	// ---------------------------- MASTER QUOTE SLIDER ---------------------------- //
+	// ----------------- specific styles in appropriate locations ------------------ //
+
+	#quote-slider {
+		.quote-slider {
+			.slide {
+				min-height: 500px;
+				background-size: cover;
+				background-position: bottom;
+			}
+		}
+	}
+
+} // ---------------------------- CONTAINER ---------------------------- //
 
 
 @media only screen 
@@ -516,6 +531,43 @@ and (max-width : 980px)
 
 	} //container
 
+}
+
+
+// ---------------------------- POPUP ---------------------------- //
+
+.popup {
+  position: relative;
+  background: $sfqblue;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  color: $white;
+  label {
+  	margin: $spacefix 0;
+  	display: block;
+  }
+  p.terms {
+  	font-size: .8em;
+  	opacity: .8;
+  	margin: $spacefix 0;
+  	font-family: 'Knockout 30 A', 'Knockout 30 B';
+  }
+  input {
+  	border:none;
+  	background: none;
+  	padding: $space;
+  }
+  input[type=text] {
+  	background: $light;
+  	color: $dark;
+  }
+  input[type="submit"] {
+  	background: $orange;
+  	cursor: pointer;
+  }
 }
 
 

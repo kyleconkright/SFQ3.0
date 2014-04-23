@@ -23,7 +23,7 @@ $ ->
 		else
 			menus.hide()
 			btns.removeClass 'on'
-			$('#' + id).slideDown(200)
+			$('#' + id).slideDown(250)
 			$(@).addClass 'on'
 
 

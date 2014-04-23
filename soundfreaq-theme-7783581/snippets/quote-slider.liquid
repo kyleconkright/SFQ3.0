@@ -1,0 +1,44 @@
+<div class="frame" id="quote-slider">    
+
+        {% if template contains 'index' %}
+           
+            <div class="quote-slider">
+            {% for product in collections.frontpage.products %}
+                {% assign productName = {{product.handle}} %}
+                {% assign pagebg = {{product.handle | append: '-quote-1-bg.jpg' }} %}
+                {% for i in (1..9) %}
+                {% capture currentQuote %}{{productName}}-quote-{{i}}{% endcapture %}
+                {% capture showHome %}{{productName}}-show-quote-{{i}}{% endcapture %}
+                    {% if settings[showHome] %}
+                        <div class="frame slide" style="background-image: url({{ pagebg | asset_url }})">
+                            <div class="bit-2">{{settings[currentQuote]}}</div>
+                            <div class="bit-2">{{pagebg}}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </div>
+
+        {% endif %} {% comment %}---------- HOME PAGE ----------{% endcomment %}
+
+
+        {% if template contains 'product' %}
+          
+            <div class="quote-slider">
+            {% for i in (1..9) %}
+            {% capture currentQuote %}{{product.handle}}-quote-{{i}}{% endcapture %}
+            {% capture showQuote %}{{product.handle}}-show-quote-page-{{i}}{% endcapture %}
+                <div class="frame slide">
+                    {% if settings[showQuote] %}
+                        <div class="bit-1">{{settings[currentQuote]}}</div>
+                    {% endif %}  
+                </div>
+            {% endfor %}
+            </div>
+
+        {% endif %} {% comment %}---------- PRODUCT PAGE ----------{% endcomment %}
+
+
+  
+
+</div><!--PRODUCTS-->
