@@ -77,6 +77,19 @@ h3 {
 	background: $light/1.15; 
 }
 
+.more-btn {
+	font-size: .65em;
+	font-weight: 700;
+	display: inline-block;
+	background: $orange;
+	padding: $space/2 $space;
+	color: $dark;
+	i {
+		font-size: .75em;
+		color: rgba(255,255,255,.35);
+		margin: 1px 0 0 2px;
+	}
+}
 
 
 div#container {
@@ -226,19 +239,6 @@ div#container {
 			}
 			p {
 				margin: $spacefix 0;
-			}
-			a {
-				font-size: .65em;
-				font-weight: 700;
-				display: inline-block;
-				background: $orange;
-				padding: $space/2 $space;
-				color: $dark;
-				i {
-					font-size: .75em;
-					color: rgba(255,255,255,.35);
-					margin: 1px 0 0 2px;
-				}
 			}
 		}
 		div.brand-img {
@@ -457,9 +457,33 @@ div#container {
 	#quote-slider {
 		.quote-slider {
 			.slide {
-				min-height: 500px;
+				position: relative;
+				min-height: 300px;
+				max-height: 500px;
+				height: 70vh;
 				background-size: cover;
-				background-position: bottom;
+				background-position: center;
+				padding: $space*6 $space*3 0;
+				p {
+					font-size: $pfontsize*2;
+				}
+				p.source {
+					font-size: $pfontsize;
+					margin: $spacefix $spacefix 0;
+					img {
+						height: $spacefix*1.5;
+						vertical-align: bottom;
+					}
+					i {
+						margin: 0 $space/2 0 0;
+					}
+				}
+				a.learn {
+					position: absolute;
+					bottom: $spacefix/2;
+					right: $spacefix/2;
+					padding: $spacefix/3 $spacefix;
+				}
 			}
 		}
 	}
