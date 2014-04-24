@@ -50,10 +50,12 @@ $ ->
 			
 						
 
-	$('.product-slider').slick(
-		'dots': true
-		'arrows': false
-		'centerPadding': 0
-		'draggable': false
-		)
+	$('.product-slider, .quote-slider').responsiveSlides({
+		namespace: "slides",
+		nav: true,          
+		pause: true,
+		nextText: '<i class="fa fa-chevron-right"></i>',
+		prevText: '<i class="fa fa-chevron-left"></i>',
+		navContainer: '#quote-slider',
+		})
 

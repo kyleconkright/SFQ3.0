@@ -2,7 +2,7 @@
 
         {% if template contains 'index' %}
            
-            <div class="quote-slider">
+            <ul class="quote-slider">
             {% for product in collections.frontpage.products %}
                 {% assign productName = {{product.handle}} %}
                 {% for i in (1..9) %}
@@ -16,10 +16,10 @@
                 {% capture imgRight %}{{productName}}-quote-{{i}}-img-align{% endcapture %}
                 {% capture currentLink %}{{productName}}-quote-{{i}}-link{% endcapture %}
                     {% if settings[showHome] %}
-                        <div class="frame slide" style="background-image: url({{ pagebg | asset_url }}); color: {{settings[textColor]}}">
+                        <li class="frame slide" style="background-image: url({{ pagebg | asset_url }}); color: {{settings[textColor]}}">
                             {% if settings[imgRight] %}
                             <div class="bit-{{settings[textLength]}}">
-                                <p class="quote" style="text-align: {{settings[textAlign]}};">{{settings[currentQuote]}}</p>
+                                <p class="quote" style="text-align: {{settings[textAlign]}};"><q>{{settings[currentQuote]}}</q></p>
                                 <p class="source" style="text-align: {{settings[textAlign]}};"><i class="fa fa-minus"></i><img src="{{ currentSource | asset_url }}"</p>
                             </div>
                             <div class="bit-2"></div>
@@ -28,33 +28,40 @@
                             
                             <div class="bit-2"></div>
                             <div class="bit-{{settings[textLength]}}">
-                                <p class="quote" style="text-align: {{settings[textAlign]}};">{{settings[currentQuote]}}</p>
+                                <p class="quote" style="text-align: {{settings[textAlign]}};"><q>{{settings[currentQuote]}}</q></p>
                                 <p class="source" style="text-align: {{settings[textAlign]}};"><i class="fa fa-minus"></i><img src="{{ currentSource | asset_url }}"</p>
                             </div>
                             {% endif %}
                             <a href="{{settings[currentLink]}}" class="learn more-btn">Learn More</a>
-                        </div>
+                        </li>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
-            </div>
+            </ul>
 
         {% endif %} {% comment %}---------- HOME PAGE ----------{% endcomment %}
 
 
         {% if template contains 'product' %}
           
-            <div class="quote-slider">
-            {% for i in (1..9) %}
-            {% capture currentQuote %}{{product.handle}}-quote-{{i}}{% endcapture %}
-            {% capture showQuote %}{{product.handle}}-show-quote-page-{{i}}{% endcapture %}
-                <div class="frame slide">
-                    {% if settings[showQuote] %}
-                        <div class="bit-1">{{settings[currentQuote]}}</div>
-                    {% endif %}  
-                </div>
+            <ul class="quote-slider">
+            
+                {% for i in (1..9) %}
+                {% capture showPage %}{{product.handle}}-show-quote-page-{{i}}{% endcapture %}
+                {% capture currentQuote %}{{product.handle}}-quote-{{i}}{% endcapture %}
+                {% capture currentSource %}{{product.handle}}-quote-{{i}}-src-logo.png{% endcapture %}
+                {% capture currentLink %}{{product.handle}}-quote-{{i}}-link{% endcapture %}
+                {% if settings[showPage] %}
+                    <li class="frame slide">
+                        <div class="bit-1">
+                            <p class="quote"><q>{{settings[currentQuote]}}</q></p>
+                            <p class="source"><i class="fa fa-minus"></i><img src="{{ currentSource | asset_url }}"</p>
+                        </div>
+                        <a href="{{settings[currentLink]}}" class="learn more-btn">Full Review</a>
+                    </li>
+                {% endif %}
             {% endfor %}
-            </div>
+            </ul>
 
         {% endif %} {% comment %}---------- PRODUCT PAGE ----------{% endcomment %}
 

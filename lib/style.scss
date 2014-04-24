@@ -455,6 +455,20 @@ div#container {
 	// ----------------- specific styles in appropriate locations ------------------ //
 
 	#quote-slider {
+		position: relative;
+		a.slides_nav {
+			position: absolute;
+			z-index: 1000;
+			height: 50%;
+			top: 25%;
+			padding: $space;
+			display: flex;
+			align-items: center;
+			color: $white;
+		}
+		a.slides_nav.next {
+			right: 0;
+		}
 		.quote-slider {
 			.slide {
 				position: relative;
@@ -463,9 +477,36 @@ div#container {
 				height: 70vh;
 				background-size: cover;
 				background-position: center;
-				padding: $space*6 $space*3 0;
+				background-color: $sfqblue;
+				color: $light;
+				padding: 0 $space*3;
+				display: flex;
+				align-items: center;
 				p {
 					font-size: $pfontsize*2;
+					line-height: 1.3em;
+				}
+				q { 
+					quotes: '\201c' '\201d';
+					position: relative;
+					line-height: .9em;
+					&:before {
+						content: open-quote;
+						position: absolute;
+						left: -25px;
+						top: 3px;
+						font-size: 1.5em;
+						opacity: .35;
+					}
+					&:after  {
+						content: close-quote;
+						font-size: 1.5em;
+						line-height: 0em;
+						position: relative;
+						top: 8px;
+						left: 3px;
+						opacity: .35;
+					}
 				}
 				p.source {
 					font-size: $pfontsize;
@@ -480,6 +521,7 @@ div#container {
 				}
 				a.learn {
 					position: absolute;
+					z-index: 1001;
 					bottom: $spacefix/2;
 					right: $spacefix/2;
 					padding: $spacefix/3 $spacefix;
@@ -593,6 +635,8 @@ and (max-width : 980px)
   	cursor: pointer;
   }
 }
+
+
 
 
 
