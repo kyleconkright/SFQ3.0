@@ -1,0 +1,16 @@
+{% if template contains 'product' %}
+
+{% endif %} {% comment %}----------END PRODUCT PAGE ----------{% endcomment %}
+
+        
+{% if template contains 'index' %}
+
+<li><a href="{{product.url}}" class="buy-btn intl">Buy It Now</a> </li>
+<li><a href="#" class="where-to-buy-btn intl">Where To Buy</a></li>
+
+{% else %} {% comment %}----------END index PAGE ----------{% endcomment %}
+
+<a href="{{product.url}}" class="buy-btn intl">Buy It Now</a> 
+<a href="#" class="where-to-buy-btn intl">Where To Buy</a>
+
+{% endif %} 

@@ -1,15 +1,27 @@
 (function() {
   $(function() {
-    var $form, btns, menus;
-    console.log('scripts are working');
+    var $form, baseURL, btns, menus;
+    baseURL = 'http://www.soundfreaq-theme.myshopify.com/';
     $.getJSON('http://freegeoip.net/json/', function(location) {
-      if (location.country_code !== 'US') {
-        $('.intl').css({
-          'display': 'none'
-        });
-        return console.log('You are outside of the US');
+      if (location.country_code === 'US') {
+        $('a.buy-btn.intl').css('display', 'inline-block');
+        return $('a.where-to-buy-btn.intl').attr('href', baseURL + 'pages/where-to-buy');
       } else {
-        return console.log('You are inside of the US');
+        $('a.buy-btn.intl').text('Where to Buy').attr('href', baseURL + 'pages/where-to-buy-intl').css('display', 'inline-block');
+        return $('a.where-to-buy-btn.intl, a.price.intl').remove();
+      }
+    });
+    $.ajax({
+      url: 'http://cdn.soundfreaq.com/data/data.json?callback=?',
+      type: 'GET',
+      dataType: 'json',
+      success: function(results) {
+        return $.each(results.pressReleases, function() {
+          return console.log(this.title);
+        });
+      },
+      error: function() {
+        return console.log('major fail');
       }
     });
     $('div#header').scrollToFixed();
@@ -52,13 +64,26 @@
         }
       });
     });
-    return $('.product-slider, .quote-slider').responsiveSlides({
+    $('#product-compare ul.holder > li:odd').css({
+      'background-color': '#eee'
+    });
+    $('#product-compare ul.holder > li:even').css({
+      'background-color': '#dfdfdf'
+    });
+    $('.quote-slider').responsiveSlides({
       namespace: "slides",
       nav: true,
       pause: true,
       nextText: '<i class="fa fa-chevron-right"></i>',
       prevText: '<i class="fa fa-chevron-left"></i>',
       navContainer: '#quote-slider'
+    });
+    return $('.product-slider').responsiveSlides({
+      namespace: "slides",
+      nav: true,
+      pause: true,
+      nextText: '<i class="fa fa-chevron-right"></i>',
+      prevText: '<i class="fa fa-chevron-left"></i>'
     });
   });
 

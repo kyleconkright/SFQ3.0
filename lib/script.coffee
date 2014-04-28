@@ -1,12 +1,30 @@
 $ ->
-	console.log 'scripts are working'
 
-	$.getJSON 'http://freegeoip.net/json/', (location) -> 
-	    if location.country_code isnt 'US' 
-	        $('.intl').css 'display':'none' 
-	        console.log 'You are outside of the US' 
-	    else
-	        console.log 'You are inside of the US'
+	baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
+
+	$.getJSON 'http://freegeoip.net/json/', (location) ->
+		if location.country_code is 'US'
+			$('a.buy-btn.intl').css 'display','inline-block'
+			$('a.where-to-buy-btn.intl').attr 'href', baseURL + 'pages/where-to-buy'
+		else
+			$('a.buy-btn.intl')
+				.text 'Where to Buy'
+				.attr 'href', baseURL + 'pages/where-to-buy-intl'
+				.css 'display','inline-block'
+			$('a.where-to-buy-btn.intl, a.price.intl').remove()
+
+
+	# CUSTOM DATA
+	$.ajax
+		# url: 'http://cdn.shopify.com/s/files/1/0436/0145/t/1/assets/data2.json'
+		url: 'http://cdn.soundfreaq.com/data/data.json?callback=?'
+		type: 'GET'
+		dataType: 'json'
+		success: (results) ->
+			$.each results.pressReleases, ->
+				console.log this.title
+		error: ->
+			console.log 'major fail'	
 
 
 	$('div#header').scrollToFixed()
@@ -47,15 +65,25 @@ $ ->
 				else 
 					alert 'not valid email'
 
-			
+
+	$('#product-compare ul.holder > li:odd').css 'background-color':'#eee'
+	$('#product-compare ul.holder > li:even').css 'background-color':'#dfdfdf'			
 						
 
-	$('.product-slider, .quote-slider').responsiveSlides({
+	$('.quote-slider').responsiveSlides({
 		namespace: "slides",
 		nav: true,          
 		pause: true,
 		nextText: '<i class="fa fa-chevron-right"></i>',
 		prevText: '<i class="fa fa-chevron-left"></i>',
 		navContainer: '#quote-slider',
+		})
+
+	$('.product-slider').responsiveSlides({
+		namespace: "slides",
+		nav: true,          
+		pause: true,
+		nextText: '<i class="fa fa-chevron-right"></i>',
+		prevText: '<i class="fa fa-chevron-left"></i>'
 		})
 

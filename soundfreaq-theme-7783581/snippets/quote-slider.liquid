@@ -7,6 +7,7 @@
                 {% assign productName = {{product.handle}} %}
                 {% for i in (1..9) %}
                 {% capture pagebg %}{{productName}}-quote-{{i}}-bg.jpg{% endcapture %}
+                {% capture showBg %}{{productName}}-show-bg-quote-{{i}}{% endcapture %}
                 {% capture currentQuote %}{{productName}}-quote-{{i}}{% endcapture %}
                 {% capture currentSource %}{{productName}}-quote-{{i}}-src-logo.png{% endcapture %}
                 {% capture showHome %}{{productName}}-show-quote-{{i}}{% endcapture %}
@@ -16,7 +17,7 @@
                 {% capture imgRight %}{{productName}}-quote-{{i}}-img-align{% endcapture %}
                 {% capture currentLink %}{{productName}}-quote-{{i}}-link{% endcapture %}
                     {% if settings[showHome] %}
-                        <li class="frame slide" style="background-image: url({{ pagebg | asset_url }}); color: {{settings[textColor]}}">
+                        <li class="frame slide" {% if settings[showBg] %}style="background-image: url({{ pagebg | asset_url }}); color: {{settings[textColor]}}"{% endif %}>
                             {% if settings[imgRight] %}
                             <div class="bit-{{settings[textLength]}}">
                                 <p class="quote" style="text-align: {{settings[textAlign]}};"><q>{{settings[currentQuote]}}</q></p>

@@ -1,16 +1,42 @@
-
-
 {% assign pageh1 = {{page.handle | handleize | append: '-page-h1' }} %}
 {% assign pagesub = {{page.handle | handleize | append: '-page-sub' }} %}
 {% assign pagebg = {{page.handle | handleize | append: 'bg.jpg' }} %}
+
+{% assign blogh1 = {{blog.handle | handleize | append: '-blog-h1' }} %}
+{% assign blogsub = {{blog.handle | handleize | append: '-blog-sub' }} %}
+{% assign blogbg = {{blog.handle | handleize | append: 'bg.jpg' }} %}
+
+{% if template contains 'blog' %}
+<div id="page-header" class="frame" style="background-image: url({{ blogbg | asset_url }})">
+    <div class="wrapper">
+
+    	<div class="bit-1">
+    	{% if current_tags %}
+    	  <h1>{{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}</h1>
+    	{% else if blog.title is 'News' %}
+    	  <h1>{{ settings[blogh1] }}</h1>
+    	{% else %}
+    	  <h1>{{ blog.title }}</h1>
+    	{% endif %}
+    	</div>
+
+    	<div class="bit-3">
+    		<p>{{ settings[blogsub] }}</p>
+    	</div>
+
+{% else %}
 <div id="page-header" class="frame" style="background-image: url({{ pagebg | asset_url }})">
     <div class="wrapper">
+
     	<div class="bit-1"><h1>{{ settings[pageh1] }}</h1></div>
     	<div class="bit-3">
     		<p>{{ settings[pagesub] }}</p>
     	</div>
+
+{% endif %}
+
     	<div class="bit-2">
     		<h1></h1>
     	</div>
     </div><!--.wrapper-->
-</div><!--#page-heaeder-.frame-->
+</div><!--#page-header-.frame-->

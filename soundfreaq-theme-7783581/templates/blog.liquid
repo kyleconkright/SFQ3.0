@@ -1,10 +1,11 @@
-{% paginate blog.articles by 5 %}
 
-{% if current_tags %}
-<h1>{{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}</h1>
-{% else %}
-<h1>{{ blog.title }}</h1>
-{% endif %}
+<div id="blog" class="frame">
+  {% include 'page-header-illustration' %}
+
+
+
+<div class="wrapper">
+{% paginate blog.articles by 5 %}
 
 <ul class="articles">
 
@@ -13,9 +14,9 @@
     <h2 class="title">
       <a href="{{ article.url }}">{{ article.title }}</a>
     </h2>
-    <h3 class="date">
+    <p class="date">
       <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
-    </h3>
+    </p>
     <div class="rte">
       {% if article.excerpt.size > 0 %}
         {{ article.excerpt }}
@@ -25,16 +26,12 @@
     </div>
     <a class="blog-read-more" href="{{ article.url }}">Read more →</a>
     <ul class="meta">
-      {% if blog.comments_enabled? %}
-      <li class="meta-comments">
-        <a href="{{ article.url }}#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a>
-      </li>
-      {% endif %}
       {% if article.tags.size > 0 %}
       <li class="tags">
-        <span>Filed under</span>
-        {% for tag in article.tags %} 
-        <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        {% for tag in article.tags %}
+          {% unless tag contains 'icon' %} 
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+          {% endunless %}
         {% endfor %}
       </li>
       {% endif %}
@@ -55,3 +52,5 @@
 {% endif %}
 
 {% endpaginate %}
+</div><!--WRAPPER-->
+</div><!--BLOG-->

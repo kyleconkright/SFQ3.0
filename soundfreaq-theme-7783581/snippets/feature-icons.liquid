@@ -1,0 +1,107 @@
+{% if template contains 'product' %}
+<div class="frame" id="feature-icons">    
+
+    <div class="feature-icons frame">
+    {% for i in (1..12) %}
+   
+        {% capture iconTags %}{{i}}-icon-tags{% endcapture %}
+        {% capture featureIcon %}{{i}}-icon.png{% endcapture %}
+        {% capture featureTitle %}{{i}}-icon-title{% endcapture %}
+        {% capture featureCopy %}{{i}}-icon-copy{% endcapture %}
+        {% assign productName = {{product.handle}} %}
+
+        
+        {% if settings[iconTags] contains productName %}
+            <div class="bit-3 feature">
+                <p class="icon"><img src="{{ featureIcon | asset_url }}"></p>
+                <h3 class="title">{{settings[featureTitle]}}</h3>
+                <p>{{settings[featureCopy]}}</p>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+    </div>
+
+</div><!--Product Page-->
+{% endif %} {% comment %}----------END PRODUCT PAGE ----------{% endcomment %}
+
+        
+{% if template contains 'compare' %}
+    <div class="frame" id="product-compare">
+        <ul class="holder">
+            {% for product in collections.frontpage.products %}
+                {% assign productHandle = {{product.handle}} %}
+                {% assign productName = {{product.title}} %}
+                {% assign productImg = {{product.handle}} %}
+                {% assign productHeadline = {{product.handle | append: '-comp-headline' }} %}
+                {% assign productExtras = {{product.handle | append: '-extras' }} %}
+                <li class="bit-1 product">
+                    <div class="box">
+                        <div class="bit-4 main-info">
+                            <h2>{{productName}}</h2>
+                            {% for image in product.images %}{% if image.alt contains 'compare' %}<p><a href="{{ product.url }}"><img src="{{ image | product_img_url: 'large' }}"></a></p>{% endif %}{% endfor %}
+                            <p class="headline">{{settings[productHeadline]}}</p>
+                        </div>
+
+                        {% for i in (1..20) %}
+                        
+                            {% capture iconTags %}{{i}}-icon-tags{% endcapture %}
+                            {% capture featureIcon %}{{i}}-icon.png{% endcapture %}
+                            {% capture featureTitle %}{{i}}-icon-title{% endcapture %}
+                            {% assign productName = {{product.handle}} %}
+                            {% if settings[iconTags] contains productName %}
+                            <div class="bit-11 feature">
+                                <p class="icon"><img src="{{ featureIcon | asset_url }}"></p>
+                                <p>{{settings[featureTitle]}}</p>
+                            </div>
+                            {% endif %}
+
+                        {% endfor %}
+
+                        <div class="bit-9 extras">
+                            <ul>
+                                <h4>Extra Features</h4>
+                                {{settings[productExtras]}}
+                            </ul>
+                            {% include 'button-group' %}
+                        </div>
+                        
+                    </div><!--box-->
+                </li><!--bit 1 row-->
+            {% endfor %} 
+        </ul><!--wrapper--> 
+    </div><!--#product-compare-->         
+{% endif %} {% comment %}----------END COMPARE PAGE ----------{% endcomment %}
+
+
+
+{% if template contains 'hello' %}
+
+<div class="frame" id="product-compare"> 
+    {% for product in collections.frontpage.products %}
+        {% assign productName = {{product.handle}} %}
+        <div class="product-compare frame">
+        {% for i in (1..12) %}
+       
+        {% capture iconTags %}{{i}}-icon-tags{% endcapture %}
+        {% capture featureIcon %}{{i}}-icon.png{% endcapture %}
+        {% capture featureTitle %}{{i}}-icon-title{% endcapture %}
+        {% capture featureCopy %}{{i}}-icon-copy{% endcapture %}
+        {% assign productName = {{product.handle}} %}
+
+            
+        {% if settings[iconTags] contains productName %}
+            <div class="bit-3 feature">
+                <p class="icon"><img src="{{ featureIcon | asset_url }}"></p>
+                <h3 class="title">{{settings[featureTitle]}}</h3>
+                <p>{{settings[featureCopy]}}</p>
+            </div>
+        {% endif %}
+
+        {% endfor %}
+    {% endfor %}
+    </div>
+
+</div><!--feature-icons--> 
+
+{% endif %}
