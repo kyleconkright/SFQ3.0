@@ -55,7 +55,9 @@
 .bit-11 { width: 9.09090909091% }
 .bit-12 { width: 8.33% }
 /* Custom Widths */
-.bit-33  { width: 33.33% }
+.bit-15  { width: 15% }
+.bit-40  { width: 40% }
+.bit-60  { width: 60% }
 .bit-66  { width: 66.6666666667% }
 
 /* Landscape mobile & down */

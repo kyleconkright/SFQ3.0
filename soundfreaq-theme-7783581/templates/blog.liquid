@@ -1,56 +1,55 @@
-
 <div id="blog" class="frame">
-  {% include 'page-header-illustration' %}
+{% include 'page-header-illustration' %}
 
 
 
-<div class="wrapper">
-{% paginate blog.articles by 5 %}
+    <div class="wrapper">
 
-<ul class="articles">
+        <div id="content">
 
-  {% for article in blog.articles %}
-  <li class="article{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">
-    <h2 class="title">
-      <a href="{{ article.url }}">{{ article.title }}</a>
-    </h2>
-    <p class="date">
-      <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
-    </p>
-    <div class="rte">
-      {% if article.excerpt.size > 0 %}
-        {{ article.excerpt }}
-      {% else %}
-        <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
-      {% endif %}
-    </div>
-    <a class="blog-read-more" href="{{ article.url }}">Read more →</a>
-    <ul class="meta">
-      {% if article.tags.size > 0 %}
-      <li class="tags">
-        {% for tag in article.tags %}
-          {% unless tag contains 'icon' %} 
-            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endunless %}
-        {% endfor %}
-      </li>
-      {% endif %}
-    </ul>
-  </li>
-  {% endfor %}
+            <div class="main bit-66">
+            {% paginate blog.articles by 5 %}
 
-</ul>
+                <ul class="articles">
+                {% for article in blog.articles %}
+                    <li class="story article{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">
+                        <h1 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h1>
+                        <p class="date"><time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time></p>
+                        <div class="rte">
+                        {% if article.excerpt.size > 0 %}
+                            <p class="article">{{ article.content | strip_html | truncatewords: 100 }}</p>
+                            {% comment %}{{ article.excerpt }}{% endcomment %}
+                        {% else %}
+                            <p class="article">{{ article.content | strip_html | truncatewords: 100 }}</p>
+                        {% endif %}
+                        </div>
+                        <a class="more-btn" href="{{ article.url }}">Read more <i class="fa fa-chevron-right"></i></a>
+                        <ul class="meta">
+                        {% if article.tags.size > 0 %}
+                            <li class="tags">
+                            {% for tag in article.tags %}
+                                {% unless tag contains 'icon' %} 
+                                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                                {% endunless %}
+                            {% endfor %}
+                            </li>
+                        {% endif %}
+                        </ul>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% if paginate.pages > 1 %}
+                <div class="pagination">{{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}</div>
+                {% endif %}
+                
+                {% endpaginate %} 
+            </div><!--.main-->
   
-{% if paginate.pages > 1 %}
-<div class="pagination">
-  {% comment %}
-  When paginating blog articles, a previous article is actually a newer article, not an older one,
-  because blog articles are shown and paginated in a reversed chronological order.
-  The word 'previous' can be confusing, hence we'll change it.
-  {% endcomment %}
-  {{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
-{% endif %}
+            <div class="sidebar bit-3">
+            {% include 'insta' %}
+            </div><!--.sidebar-->
 
-{% endpaginate %}
+        </div><!--#content-->
+  
 </div><!--WRAPPER-->
 </div><!--BLOG-->

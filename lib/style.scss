@@ -11,7 +11,8 @@ $orange: #D8AA43;
 $gray: #888;
 $lightgray: #DFE0DD;
 
-$pfontsize: 1em;
+$pfontsize: .95em;
+$letterspace: .025em;
 
 
 * {
@@ -49,7 +50,7 @@ h1, h2, h3, h4 {
 
 h1 {
 	font-family: 'Knockout 30 A', 'Knockout 30 B';
-	font-size: 2em;
+	font-size: 2.5em;
 }
 
 h2 {
@@ -59,8 +60,8 @@ h2 {
 
 h3 {
 	font-family: 'Knockout 34 A', 'Knockout 34 B';
-	font-size: 1.35em;
-	letter-spacing: .025em;
+	font-size: 1.25em;
+	letter-spacing: -$letterspace;
 }
 
 h4 {
@@ -68,7 +69,16 @@ h4 {
 	font-size: 1.10em;
 }
 
+p {
+	font-size: $pfontsize;
+}
+
+b {
+	font-weight: 700;
+}
+
 .buy-btn, .where-to-buy-btn {
+	font-size:1.2em;
 	background: $orange;
 	color: $white;
 	font-family: 'Knockout 34 A', 'Knockout 34 B';
@@ -85,18 +95,19 @@ h4 {
 .where-to-buy-btn {
 	font-family: 'Knockout 30 A', 'Knockout 30 B';
 	text-transform: capitalize;
-	font-size: .95em;
 	color: $dark/1.5;
 	background: $light/1.15; 
 }
 
 .more-btn {
-	font-size: .65em;
-	font-weight: 700;
+	font-family: 'Knockout 34 A', 'Knockout 34 B';
+	font-size: .75em;
 	display: inline-block;
 	background: $orange;
-	padding: $space/2 $space;
-	color: $dark;
+	padding: $spacefix/4 $spacefix/2;
+	color: $white;
+	letter-spacing: $letterspace;
+	text-transform: uppercase;
 	i {
 		font-size: .75em;
 		color: rgba(255,255,255,.35);
@@ -105,13 +116,14 @@ h4 {
 }
 
 
+
 div#container {
 	width: 100%;
-	max-width: 1800px;
+	max-width: 1920px;
 	margin: 0 auto;
 	.wrapper {
 		width: 95%;
-		max-width: 1440px;
+		max-width: 1280px;
 		margin: 0 auto;
 	}
 	div#custom-message {
@@ -124,6 +136,10 @@ div#container {
 			font-style: italic;
 			text-align: center;
 			font-size: 1.25em;
+			img {
+				height: 20px;
+				vertical-align: baseline;
+			}
 		}
 	}
 
@@ -146,7 +162,7 @@ div#container {
 					div.nav {
 						text-align: right;
 						a {
-							padding: 16px 20px 19px;
+							padding: 14px 20px 20px;
 							font-size: $pfontsize*1.35;
 							&:hover {
 								background: $white;
@@ -184,6 +200,7 @@ div#container {
 			ul {
 				width: 80%;
 				padding: $spacefix 0;
+				letter-spacing: $letterspace;
 				h2 {
 					margin: 0 0 $spacefix/2;
 					padding: 0 0 $spacefix/2;
@@ -253,6 +270,7 @@ div#container {
 			}
 			p {
 				margin: $spacefix 0;
+				font-size: 1.15em;
 			}
 		}
 		div.brand-img {
@@ -306,7 +324,7 @@ div#container {
 				}
 			}
 			.hidden-product-info.bottom {
-				padding: $spacefix 0;
+				padding: $spacefix 0 $spacefix*2;
 				background: $light;
 				li {
 					a {
@@ -314,9 +332,10 @@ div#container {
 					}
 					a.learn {
 						display: block;
-						text-align: right;
+						text-align: center;
 						width: 90%;
-						margin: $spacefix auto 0;
+						margin: $spacefix/4 auto 0;
+						display: none;
 					}
 				}
 			}
@@ -334,14 +353,15 @@ div#container {
 	div#footer {
 		div#buckets {
 			.wrapper {
-				// width: 90%;
+				width: 100%;
+				padding: 0 $space/2;
 				.main-bucket, .sub-bucket {
 					text-align: center;
-					padding: $space/2 $space;
+					padding: $spacefix*2 $spacefix;
 					.box {
 						background: $orange;
 						background-size: cover !important;
-						margin: $spacefix/2 auto;
+						margin: 0 auto;
 						height: 40vh;
 						max-height: 220px;
 						min-height: 150px;
@@ -356,25 +376,36 @@ div#container {
 					}
 				}
 				.sub-bucket {
-					padding: 0% $space;
+					padding: $space/2;
 					margin: $space/2 0;
-					border-right: 1px solid $light;
+					border-right: 1px solid $white;
 					.box {
 						background: transparent;
 						font-family: 'Knockout 30 A', 'Knockout 30 B';
 						height: 20vh;
 						max-height: 200px;
 						min-height: 100px;
-						i {
-							font-size: 1.5em;
-							display:block;
-							margin: 10px 0 0;
+						a {
+							font-size: 1.25em;
+							color: #aaa;
+							i {
+								font-size: 2.75em;
+								display:block;
+								margin: 10px 0 0;
+								color: inherit;
+							}
 						}
 					}
 				}
 				.sub-bucket:last-of-type {
 					border: none;
 				}
+			}
+			#sub-buckets.wrapper {
+				width: 100%;
+				background: $light;
+				padding: $spacefix/2 0;
+				overflow: hidden;
 			}	
 		}
 		div#newsletter {
@@ -392,7 +423,7 @@ div#container {
 				font-style: italic;
 			}
 			input {
-				background: $light;
+				background: $white;
 				border: none;
 				text-align: center;
 			}
@@ -426,16 +457,17 @@ div#container {
 			background: #FFFFFF;
 			max-width: 100%;
 			width: 100%;
-			height: 70vh;
-			min-height: 400px;
-			max-height: 2000px;
+			height: 40vw;
+			max-height: 772px;
+			min-height: 300px;
+			
 			margin: 0 0 $spacefix;
 			div {
 				width: 100%;
 				height: 100%;
 				display: block;
-				background-size: cover;
-				background-position: center;
+				background-size: 100%;
+				background-position: bottom;
 				background-repeat: no-repeat;
 			}
 		}
@@ -445,11 +477,173 @@ div#container {
 				font-size: 20px;
 			}
 		}
+		div.product-info {
+			margin: 0 auto $spacefix*8;
+			.product-headline {
+				margin: 0 0 $spacefix;
+			}
+			div.product-description {
+				padding: 0 10% 0 0;
+			}
+			p.price {
+				font-size: 2.75em;
+				letter-spacing: -$letterspace;
+				font-weight: 700;
+				margin: 0 0 0 -8%;
+			}
+			ul.product-downloads {
+				font-family: 'Knockout 30 A', 'Knockout 30 B';
+				li i {
+					font-size: .9em;
+					margin: 0 4px 0 0;
+				}
+			}
+			div.buttons a {
+				width: 100%;
+				text-align: center;
+				font-size: 1.15em;
+				padding: $space*2.5 0;
+				margin: 0 0 $spacefix/4;
+			}
+		}
 		.quote-slider {
 			.slide {
 				text-align: center;
 				padding: $spacefix *10;
 				min-height: 0;
+			}
+		}
+		#features {
+			margin: $spacefix*4 auto;
+			div.feature, div.sub-feature {
+				margin: 0 0 $spacefix*4;
+				div {
+					div {
+						width:90%;
+						h3 {
+							margin: $spacefix/3 0 $spacefix*1.5;
+							color: $blue;
+						}
+						p {
+							margin: $spacefix 0 0;
+						}
+					}
+					div.right {
+						float: right;
+					}
+				}
+			}
+			div#sub-features {
+				margin: $spacefix*2 0 0;
+				div.sub-feature {
+					font-size: .9em;
+					div {
+						width: 85%;
+						h3 {
+							margin: $spacefix/3 0 $spacefix*1.5;
+							color: $blue;
+						}
+						p {
+							margin: $spacefix 0 0;
+						}
+					}
+				}
+			}
+		}
+		#product-page-scene-illustrations {
+			height: 55vh;
+			min-height: 300px;
+			max-height: 500px;
+			background-repeat: none;
+			background-position: center;
+			background-size: cover;
+			position: relative;
+			a {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: 2;
+			}
+			div.typography {
+				position: absolute;
+				height: 100%;
+				right: 0;
+				div.brand-type {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background-repeat: none;
+					background-position: center;
+					background-size: cover;
+				}
+			}
+		}
+	}
+
+	// ---------------------------- PAGES WITH BLOGS ---------------------------- //
+	// ---------------------------- NEWS, PRESS, ETC ---------------------------- //
+	// ----------------- specific styles in appropriate locations --------------- //
+
+	#content {
+		padding: $spacefix*4 0;
+		.main {
+			padding: 0;
+			.story {
+				padding: 0 $space*2.5 0 0;
+				margin: 0 0 $spacefix*2 0;
+				h2 {
+				}
+				time {
+					font-size: .85em;
+					display: block;
+					margin: $spacefix/2 0;
+					font-weight: 700;
+					color: $blue;
+				}
+				p.article {
+					text-align: justify;
+				}
+				.more-btn {
+					margin: $spacefix 0 $spacefix/2;
+				}
+				ul li.tags {
+					a {
+						font-size: $pfontsize/1.65;
+						color: $light;
+						background: $sfqblue;
+						padding: $spacefix/8 $spacefix/4;
+					}
+				}
+				img.logo {
+					height: 20px;
+					margin: $spacefix 0 0;
+				}
+			}
+		}
+		.sidebar {
+			border-left: 1px solid $light;
+			padding: 0 0 0 $space;
+			#press-releases li {
+				font-size: .75em;
+				margin: 0 0 $spacefix*2;
+				color: $blue;
+			}
+		}
+	}
+
+
+	// -------------------------- MAIN NEWS FEED -------------------------- //
+
+	#blog {
+		#content {
+			.main {
+				.story {
+					h1 {
+						a {
+							line-height: 1.05em;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -459,45 +653,11 @@ div#container {
 
 	div#press-page {
 		.wrapper {
-			margin: $spacefix*4 auto;
+			
 		}
 		h3 {
 			text-transform: uppercase;
 			margin: 0 0 $spacefix;
-		}
-		#content {
-			.main {
-				padding: 0;
-				.story {
-					padding: 0 $space*2.5 0 0;
-					margin: 0 0 $spacefix*2 0;
-					h2 {
-					}
-					p.date {
-						font-size: .85em;
-						margin: $spacefix/2 0;
-						font-weight: 700;
-						color: $orange;
-					}
-					p.article {
-						text-align: justify;
-					}
-					img.logo {
-						height: 20px;
-						margin: $spacefix 0 0;
-					}
-				}
-			}
-			.sidebar {
-				border-left: 1px solid $light;
-				// margin: 0 0 0 $space;
-				padding: 0 0 0 $space;
-				#press-releases li {
-					font-size: .75em;
-					margin: 0 0 $spacefix*2;
-					color: $blue;
-				}
-			}
 		}
 		#media-resources {
 			font-family: 'Knockout 30 A', 'Knockout 30 B';
@@ -568,6 +728,9 @@ div#container {
 						margin: 0 auto;
 					}
 				}
+				.specs {
+					text-align: left;
+				}
 				.extras {
 					text-align: left;
 					padding: 0 $space 0 0;
@@ -637,7 +800,7 @@ div#container {
 		position: relative;
 		a.slides_nav {
 			position: absolute;
-			z-index: 1000;
+			z-index: 999;
 			height: 50%;
 			top: 25%;
 			padding: $space;
@@ -709,6 +872,15 @@ div#container {
 		}
 	}
 
+	ul#insta {
+		li {
+
+			img {
+				width: 95%;
+			}
+		}
+	}
+
 } // ---------------------------- CONTAINER ---------------------------- //
 
 
@@ -776,6 +948,52 @@ and (max-width : 980px)
 
 	} //container
 
+}
+
+
+@media only screen 
+and (max-width : 800px) {
+	.mobile-hide {
+		display: none !important;
+	}
+	div#container {
+		div#custom-message p {
+			font-size: .9em;
+		}
+		div#header {
+			div#grip {
+				div#header-holder {
+					div.wrapper {
+						div.nav {
+							width: 50%;
+						}
+						div.logo {
+							width: 50%;
+							a {
+								width: 95%;
+							}
+						}
+					}
+				}
+			}
+		}
+		div#hero { 
+			background-color: $sfqblue;
+			background-image: none !important;
+			div.brand-img { 
+				img {
+					margin: $spacefix*2 auto 0;
+					width: 95%;
+				}
+			}
+			div.entry{
+				text-align: center;
+				display: block;
+				margin: $spacefix*1.6 auto !important;
+				border: none !important;
+			}
+		}
+	}
 }
 
 

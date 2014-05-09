@@ -4,7 +4,7 @@ $ ->
 
 	$.getJSON 'http://freegeoip.net/json/', (location) ->
 		if location.country_code is 'US'
-			$('a.buy-btn.intl').css 'display','inline-block'
+			$('a.buy-btn.intl, .price.intl').css 'display','inline-block'
 			$('a.where-to-buy-btn.intl').attr 'href', baseURL + 'pages/where-to-buy'
 		else
 			$('a.buy-btn.intl')
@@ -87,3 +87,21 @@ $ ->
 		prevText: '<i class="fa fa-chevron-left"></i>'
 		})
 
+	$("#product-image-gallery").justifiedGallery({
+		'rowHeight':360
+		});
+
+	# INSTAGRAM
+
+	insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?'
+
+	$.ajax
+		type: 'GET'
+		url: insta_url
+		dataType: 'jsonp'
+		success: (results) ->
+			$.each results.data, ->
+				console.log this.link
+				$('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta')
+		error: ->
+			console.log 'insta fail'

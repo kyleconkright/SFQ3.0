@@ -1,7 +1,7 @@
 <div class="frame" id="footer">    
     
     <div id="buckets" class="frame">    
-        <div class="wrapper">
+        <div id="main-buckets" class="wrapper">
             <div class="bit-3 main-bucket">
                 <div class="box" style="background: {% if settings.main-bucket-1-img %}url('{{ 'main-bucket-1-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-1-bg}}{% endif %}; color: {{settings.main-bucket-1-font-color}};">
                     {% if settings.main-bucket-1-switch %}<a href="{{settings.main-bucket-1-link}}">{{ settings.main-bucket-1-text }}</a>{% endif %}
@@ -19,7 +19,9 @@
                     {% if settings.main-bucket-3-switch %}<a href="{{settings.main-bucket-3-link}}">{{ settings.main-bucket-3-text }}</a>{% endif %}
                 </div>
             </div>
+        </div><!--#main-buckets.wrapper-->
 
+        <div id="sub-buckets" class="wrapper">    
             <div class="bit-4 sub-bucket">
                 <div class="box">
                     {% if settings.sub-bucket-1-switch %}<a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>{% endif %}

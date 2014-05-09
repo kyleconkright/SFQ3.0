@@ -19,7 +19,6 @@ Example: the h2 element should have the same size and color in:
 {% endcomment %}
 
 <h1>{{ collection.title }}</h1>
-
 {% comment %}
 Listing all tags within the current collection.
 Shopify uses product tags to manage subcategories inside collections.
@@ -59,7 +58,6 @@ so in comparisons we need to escape type and vendor.
   {% endfor %}  
 </ul>
 {% endif %}
-
 {% if collection.description.size > 0 %}
 <div class="rte">
   {{ collection.description }}

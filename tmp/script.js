@@ -1,10 +1,10 @@
 (function() {
   $(function() {
-    var $form, baseURL, btns, menus;
+    var $form, baseURL, btns, insta_url, menus;
     baseURL = 'http://www.soundfreaq-theme.myshopify.com/';
     $.getJSON('http://freegeoip.net/json/', function(location) {
       if (location.country_code === 'US') {
-        $('a.buy-btn.intl').css('display', 'inline-block');
+        $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
         return $('a.where-to-buy-btn.intl').attr('href', baseURL + 'pages/where-to-buy');
       } else {
         $('a.buy-btn.intl').text('Where to Buy').attr('href', baseURL + 'pages/where-to-buy-intl').css('display', 'inline-block');
@@ -78,12 +78,30 @@
       prevText: '<i class="fa fa-chevron-left"></i>',
       navContainer: '#quote-slider'
     });
-    return $('.product-slider').responsiveSlides({
+    $('.product-slider').responsiveSlides({
       namespace: "slides",
       nav: true,
       pause: true,
       nextText: '<i class="fa fa-chevron-right"></i>',
       prevText: '<i class="fa fa-chevron-left"></i>'
+    });
+    $("#product-image-gallery").justifiedGallery({
+      'rowHeight': 360
+    });
+    insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?';
+    return $.ajax({
+      type: 'GET',
+      url: insta_url,
+      dataType: 'jsonp',
+      success: function(results) {
+        return $.each(results.data, function() {
+          console.log(this.link);
+          return $('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta');
+        });
+      },
+      error: function() {
+        return console.log('insta fail');
+      }
     });
   });
 

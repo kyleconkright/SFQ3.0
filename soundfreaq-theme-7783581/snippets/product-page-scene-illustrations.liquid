@@ -1,0 +1,17 @@
+{% assign sceneIllustration = {{product.handle | append: '-scene-illustration.jpg'}} %}
+{% assign sceneTypography = {{product.handle | append: '-scene-illustration-typography.png'}} %}
+{% assign sceneLink = {{product.handle | append: '-scene-illustration-link'}} %}
+
+<div id="product-page-scene-illustrations" class="frame" style="background-image: url('{{ sceneIllustration | asset_url }}');">
+	<div class="bit-1">
+		<div class="box">
+			<a href="{{settings[sceneLink] }}"></a>
+			<div class="bit-2">
+
+			</div>
+			<div class="bit-2 typography">
+				<div class="brand-type" style="background-image: url('{{ sceneTypography | asset_url }}');"></div>
+			</div>
+		</div>
+	</div>
+</div><!--#product-page-scene-illustrations-->

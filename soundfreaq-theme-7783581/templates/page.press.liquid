@@ -15,7 +15,7 @@
 	    						{% if tag contains 'press' && 'review' %}
 			    					<li class="bit-2 story">
 			    						<h2>{{ article.title }}</h2>
-			    						<p class="date">{{ article.published_at | date: '%b %d, %Y' }}</p>
+			    						<p class="date"><time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time></p>
 			    						<p class="article">{{ article.content | strip_html | truncatewords: 30 }}</p>
 			    						{% for tag in article.tags %}
 				    						{% if tag contains 'icon' %}
@@ -35,7 +35,7 @@
     			</div><!--in-the-news-->
     		</div>
 
-    		<div class="sidebar bit-33">
+    		<div class="sidebar bit-3">
     			<h3>Press Releases</h3>
     			<ul id="press-releases" class="frame">
     				{{ page.content }}	

@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 		cssmin: {
 		  	combine: {
 		    	files: {
-		      		'tmp/stylemin.css': ['lib/vendor/lemonade.css','lib/vendor/slides.css','lib/vendor/magnific.css','tmp/style.css']
+		      		'tmp/stylemin.css': ['lib/vendor/lemonade.css','lib/vendor/slides.css','lib/vendor/magnific.css','lib/vendor/gallery.css','tmp/style.css']
 		    	}
 		  	}
 		},
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
      	uglify: {
       		my_target: {
       		    files: {
-      		    	'soundfreaq-theme-7783581/assets/script.js.liquid': ['lib/vendor/jquery.js','lib/vendor/cookie.js','lib/vendor/magnific.js','lib/vendor/slides.js','lib/vendor/scrollfix.js','tmp/script.js'],
+      		    	'soundfreaq-theme-7783581/assets/script.js.liquid': ['lib/vendor/jquery.js','lib/vendor/cookie.js','lib/vendor/magnific.js','lib/vendor/gallery.js','lib/vendor/slides.js','lib/vendor/scrollfix.js','tmp/script.js'],
       		    }
       		}
 	    },
