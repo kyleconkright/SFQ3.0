@@ -10,7 +10,6 @@
         {% capture featureCopy %}{{i}}-icon-copy{% endcapture %}
         {% assign productName = {{product.handle}} %}
 
-        
         {% if settings[iconTags] contains productName %}
             <div class="bit-3 feature">
                 <p class="icon"><img src="{{ featureIcon | asset_url }}"></p>
@@ -29,7 +28,7 @@
 {% if template contains 'compare' %}
     <div class="frame" id="product-compare">
         <ul class="holder">
-            {% for product in collections.frontpage.products %}
+            {% for product in collections.frontpage.products %}{% for tag in product.tags %}{% if tag contains 'available' %}
                 {% assign productHandle = {{product.handle}} %}
                 {% assign productName = {{product.title}} %}
                 {% assign productImg = {{product.handle}} %}
@@ -38,12 +37,14 @@
                 {% assign productSpecs = {{product.handle | append: '-specs' }} %}
                 <li class="bit-1 product">
                     <div class="box frame">
-                        <div class="bit-4 main-info">
+                        
+                        <div class="bit-5 main-info">
                             <h2>{{productName}}</h2>
                             {% for image in product.images %}{% if image.alt contains 'compare' %}<p><a href="{{ product.url }}"><img src="{{ image | product_img_url: 'large' }}"></a></p>{% endif %}{% endfor %}
                             <p class="headline">{{settings[productHeadline]}}</p>
                         </div>
 
+                        <div class="feature-items frame bit-675">
                         {% for i in (1..20) %}
                         
                             {% capture iconTags %}{{i}}-icon-tags{% endcapture %}
@@ -51,15 +52,17 @@
                             {% capture featureTitle %}{{i}}-icon-title{% endcapture %}
                             {% assign productName = {{product.handle}} %}
                             {% if settings[iconTags] contains productName %}
-                            <div class="bit-11 feature">
+                            <div class="bit-7 feature">
                                 <p class="icon"><img src="{{ featureIcon | asset_url }}"></p>
                                 <p>{{settings[featureTitle]}}</p>
                             </div>
                             {% endif %}
 
                         {% endfor %}
+                        <div class="specs bit-1"><p>{{settings[productSpecs]}}</p></div>
+                        </div>
 
-                        <div class="bit-9 extras">
+                        <div class="bit-8 extras">
                             <ul>
                                 <h4>Extra Features</h4>
                                 {{settings[productExtras]}}
@@ -68,10 +71,8 @@
                         </div>
                         
                     </div><!--box-->
-                    <div class="bit-4">&nbsp;</div>
-                    <div class="specs"><p>{{settings[productSpecs]}}</p></div>
                 </li><!--bit 1 row-->
-            {% endfor %} 
+            {% endif %}{% endfor %}{% endfor %} 
         </ul><!--wrapper--> 
     </div><!--#product-compare-->         
 {% endif %} {% comment %}----------END COMPARE PAGE ----------{% endcomment %}

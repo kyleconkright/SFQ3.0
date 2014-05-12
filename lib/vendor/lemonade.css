@@ -59,6 +59,7 @@
 .bit-40  { width: 40% }
 .bit-60  { width: 60% }
 .bit-66  { width: 66.6666666667% }
+.bit-675  { width: 67.5% }
 
 /* Landscape mobile & down */
 @media (max-width: 30em) {

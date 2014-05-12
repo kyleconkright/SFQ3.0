@@ -14,24 +14,40 @@
                             </ul>
                         {% endif %}
                     </li>
-                    <li class="bit-2"><a href="{{ product.url }}" class="buy-btn price intl">{{ product.price | money }}</a></li>
-                </ul>
-
-                <a href="{{ product.url }}">
-                    {% comment %}<img src="http://cdn.soundfreaq.com/products/{{ product.title | downcase | replace: ' ', '' }}/{{ product.title | downcase | replace: ' ', '' }}-icon.svg" />{% endcomment %}
-                    {% for image in product.images %}
-                        {% if image.alt contains 'grid' %}
-                            <img src="{{ image | product_img_url: 'large' }}">
+                    {% for tag in product.tags %}
+                        {% if tag contains 'coming-soon' %}
+                            <li class="bit-2"><p class="price buy-btn intl">Coming Soon</p></li>
+                        {% else %}
+                            <li class="bit-2"><a href="{{ product.url }}" class="buy-btn price intl">{{ product.price | money }}</a></li>
                         {% endif %}
                     {% endfor %}
-                    <h2>{{ product.title }}</h2>
-                    <p class="headline">{{ settings[productHeadline] }}</p>
-                </a>   
-                
-                <ul class="hidden-product-info bottom">
-                    {% include 'button-group' %}
-                    <li><a href="{{ product.url }}" class="learn">Learn More</a></li>
                 </ul>
+
+                {% for tag in product.tags %}
+                    {% if tag contains 'coming-soon' %}
+                        {% for image in product.images %}
+                            {% if image.alt contains 'grid' %}
+                                <img src="{{ image | product_img_url: 'large' }}">
+                            {% endif %}
+                        {% endfor %}
+                        <h2>{{ product.title }}</h2>
+                        <p class="headline">{{ settings[productHeadline] }}</p>
+                    {% else %}
+                        <a href="{{ product.url }}">
+                            {% for image in product.images %}
+                                {% if image.alt contains 'grid' %}
+                                    <img src="{{ image | product_img_url: 'large' }}">
+                                {% endif %}
+                            {% endfor %}
+                            <h2>{{ product.title }}</h2>
+                            <p class="headline">{{ settings[productHeadline] }}</p>
+                        </a>   
+                        
+                        <ul class="hidden-product-info bottom">
+                            {% include 'button-group' %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
 
             </div><!--PRODUCT-->
         {% endfor %}

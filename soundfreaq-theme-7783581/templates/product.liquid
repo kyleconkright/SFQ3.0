@@ -1,0 +1,102 @@
+<div class="frame" id="product-page">  
+        <span class="product-name"><h2>{{ product.title }}</h2></span>
+
+        <div class="product-slider">
+            {% for image in product.images %}
+                {% if image.alt contains 'slide' %}
+                    <div style="background-image: url('{{ image | product_img_url: 'original' }}')"></div>
+                {% endif %}
+            {% endfor %}    
+        </div>
+
+    <div class="wrapper">
+
+        <div class="product-info frame wrapper">
+
+            <div class="bit-60 product-headline">
+                {% if product.description contains "<h1>" %}
+                    {% assign h1 = product.description | split: '>' %}
+                    <h1>{{ h1[1] }}</h1>
+                {% endif %}
+            </div>
+
+            <div class="bit-40"><p class="price intl">{{ product.price | money }}</p></div>
+
+            <div class="bit-60 product-description">
+                {% if product.description contains "<p>" %}
+                    {% assign p = product.description | split: '<p>' %}
+                    <p>{{ p[1] }}</p>
+                {% endif %}
+            </div>
+
+            <div class="bit-5">
+                <ul class="product-downloads">
+                    <li><i class="fa fa-book"></i> User Guide</li>
+                    <li><i class="fa fa-wrench"></i> Tech Specs</li>
+                    <li><a href="http://soundfreaq.desk.com/" target="_blank"><i class="fa fa-comments-o"></i> Support</a></li>
+                </ul>
+            </div>
+
+            <div class="bit-5 buttons">{% include 'button-group' %}</div>
+
+        </div><!--.product-info-->
+
+    </div><!--WRAPPER-->
+
+        {% include 'product-image-gallery' %}
+
+        {% include 'feature-icons' %}
+
+        {% include 'quote-slider' %}
+
+        <div id="features" class="frame wrapper">
+            <div id="main-features">
+            {% for article in blogs.features.articles %}
+                {% for tag in article.tags %}
+                    {% if tag contains product.handle %}
+                        {% for tag in article.tags %}
+                            {% assign feature = article.content | split: '<div>' %}
+                            {% if tag contains 'right-text' %}
+
+                                <div class="box feature frame">
+                                    <div class="bit-2"><div>{{ feature[2] }}</div>
+                                    <div class="bit-2"><div class="right">{{ feature[1] }}</div>
+                                </div>
+
+                            {% elsif tag contains 'left-text' %}
+
+                                <div class="box feature frame">
+                                    <div class="bit-2"><div>{{ feature[1] }}</div>
+                                    <div class="bit-2"><div class="right">{{ feature[2] }}</div>
+                                </div>
+
+                            {% endif %}
+                        {% endfor %} 
+
+                    {% endif %}
+                {% endfor %}
+            {% endfor %} 
+            </div><!--#main-features-->
+
+            <div id="sub-features" class="frame">
+            {% for article in blogs.features.articles %}
+                {% for tag in article.tags %}
+                    {% if tag contains product.handle %}
+                        {% for tag in article.tags %}
+                            {% if tag contains 'sub-feature' %}
+                                <div class="bit-3 sub-feature">
+                                    <div>{{ article.content }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </div><!--#sub-features-->
+
+        </div><!--#features-->
+
+        {% include 'product-page-scene-illustrations' %}
+    
+
+</div><!--PRODUCT PAGE-->

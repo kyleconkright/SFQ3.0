@@ -13,6 +13,7 @@
     <div id="container" class="frame">
         {% if settings.banner-switch %}
         <div id="custom-message">
+            {% if settings.banner-link-switch %}<a class="banner-link" href="{{settings.banner-link}}" target="_blank"></a>{% endif %}
             <div class="wrapper"><p>{{ settings.banner }}</p></div>
         </div>
         {% endif %}
@@ -25,21 +26,35 @@
                     <div class="wrapper">
                         <div class="bit-3 logo"><a href="{{ shop.url }}"></a></div>
                         <div class="bit-3 nav">
-                            <a href="cart"><i class="fa fa-shopping-cart"></i></a>
+                            <a href="{% if cart.item_count < 1 %}../store{% else %}cart{% endif %}"><i class="fa fa-shopping-cart"></i></a>
                             <a href="#" class="searchbtn" data-name="search"><i class="fa fa-search"></i></a>
                             <a href="#" class="menubtn" data-name="menu"><i class="fa fa-bars"></i></a>
                         </div><!--NAV-->
                     </div><!--WRAPPER-->
                 </div><!--HEADER-HOLDER-->
 
-                <div id="menu" class="bit-1">
+                <div id="menu" class="bit-1 menu">
                     <div class="wrapper frame">
+
+                        <div class="products bit-1">
+                            <div class="bit-2">&nbsp;</div>
+                            <div class="bit-3 social">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                            </div>
+                        </div>
                        
                        <div class="products bit-6">
                             <ul>
                             <h2>Products</h2>
                             {% for product in collections.speakers.products %}
-                                <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+                                {% for tag in product.tags %}
+                                    {% if tag contains 'available' %}
+                                        <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+                                    {% endif %}
+                                {% endfor %}        
                             {% endfor %}
                             </ul>
                        </div>
@@ -62,13 +77,12 @@
                             </ul>
                        </div>
 
-                       <div class="social bit-6">
+                       <div class="store bit-6">
                             <ul>
-                                <h2>Social</h2>
-                                <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i> Pinterest</a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
-                                <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                            <h2>{{ linklists.store-links.title }}</h2>
+                            {% for link in linklists.store-links.links %}
+                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% endfor %}
                             </ul>
                        </div>
 

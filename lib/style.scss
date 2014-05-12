@@ -129,6 +129,7 @@ div#container {
 	div#custom-message {
 		background: $orange;
 		color: $light;
+		position: relative;
 		p {
 			padding: $space/1.5 0;
 			font-family: 'Archer SSm A', 'Archer SSm B';
@@ -140,6 +141,11 @@ div#container {
 				height: 20px;
 				vertical-align: baseline;
 			}
+		}
+		a.banner-link {
+			position: absolute;
+			width: 100%;
+			height: 100%;
 		}
 	}
 
@@ -192,39 +198,6 @@ div#container {
 			display: none;
 			z-index: 101;
 		}
-		div#menu {
-			padding: $spacefix 0;
-			background: rgba(30,30,30,.95);
-			color: $light;
-			font-family: 'Knockout 30 A', 'Knockout 30 B';
-			ul {
-				width: 80%;
-				padding: $spacefix 0;
-				letter-spacing: $letterspace;
-				h2 {
-					margin: 0 0 $spacefix/2;
-					padding: 0 0 $spacefix/2;
-					border-bottom: 1px solid #666;
-				}
-				li {
-					display: block;
-				}
-			}
-			.hl {
-				padding: $spacefix*1.25 0 $spacefix;
-				img {
-					width: 85%;
-					display: block;
-				}
-			}
-			.social {
-				i {
-					margin: 0 5px 0 0;
-					width: 20px;
-					font-size: 1.05em;
-				}
-			}
-		}
 		div#search {
 			background: $sfqblue;
 			text-align: center;
@@ -242,6 +215,41 @@ div#container {
 			input[type=text] {
 				width: 70%;
 				text-align: center;
+			}
+		}
+	}
+
+	div#menu, div#footer-links {
+		padding: $spacefix 0;
+		background: rgba(30,30,30,.95);
+		color: $light;
+		font-family: 'Knockout 30 A', 'Knockout 30 B';
+		ul {
+			width: 80%;
+			padding: $spacefix 0;
+			letter-spacing: $letterspace;
+			h2 {
+				margin: 0 0 $spacefix/2;
+				padding: 0 0 $spacefix/2;
+				border-bottom: 1px solid #666;
+			}
+			li {
+				display: block;
+			}
+		}
+		.hl {
+			padding: $spacefix*1.25 0 $spacefix;
+			img {
+				width: 85%;
+				display: block;
+			}
+		}
+		.social {
+			text-align: right;
+			i {
+				margin: 0 0 0 10px;
+				width: 20px;
+				font-size: 1.5em;
 			}
 		}
 	}
@@ -411,6 +419,7 @@ div#container {
 		div#newsletter {
 			background: $dark;
 			color: $white;
+			padding: $spacefix/2 0;
 			.bit-2 {
 				padding: 0;
 			}
@@ -435,6 +444,11 @@ div#container {
 				margin: 0 0 0 -4px;
 				cursor: pointer;
 			}
+		}
+		#footer-links {
+			background: $dark/.75;
+			font-size: .9em;
+			padding: $spacefix*2 0 $spacefix*4;
 		}
 	}
 
@@ -576,6 +590,21 @@ div#container {
 					background-position: center;
 					background-size: cover;
 				}
+			}
+		}
+	}
+
+	div#product-page.coming-soon {
+		.wrapper {
+			text-align: center;
+			padding: $spacefix*4 0;
+			h1 {
+				text-transform: uppercase;
+				margin: 0 0 $spacefix;
+			}
+			p {
+				width: 50%;
+				margin: 0 auto;
 			}
 		}
 	}
@@ -730,12 +759,24 @@ div#container {
 				}
 				.specs {
 					text-align: left;
+					display: block;
+					margin: $spacefix 0;
+					padding: 0 $space*2;
+					color: #888;
+					font-size: .9em;
 				}
 				.extras {
 					text-align: left;
 					padding: 0 $space 0 0;
 					ul {
-						margin: 0 0 $spacefix/2;
+						margin: $spacefix 0;
+						h4 {
+							margin: 0 0 $spacefix/4;
+						}
+						li {
+							list-style-type: square;
+							list-style-position: inside;
+						}
 					}
 					.buy-btn, .where-to-buy-btn {
 						font-size: .85em;

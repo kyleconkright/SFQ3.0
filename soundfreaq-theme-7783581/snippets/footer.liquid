@@ -64,14 +64,73 @@
         </div>
     </div>
 
-        {% comment %}{% for product in collections.frontpage.products %}
-        {% assign productName = {{product.title | handleize | append: '-home-headline' }} %}
-            <div class="bit-3 product">
-                <img src="http://cdn.soundfreaq.com/products/{{ product.title | downcase | replace: ' ', '' }}/{{ product.title | downcase | replace: ' ', '' }}-icon.svg" />
-                <h2>{{ product.title }}</h2>
-                <p>{{ settings[productName] }}</p>
-            </div><!--PRODUCT-->
-        {% endfor %}{% endcomment %}
+    
+    <div id="footer-links" class="menu">
+        <div class="wrapper frame">
+
+            <div class="products bit-1">
+                <div class="bit-2">&nbsp;</div>
+                <div class="bit-3 social">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-facebook-square"></i></a>
+                </div>
+            </div>
+           
+           <div class="products bit-7">
+                <ul>
+                <h2>Products</h2>
+                {% for product in collections.speakers.products %}
+                    {% for tag in product.tags %}
+                        {% if tag contains 'available' %}
+                            <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}        
+                {% endfor %}
+                </ul>
+           </div>
+
+           <div class="wire bit-7">
+                <ul>
+                <h2>{{ linklists.wire.title }}</h2>
+                {% for link in linklists.wire.links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+           </div>
+
+           <div class="wire bit-7">
+                <ul>
+                <h2>{{ linklists.support.title }}</h2>
+                {% for link in linklists.support.links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+           </div>
+
+           <div class="store bit-7">
+                <ul>
+                <h2>{{ linklists.store-links.title }}</h2>
+                {% for link in linklists.store-links.links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+           </div>
+
+           <div class="for-press bit-7">
+                <ul>
+                <h2>{{ linklists.for-press.title }}</h2>
+                {% for link in linklists.for-press.links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+           </div>
+
+           <div class="bit-6"></div>
+
+        </div><!--WRAPPER-->
+    </div><!--#footer-links-->
 
     
 </div><!--footer-->
