@@ -15,7 +15,7 @@
                 {% capture textColor %}{{productName}}-quote-{{i}}-text-color{% endcapture %}
                 {% capture textLength %}{{productName}}-quote-{{i}}-text-length{% endcapture %}
                 {% capture imgRight %}{{productName}}-quote-{{i}}-img-align{% endcapture %}
-                {% capture currentLink %}{{productName}}-quote-{{i}}-link{% endcapture %}
+                {% capture currentLink %}{{productName}}-quote-{{i}}-internal-link{% endcapture %}
                     {% if settings[showHome] %}
                         <li class="frame slide" {% if settings[showBg] %}style="background-image: url({{ pagebg | asset_url }}); color: {{settings[textColor]}}"{% endif %}>
                             {% if settings[imgRight] %}
@@ -58,7 +58,7 @@
                             <p class="quote"><q>{{settings[currentQuote]}}</q></p>
                             <p class="source"><i class="fa fa-minus"></i><img src="{{ currentSource | asset_url }}"</p>
                         </div>
-                        <a href="{{settings[currentLink]}}" class="learn more-btn">Full Review</a>
+                        <a href="{{settings[currentLink]}}" target="_blank" class="learn more-btn">Full Review</a>
                     </li>
                 {% endif %}
             {% endfor %}

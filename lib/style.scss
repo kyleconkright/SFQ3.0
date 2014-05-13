@@ -14,6 +14,10 @@ $lightgray: #DFE0DD;
 $pfontsize: .95em;
 $letterspace: .025em;
 
+$knockout30: 'Knockout 30 A', 'Knockout 30 B';
+$knockout34: 'Knockout 34 A', 'Knockout 34 B';
+$sentinel: 'Sentinel SSm A', 'Sentinel SSm B';
+
 
 * {
 	font-size: 100%;
@@ -38,7 +42,7 @@ body, html {
 body {
 	background: $white;
 	color: $dark;
-	font-family: 'Sentinel SSm A', 'Sentinel SSm B';
+	font-family: $sentinel;
 }
 
 
@@ -49,23 +53,23 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-	font-family: 'Knockout 30 A', 'Knockout 30 B';
+	font-family: $knockout30;
 	font-size: 2.5em;
 }
 
 h2 {
-	font-family: 'Knockout 30 A', 'Knockout 30 B';
+	font-family: $knockout30;
 	font-size: 1.5em;
 }
 
 h3 {
-	font-family: 'Knockout 34 A', 'Knockout 34 B';
+	font-family: $knockout34;
 	font-size: 1.25em;
 	letter-spacing: -$letterspace;
 }
 
 h4 {
-	font-family: 'Knockout 30 A', 'Knockout 30 B';
+	font-family: $knockout30;
 	font-size: 1.10em;
 }
 
@@ -81,7 +85,7 @@ b {
 	font-size:1.2em;
 	background: $orange;
 	color: $white;
-	font-family: 'Knockout 34 A', 'Knockout 34 B';
+	font-family: $knockout34;
 	padding: $space $space*2;
 	text-transform: uppercase;
 	display: inline-block;
@@ -93,14 +97,14 @@ b {
 }
 
 .where-to-buy-btn {
-	font-family: 'Knockout 30 A', 'Knockout 30 B';
+	font-family: $knockout30;
 	text-transform: capitalize;
 	color: $dark/1.5;
 	background: $light/1.15; 
 }
 
 .more-btn {
-	font-family: 'Knockout 34 A', 'Knockout 34 B';
+	font-family: $knockout34;
 	font-size: .75em;
 	display: inline-block;
 	background: $orange;
@@ -223,7 +227,7 @@ div#container {
 		padding: $spacefix 0;
 		background: rgba(30,30,30,.95);
 		color: $light;
-		font-family: 'Knockout 30 A', 'Knockout 30 B';
+		font-family: $knockout30;
 		ul {
 			width: 80%;
 			padding: $spacefix 0;
@@ -389,7 +393,7 @@ div#container {
 					border-right: 1px solid $white;
 					.box {
 						background: transparent;
-						font-family: 'Knockout 30 A', 'Knockout 30 B';
+						font-family: $knockout30;
 						height: 20vh;
 						max-height: 200px;
 						min-height: 100px;
@@ -506,7 +510,7 @@ div#container {
 				margin: 0 0 0 -8%;
 			}
 			ul.product-downloads {
-				font-family: 'Knockout 30 A', 'Knockout 30 B';
+				font-family: $knockout30;
 				li i {
 					font-size: .9em;
 					margin: 0 4px 0 0;
@@ -649,15 +653,6 @@ div#container {
 				}
 			}
 		}
-		.sidebar {
-			border-left: 1px solid $light;
-			padding: 0 0 0 $space;
-			#press-releases li {
-				font-size: .75em;
-				margin: 0 0 $spacefix*2;
-				color: $blue;
-			}
-		}
 	}
 
 
@@ -677,6 +672,27 @@ div#container {
 		}
 	}
 
+	// ---------------------------- SIDEBAR CONTENT ---------------------------- //
+
+	.sidebar {
+		border-left: 1px solid $light;
+		padding: 0 0 0 $space;
+		#press-releases li {
+			font-size: .75em;
+			margin: 0 0 $spacefix*2;
+			color: $blue;
+		}
+		ul#insta {
+			li {
+
+				img {
+					width: 95%;
+				}
+			}
+		}
+	}
+	
+
 
 	// ---------------------------- PRESS PAGE ---------------------------- //
 
@@ -689,7 +705,7 @@ div#container {
 			margin: 0 0 $spacefix;
 		}
 		#media-resources {
-			font-family: 'Knockout 30 A', 'Knockout 30 B';
+			font-family: $knockout30;
 			.box {
 				.bit-3 {
 					padding: $space;
@@ -734,14 +750,14 @@ div#container {
 		div#product-compare {
 			text-align: center;
 			font-size: $pfontsize;
-			font-family: 'Knockout 30 A', 'Knockout 30 B';
+			font-family: $knockout30;
 			.product {
 				padding: $spacefix 0;
 				font-size: $pfontsize;
 				.main-info {
 					padding: 0 $spacefix;
 					p.headline {
-						font-family: 'Sentinel SSm A', 'Sentinel SSm B';
+						font-family: $sentinel;
 					}
 					img {
 						width: 100%;
@@ -810,7 +826,7 @@ div#container {
 	}
 
 
-	// ------------------------ MASTER FEATURE ICON SLIDER ------------------------- //
+	// -------------------------- MASTER FEATURE ICON GRID ------------------------- //
 	// ----------------- specific styles in appropriate locations ------------------ //
 
 	#feature-icons {
@@ -831,6 +847,7 @@ div#container {
 					}
 				}
 			}
+			div.feature:nth-child(n+7) {display: none;}
 		}
 	}
 
@@ -913,14 +930,38 @@ div#container {
 		}
 	}
 
-	ul#insta {
-		li {
+	// ---------------------------- INDIVIDUAL POST PAGE ---------------------------- //
 
-			img {
-				width: 95%;
+	div#post {
+		.wrapper {
+			width: 60%;
+			.article {
+				margin: $spacefix*4 0;
+				h1 {
+					font-weight: 700;
+					line-height: 1.2em;
+				}
+				span.sub p {
+					font-size: 1.3em;
+					margin: $spacefix*2 0 $spacefix;
+					font-style: italic;
+					color: $dark/.5;
+				}
+				p {
+					margin: $spacefix 0;
+				}
+				time {
+					display: block;
+					font-weight: 700;
+					color: $blue;
+					border-bottom: 1px solid #eee;
+					padding: 0 0 $spacefix/2;
+					margin: 0 0 $spacefix/2;
+				}
 			}
 		}
 	}
+
 
 } // ---------------------------- CONTAINER ---------------------------- //
 
@@ -1057,7 +1098,7 @@ and (max-width : 800px) {
   	font-size: .8em;
   	opacity: .8;
   	margin: $spacefix 0;
-  	font-family: 'Knockout 30 A', 'Knockout 30 B';
+  	font-family: $knockout30;
   }
   input {
   	border:none;
