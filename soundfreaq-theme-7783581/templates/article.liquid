@@ -1,0 +1,44 @@
+
+
+
+
+
+
+
+<div class="frame" id="post">    
+    <div class="wrapper">
+
+        <div class="article">
+            <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+            <h1 class="title">{{ article.title }}</h1>
+            {% assign test = article.content | split: '<!-- split -->' %}
+            <span class="sub">{{ test[0] }}</p></span>
+            <div class="article-content">
+                <p>{{ test[1] }}    
+            </div><!--.article-content-->
+            <ul class="meta">
+              {% if article.tags.size > 0 %}
+              <li class="tags">
+                <span>Filed under</span>
+                {% for tag in article.tags %} 
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </li>
+              {% endif %}
+            </ul>
+        </div><!--.article-->
+
+        {% if blog.next_article or blog.previous_article %}
+        <p class="clearfix"> 
+          {% if blog.next_article %}
+          <span class="left">{{ '&larr; Next Post' | link_to: blog.next_article }}</span>
+          {% endif %}    
+          {% if blog.previous_article %}
+          <span class="right">{{ 'Previous Post &rarr;' | link_to: blog.previous_article }}</span>
+          {% endif %}
+        </p>
+        {% endif %}
+
+    </div><!--.wrapper-->
+</div><!--#post-->
+

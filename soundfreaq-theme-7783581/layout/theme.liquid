@@ -11,11 +11,24 @@
 
 
     <div id="container" class="frame">
-        {% if settings.banner-switch %}
-        <div id="custom-message">
-            {% if settings.banner-link-switch %}<a class="banner-link" href="{{settings.banner-link}}" target="_blank"></a>{% endif %}
-            <div class="wrapper"><p>{{ settings.banner }}</p></div>
-        </div>
+        {% if template contains 'collection' %}
+            <div id="custom-message" style="background: {{settings.store-banner-bg}};">
+                {% if settings.store-banner-switch %}
+                    {% if settings.store-banner-link-switch %}
+                        <a class="banner-link" href="{{settings.store-banner-link}}" target="_blank"></a>
+                    {% endif %}
+                    <div class="wrapper"><p>{{ settings.store-banner }}</p></div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div id="custom-message" style="background: {{settings.banner-bg}};">
+                {% if settings.banner-switch %}
+                    {% if settings.banner-link-switch %}
+                        <a class="banner-link" href="{{settings.banner-link}}" target="_blank"></a>
+                    {% endif %}
+                    <div class="wrapper"><p>{{ settings.banner }}</p></div>
+                {% endif %}
+            </div>
         {% endif %}
 
         <div id="header" class="frame">
