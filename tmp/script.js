@@ -11,18 +11,29 @@
         return $('a.where-to-buy-btn.intl, a.price.intl').remove();
       }
     });
-    $.ajax({
-      url: 'http://cdn.soundfreaq.com/data/data.json?callback=?',
-      type: 'GET',
-      dataType: 'json',
-      success: function(results) {
-        return $.each(results.pressReleases, function() {
-          return console.log(this.title);
-        });
-      },
-      error: function() {
-        return console.log('major fail');
-      }
+    $('.open-quick-look').magnificPopup({
+      type: 'inline',
+      midClick: true
+    });
+    $('a.close').on('click', function(event) {
+      event.preventDefault();
+      return $.magnificPopup.close();
+    });
+    $('.clear').on('click', function(event) {
+      event.preventDefault();
+      return Shopify.clear(function() {
+        return $('.cart-count').text('0').addClass('hide');
+      });
+    });
+    $('.add-to-cart').on('click', function(event) {
+      var cartCount;
+      cartCount = parseInt($('.cart-count').text());
+      event.preventDefault();
+      return Shopify.addItem($(this).parent().find('#product-select').val(), $('.cart-count, .quick-cart-count').text(cartCount += 1).removeClass('hide'));
+    });
+    $('.video-link').magnificPopup({
+      type: 'iframe',
+      midClick: true
     });
     $('div#header').scrollToFixed();
     menus = $('div#header #search, div#header #menu');
@@ -95,7 +106,6 @@
       dataType: 'jsonp',
       success: function(results) {
         return $.each(results.data, function() {
-          console.log(this.link);
           return $('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta');
         });
       },

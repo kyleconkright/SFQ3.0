@@ -1,0 +1,24 @@
+ <div id="{{product.handle}}-quick-look" class="popup mfp-hide">
+
+ 	<h2>{{ product.title }}</h2>
+
+	<form action="/cart/add" method="post" id="test">
+	    <div id="product-variants">
+	       	<select id="product-select" name='id'>
+	       		<option disabled="disabled" selected="selected">Pick a Color</option>
+	        	{% for variant in product.variants %}
+	        		<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+	        	{% endfor %}
+	       	</select>
+	    </div><!-- product-variants -->
+	    <input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
+	    <div class="quick-look-options">
+	    	<a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a>
+	    </div>
+	    
+	    <a class="quick-cart" href="../cart">
+	        <span>You have <span class="quick-cart-count">{{cart.item_count}}</span> <span class="item">item(s)</span> in your cart</span>   
+	    </a>
+	</form>
+
+ </div>

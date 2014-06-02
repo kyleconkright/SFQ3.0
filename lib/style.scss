@@ -22,6 +22,7 @@ $sentinel: 'Sentinel SSm A', 'Sentinel SSm B';
 .knockout34 {font-family: $knockout34; font-style: normal; font-weight: 400;}
 .upsize {font-size: 1.25em; line-height: 0;}
 
+.hide {display: none;}
 
 * {
 	font-size: 100%;
@@ -85,7 +86,7 @@ b {
 	font-weight: 700;
 }
 
-.buy-btn, .where-to-buy-btn {
+.buy-btn, .where-to-buy-btn, input.add-to-cart {
 	font-size:1.2em;
 	background: $orange;
 	color: $white;
@@ -178,6 +179,7 @@ div#container {
 						a {
 							padding: 14px 20px 20px;
 							font-size: $pfontsize*1.35;
+							position: relative;
 							&:hover {
 								background: $white;
 							}
@@ -185,6 +187,16 @@ div#container {
 						.on {
 							background: $sfqblue !important;
 							color: $white;
+						}
+						.cart-count {
+							position: absolute;
+							background: red;
+							font-size: .6em;
+							color: $white;
+							top: 6px;
+							right: 15px;
+							padding: 0px 6px;
+							border-radius: 20px;
 						}
 					}
 					div.logo {
@@ -422,7 +434,6 @@ div#container {
 				background: $light;
 				padding: $spacefix/2 0;
 				overflow: hidden;
-				float: left;
 			}	
 		}
 		div#newsletter {
@@ -506,6 +517,17 @@ div#container {
 			}
 			div.product-description {
 				padding: 0 10% 0 0;
+				a.video-link {
+					display: inline-block;
+					margin: $spacefix 0 0;
+					font-size: 1.25em;
+					font-family: $knockout30;
+					color: $blue;
+					i {
+						font-size: 1.5em;
+						vertical-align: middle;
+					}
+				}
 			}
 			p.price {
 				font-size: 2.75em;
@@ -627,34 +649,36 @@ div#container {
 				margin: 0 0 $spacefix*4;
 			}
 			.product {
-				padding: $space;
-				text-align: center;
-				img {
-					width: 100%;
-				}
+				padding: $space 0;
 				p.model {
 					font-family: $knockout30;
 					font-size: .85em;
 					color: $gray;
 				}
-				p.price {
-					font-weight: 700;
-					font-size: 1.1em;
-					margin: $spacefix 0 $spacefix/2;
-				}
-				div.buttons {
-					font-size: $pfontsize/1.35;
-					width: 50%;
-					margin: 0 auto;
-					a {
-						display: block;
+				.variant {
+					text-align: center;
+					img {
 						width: 100%;
-						padding: $spacefix/2;
 					}
-					a.where-to-buy-btn {
-						background: none;
-						padding: $spacefix/4;
-						color: $gray;
+					p.price {
+						font-weight: 700;
+						font-size: 1.1em;
+						margin: $spacefix 0 $spacefix/2;
+					}
+					div.buttons {
+						font-size: $pfontsize/1.35;
+						width: 50%;
+						margin: 0 auto;
+						a {
+							display: block;
+							width: 100%;
+							padding: $spacefix/2;
+						}
+						a.where-to-buy-btn {
+							background: none;
+							padding: $spacefix/4;
+							color: $gray;
+						}
 					}
 				}
 			}
@@ -1014,7 +1038,82 @@ div#container {
 	}
 
 
-} // ---------------------------- CONTAINER ---------------------------- //
+} // ----------------------------END CONTAINER ---------------------------- //
+
+
+
+// ---------------------------- POPUPS ---------------------------- //
+
+
+.popup {
+  position: relative;
+  background: $sfqblue;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  color: $white;
+  label {
+  	margin: $spacefix 0;
+  	display: block;
+  }
+  p.terms {
+  	font-size: .8em;
+  	opacity: .8;
+  	margin: $spacefix 0;
+  	font-family: $knockout30;
+  }
+  input {
+  	border:none;
+  	background: none;
+  	padding: $space;
+  }
+  input[type=text] {
+  	background: $light;
+  	color: $dark;
+  }
+  input[type="submit"] {
+  	background: $orange;
+  	cursor: pointer;
+  	font-family: $knockout34;
+  }
+}
+
+div#quick-look .popup {
+	background: $white;
+	a.close {
+		cursor: pointer;
+	}
+}
+
+[id$='-quick-look'] {
+  	background: $white;
+  	color: $dark;
+  	input.add-to-cart {
+  		font-size: 1em;
+  	}
+  	select {
+  		margin: $spacefix 0;
+  	}
+  	.quick-look-options {
+  		display: block;
+  		margin: $spacefix;
+  		a {
+  			font-family: $knockout30;
+  		}
+  	}
+  	.quick-cart {
+  		background: $sfqblue;
+  		color: $white;
+  		padding: $spacefix/2;
+  		display: block;
+  		position: absolute;
+  		width: 100%;
+  		left: 0;
+  		font-family: $knockout30;
+  	}
+}
 
 
 @media only screen 
@@ -1130,41 +1229,7 @@ and (max-width : 800px) {
 }
 
 
-// ---------------------------- POPUP ---------------------------- //
 
-.popup {
-  position: relative;
-  background: $sfqblue;
-  padding: 20px;
-  width: auto;
-  max-width: 500px;
-  margin: 20px auto;
-  text-align: center;
-  color: $white;
-  label {
-  	margin: $spacefix 0;
-  	display: block;
-  }
-  p.terms {
-  	font-size: .8em;
-  	opacity: .8;
-  	margin: $spacefix 0;
-  	font-family: $knockout30;
-  }
-  input {
-  	border:none;
-  	background: none;
-  	padding: $space;
-  }
-  input[type=text] {
-  	background: $light;
-  	color: $dark;
-  }
-  input[type="submit"] {
-  	background: $orange;
-  	cursor: pointer;
-  }
-}
 
 
 

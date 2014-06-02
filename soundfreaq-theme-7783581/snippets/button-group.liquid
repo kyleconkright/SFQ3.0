@@ -5,12 +5,18 @@
         
 {% if template contains 'index' %}
 
-<li><a href="{{product.url}}" class="buy-btn intl">Buy Now</a> </li>
-<li><a href="#" class="where-to-buy-btn intl">Where To Buy</a></li>
+<li><a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Buy Now</a> </li>
+<li><a href="{{product.url}}" class="where-to-buy-btn intl">Where To Buy</a></li>
 
+{% elsif template contains 'collection' %} {% comment %}---------- SHOP GRID ----------{% endcomment %}
+
+<a href="#" class="buy-btn intl add-to-cart">Add to Cart</a> 
+<a href="#" class="where-to-buy-btn intl">Where To Buy</a>
+	
 {% else %} {% comment %}----------END index PAGE ----------{% endcomment %}
 
-<a href="{{product.url}}" class="buy-btn intl">Buy Now</a> 
+<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Buy Now</a> 
 <a href="#" class="where-to-buy-btn intl">Where To Buy</a>
 
 {% endif %} 
+

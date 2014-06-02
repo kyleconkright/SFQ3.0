@@ -1,0 +1,60 @@
+<div id="store" class="frame">
+	<div class="wrapper">
+
+		{% for product in collections.speakers.products %}
+			{% for tag in product.tags %}
+                {% if tag contains 'available' %}
+                	<div class="frame product">
+					<h2>{{product.title}}</h2>
+					{% for variant in product.variants %}
+						<div class="bit-5 variant">
+							{% assign sku = {{variant.sku %}
+							{% assign productSelect = {{variant.title %}
+							{% for image in product.images %}
+					 		    {% if image.alt contains sku %}
+					 		    	<img src="{{ image | product_img_url: 'large' }}">
+				 		    	{% endif %}
+				 			{% endfor %}
+				 			<form action="/cart/add" method="post" id="{{variant.id }}">
+					 			<p>{{variant.title}}</p>
+					 			<p>{{sku}}</p>
+					 			<input type="hidden" id="product-select" name="id" value="{{variant.id }}" />
+				 			    <input class="add-to-cart" type="submit" value="Add to Cart" id="{{ variant.id }}" />
+				 			</form>
+				 			<form method="post" action="/cart/add" id="{{ variant.id }}">					
+				 			<input type="hidden" name="id" value="{{ variant.id }}" />
+				 			<input type="submit" value="Add to Cart" id="{{ variant.id }}" />
+				 			</form>
+			 			</div><!--end variant-->
+					{% endfor %}
+					</div><!--end product-->
+				{% endif %}
+			{% endfor %}
+		{%endfor%}
+
+
+		<div id="accessories" class="frame">
+			<h1>Accesories</h1>
+			{% for product in collections.accessories.products %}
+			{% assign productModel = {{product.handle | append: '-model' }} %}
+				{% for tag in product.tags %}
+	                {% if tag contains 'available' %}
+					 	<div class="bit-4 product">
+					 		<h2>{{ product.title }}</h2>
+					 		<p class="model">{{ settings[productModel] }}</p>
+					 		{% for image in product.images %}
+					 		    {% if image.alt contains 'store' %}
+					 		        <img src="{{ image | product_img_url: 'large' }}">
+					 		    {% endif %}
+					 		{% endfor %}
+					 		<p class="price">{{product.price | money }}</p>
+					 		<div class="buttons">{% include 'button-group' %}</div>
+					 	</div><!--end product-->
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</div><!--#accessories-->
+
+	</div><!--.wrapper-->
+</div><!--#store-->
+

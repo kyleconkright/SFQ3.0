@@ -20,12 +20,18 @@
                 {% endif %}
             </div>
 
-            <div class="bit-40"><p class="price intl">{{ product.price | money }}</p></div>
+            <div class="bit-40"><p class="price intl">{{ product.price_max | money }}</p></div>
 
             <div class="bit-60 product-description">
                 {% if product.description contains "<p>" %}
                     {% assign p = product.description | split: '<p>' %}
                     <p>{{ p[1] }}</p>
+                {% endif %}
+                <!--video-->
+                {% assign productVideo = {{product.handle | append: '-video' }} %}
+                {% assign productVideoSwitch = {{product.handle | append: '-video-switch' }} %}
+                {% if settings[productVideoSwitch] %}
+                    <a class="video-link" href="{{settings[productVideo]}}"><i class="fa fa-youtube-play"></i> Watch video about {{product.title}}</a>
                 {% endif %}
             </div>
 
@@ -37,7 +43,10 @@
                 </ul>
             </div>
 
-            <div class="bit-5 buttons">{% include 'button-group' %}</div>
+            <div class="bit-5 buttons">
+                {% include 'button-group' %}
+                {% include 'quick-look' %}
+            </div>
 
         </div><!--.product-info-->
 

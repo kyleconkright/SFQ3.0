@@ -1,7 +1,10 @@
 $ ->
 
-	baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
 
+	baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
+		
+
+	#INTERNATIONAL HANDLING
 	$.getJSON 'http://freegeoip.net/json/', (location) ->
 		if location.country_code is 'US'
 			$('a.buy-btn.intl, .price.intl').css 'display','inline-block'
@@ -13,22 +16,57 @@ $ ->
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl, a.price.intl').remove()
 
+	#BUY BUTTON
+	$('.open-quick-look').magnificPopup
+		type:'inline'
+		midClick: true
+
+	$('a.close').on 'click', (event) ->
+		event.preventDefault()
+		$.magnificPopup.close()
+
+	#CART LOGIC
+	$('.clear').on 'click', (event) ->
+		event.preventDefault()
+		Shopify.clear ->
+			$('.cart-count')
+				.text '0'
+				.addClass 'hide'
+
+	$('.add-to-cart').on 'click', (event) ->
+		cartCount = parseInt($('.cart-count').text())
+		event.preventDefault()
+		Shopify.addItem(
+			$(@).parent().find('#product-select').val()
+			$('.cart-count, .quick-cart-count').text(cartCount +=1).removeClass 'hide'
+			)
+
+
+
+
+	$('.video-link').magnificPopup
+		type:'iframe'
+		midClick: true
 
 	# CUSTOM DATA
-	$.ajax
-		# url: 'http://cdn.shopify.com/s/files/1/0436/0145/t/1/assets/data2.json'
-		url: 'http://cdn.soundfreaq.com/data/data.json?callback=?'
-		type: 'GET'
-		dataType: 'json'
-		success: (results) ->
-			$.each results.pressReleases, ->
-				console.log this.title
-		error: ->
-			console.log 'major fail'	
+	# $.ajax
+	# 	# url: 'http://cdn.shopify.com/s/files/1/0436/0145/t/1/assets/data2.json'
+	# 	url: 'http://cdn.soundfreaq.com/data/data.json?callback=?'
+	# 	type: 'GET'
+	# 	dataType: 'json'
+	# 	success: (results) ->
+	# 		$.each results.pressReleases, ->
+	# 			console.log this.title
+	# 	error: ->
+	# 		console.log 'major fail'	
 
 
+	#FIXED HEADER
 	$('div#header').scrollToFixed()
 
+
+
+	#MENU + SEARCH
 	menus = $('div#header #search, div#header #menu')
 	btns = $('div#header .menubtn, div#header .searchbtn')
 
@@ -45,7 +83,7 @@ $ ->
 			$(@).addClass 'on'
 
 
-
+	#NEWSLETTER
 	$form = $('#newsletter form')
 
 	$form.submit (e)->
@@ -66,10 +104,12 @@ $ ->
 					alert 'not valid email'
 
 
+	#PRODUCT COMPARE EVEN/ODD STYLING
 	$('#product-compare ul.holder > li:odd').css 'background-color':'#eee'
 	$('#product-compare ul.holder > li:even').css 'background-color':'#dfdfdf'			
 						
 
+	#QUOTE SLIDER
 	$('.quote-slider').responsiveSlides({
 		namespace: "slides",
 		nav: true,          
@@ -79,6 +119,7 @@ $ ->
 		navContainer: '#quote-slider',
 		})
 
+	#PRODUCT IMAGE SLIDER
 	$('.product-slider').responsiveSlides({
 		namespace: "slides",
 		nav: true,          
@@ -87,12 +128,12 @@ $ ->
 		prevText: '<i class="fa fa-chevron-left"></i>'
 		})
 
+	#PRODUCT IMAGE GALLERY
 	$("#product-image-gallery").justifiedGallery({
 		'rowHeight':360
 		});
 
-	# INSTAGRAM
-
+	#INSTAGRAM
 	insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?'
 
 	$.ajax
@@ -101,7 +142,6 @@ $ ->
 		dataType: 'jsonp'
 		success: (results) ->
 			$.each results.data, ->
-				console.log this.link
 				$('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta')
 		error: ->
 			console.log 'insta fail'

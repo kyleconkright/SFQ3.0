@@ -39,7 +39,10 @@
                     <div class="wrapper">
                         <div class="bit-3 logo"><a href="{{ shop.url }}"></a></div>
                         <div class="bit-3 nav">
-                            <a href="{% if cart.item_count < 1 %}../store{% else %}cart{% endif %}"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="cart" href="../cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="cart-count {% if cart.item_count == 0 %}hide{% endif %}">{{cart.item_count}}</span>   
+                            </a>
                             <a href="#" class="searchbtn" data-name="search"><i class="fa fa-search"></i></a>
                             <a href="#" class="menubtn" data-name="menu"><i class="fa fa-bars"></i></a>
                         </div><!--NAV-->
