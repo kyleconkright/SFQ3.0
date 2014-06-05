@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form, baseURL, btns, insta_url, menus;
+    var $form, baseURL, btns, dropdown, holder, insta_url, menus;
     baseURL = 'http://www.soundfreaq-theme.myshopify.com/';
     $.getJSON('http://freegeoip.net/json/', function(location) {
       if (location.country_code === 'US') {
@@ -30,6 +30,17 @@
       cartCount = parseInt($('.cart-count').text());
       event.preventDefault();
       return Shopify.addItem($(this).parent().find('#product-select').val(), $('.cart-count, .quick-cart-count').text(cartCount += 1).removeClass('hide'));
+    });
+    holder = $('#quick-preview-image');
+    dropdown = $('#product-select');
+    holder.on('click', function() {
+      return holder.text($('#product-select').val());
+    });
+    $('.popup').on('change', dropdown, function() {
+      var new_src, sku;
+      sku = $(this).find(':selected').data('sku');
+      new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src');
+      return $('.main-image').attr('src', new_src);
     });
     $('.video-link').magnificPopup({
       type: 'iframe',

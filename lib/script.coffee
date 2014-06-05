@@ -1,6 +1,5 @@
 $ ->
 
-
 	baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
 		
 
@@ -42,8 +41,27 @@ $ ->
 			)
 
 
+	#PREVIEW IMAGE QUICK LOOK
+	holder = $('#quick-preview-image')
+	dropdown = $('#product-select')
+
+	holder.on 'click', ->
+		holder.text($('#product-select').val())
+
+	# $('.popup #quick-preview-image').html('{{product.title}}')
+
+	$('.popup').on 'change', dropdown, ->
+		sku = $(@).find(':selected').data('sku')
+		new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src')
+		$('.main-image').attr('src', new_src)
+		
+		# $('#quick-preview-image').html('{% for image in product.images %}<img src="{{ image | product_img_url: \'large\' }}">{% endfor %}')
 
 
+
+
+
+	#PRODUCT VIDEO POPUP
 	$('.video-link').magnificPopup
 		type:'iframe'
 		midClick: true

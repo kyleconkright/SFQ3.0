@@ -1103,6 +1103,11 @@ div#quick-look .popup {
   			font-family: $knockout30;
   		}
   	}
+  	div#quick-preview-image {
+  		img {
+  			width: 100%;
+  		}
+  	}
   	.quick-cart {
   		background: $sfqblue;
   		color: $white;
