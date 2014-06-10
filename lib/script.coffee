@@ -25,38 +25,48 @@ $ ->
 		$.magnificPopup.close()
 
 	#CART LOGIC
-	$('.clear').on 'click', (event) ->
-		event.preventDefault()
-		Shopify.clear ->
-			$('.cart-count')
-				.text '0'
-				.addClass 'hide'
 
 	$('.add-to-cart').on 'click', (event) ->
 		cartCount = parseInt($('.cart-count').text())
+		quantity = parseInt($(@).parent().find('#quantity').val())
+		cartUpdate = () -> $('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
 		event.preventDefault()
 		Shopify.addItem(
 			$(@).parent().find('#product-select').val()
-			$('.cart-count, .quick-cart-count').text(cartCount +=1).removeClass 'hide'
+			$(@).parent().find('#quantity').val()
+			cartUpdate()
 			)
+
+	#CUSTOM VERSION - WORK IN PROGRESS
+	# $('.add-to-cart').on 'click', (event) ->
+	# 	cartCount = parseInt($('.cart-count').text())
+	# 	cartUpdate = () -> $('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
+	# 	event.preventDefault()
+	# 	quantity = parseInt($(@).parent().find('#quantity').val())
+	# 	id = $(@).parent().find('#product-select').val()
+	# 	console.log id
+	# 	$.ajax
+	# 		type: 'POST'
+	# 		url: '/cart/add.js'
+	# 		data: 'quantity='+quantity+'&id='+id
+	# 		dataType: 'json'
+	# 		success: ->
+	# 			cartUpdate()
+	# 		error: (XMLHttpRequest, textStatus) ->
+	# 			if id is 'null'
+	# 				alert 'whoops'
+	# 			else 
+	# 	  			Shopify.onError(XMLHttpRequest, textStatus)
+
 
 
 	#PREVIEW IMAGE QUICK LOOK
-	holder = $('#quick-preview-image')
 	dropdown = $('#product-select')
-
-	holder.on 'click', ->
-		holder.text($('#product-select').val())
-
-	# $('.popup #quick-preview-image').html('{{product.title}}')
 
 	$('.popup').on 'change', dropdown, ->
 		sku = $(@).find(':selected').data('sku')
 		new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src')
-		$('.main-image').attr('src', new_src)
-		
-		# $('#quick-preview-image').html('{% for image in product.images %}<img src="{{ image | product_img_url: \'large\' }}">{% endfor %}')
-
+		$(@).find('.main-image').attr('src', new_src)
 
 
 

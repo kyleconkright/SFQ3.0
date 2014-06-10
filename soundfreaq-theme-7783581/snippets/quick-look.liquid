@@ -2,7 +2,7 @@
 
  	<h2>{{ product.title }}</h2>
 
-	<form action="/cart/add" method="post" id="test">
+	<form action="/cart/add" method="post" id="cart-add">
 	    <div id="product-variants">
 	       	<select id="product-select" name='id'>
 	       		<option disabled="disabled" selected="selected">Pick an Option</option>
@@ -15,6 +15,11 @@
 	        		{% endif %}
 	        	{% endfor %}
 	       	</select>
+	       	<select id="quantity" name="quantity">
+       	        {% for i in (1..20) %}
+       	        	<option>{{i}}</option>
+       	        {% endfor %}
+       	    </select>
 	       	<div id="quick-preview-image">
 	       		<img class="main-image" src="{{ product.featured_image | product_img_url: 'large' }}">
 	       		<ul id="preload" >
@@ -26,10 +31,11 @@
 	       		{% endif %}
 	       		{% endfor %}
 	       		</ul>
-	       	</div>
- 		    	
+	       	</div>	
 	    </div><!-- product-variants -->
+
 	    <input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
+	    
 	    <div class="quick-look-options">
 	    	<a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a>
 	    </div>

@@ -95,6 +95,8 @@ b {
 	text-transform: uppercase;
 	display: inline-block;
 	margin: 0 0 2px 0;
+	border: none;
+	cursor: pointer;
 }
 
 .buy-btn, .price.intl {
@@ -339,17 +341,7 @@ div#container {
 				}
 			}
 			.hidden-product-info.top {
-				li {
-					text-align: right;
-					ul {
-						li {
-							display: inline;
-						}
-					}
-				}
-				li:first-of-type {
-					text-align: left;
-				}
+				text-align: right;
 			}
 			.hidden-product-info.bottom {
 				padding: $spacefix 0 $spacefix*2;
@@ -660,24 +652,27 @@ div#container {
 					img {
 						width: 100%;
 					}
-					p.price {
-						font-weight: 700;
-						font-size: 1.1em;
-						margin: $spacefix 0 $spacefix/2;
-					}
-					div.buttons {
-						font-size: $pfontsize/1.35;
-						width: 50%;
-						margin: 0 auto;
-						a {
+					form {
+						p.sku {
+							font-family: $knockout30;
+							font-size: .8em;
+							color: $gray;
+						}
+						div.price {
 							display: block;
 							width: 100%;
-							padding: $spacefix/2;
+							margin: $spacefix/4 0 $spacefix/2;
+							.orig {
+								color: $lightgray/1.1;
+								text-decoration: line-through;
+							}
+							.sale {
+								color: $blue;
+								font-weight: 700;
+							}
 						}
-						a.where-to-buy-btn {
-							background: none;
-							padding: $spacefix/4;
-							color: $gray;
+						input {
+							font-size: .8em;
 						}
 					}
 				}
@@ -1149,9 +1144,6 @@ and (max-width : 980px)
 				.hidden-product-info.top {
 					li {
 						text-align: right;
-					}
-					li:first-of-type {
-						display: none;
 					}
 				}
 				.hidden-product-info.bottom {

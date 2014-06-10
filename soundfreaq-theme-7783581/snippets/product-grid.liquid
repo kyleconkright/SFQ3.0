@@ -6,19 +6,11 @@
             <div class="bit-3 product">
 
                 <ul class="hidden-product-info top frame">
-                    <li class="bit-2">
-                        {% if product.variants.size > 1 %}
-                            <ul>
-                                <li>1</li>
-                                <li>2</li>
-                            </ul>
-                        {% endif %}
-                    </li>
                     {% for tag in product.tags %}
                         {% if tag contains 'coming-soon' %}
-                            <li class="bit-2"><p class="price buy-btn intl">Coming Soon</p></li>
+                            <li class="bit-1"><p class="price buy-btn intl">Coming Soon</p></li>
                         {% else %}
-                            <li class="bit-2"><a href="{{ product.url }}" class="buy-btn price intl">{{ product.price_max | money }}</a></li>
+                            <li class="bit-1"><a href="{{ product.url }}" class="buy-btn price intl">{{ product.price_max | money }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>

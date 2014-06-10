@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form, baseURL, btns, dropdown, holder, insta_url, menus;
+    var $form, baseURL, btns, dropdown, insta_url, menus;
     baseURL = 'http://www.soundfreaq-theme.myshopify.com/';
     $.getJSON('http://freegeoip.net/json/', function(location) {
       if (location.country_code === 'US') {
@@ -19,28 +19,22 @@
       event.preventDefault();
       return $.magnificPopup.close();
     });
-    $('.clear').on('click', function(event) {
-      event.preventDefault();
-      return Shopify.clear(function() {
-        return $('.cart-count').text('0').addClass('hide');
-      });
-    });
     $('.add-to-cart').on('click', function(event) {
-      var cartCount;
+      var cartCount, cartUpdate, quantity;
       cartCount = parseInt($('.cart-count').text());
+      quantity = parseInt($(this).parent().find('#quantity').val());
+      cartUpdate = function() {
+        return $('.cart-count, .quick-cart-count').text(cartCount += quantity).removeClass('hide');
+      };
       event.preventDefault();
-      return Shopify.addItem($(this).parent().find('#product-select').val(), $('.cart-count, .quick-cart-count').text(cartCount += 1).removeClass('hide'));
+      return Shopify.addItem($(this).parent().find('#product-select').val(), $(this).parent().find('#quantity').val(), cartUpdate());
     });
-    holder = $('#quick-preview-image');
     dropdown = $('#product-select');
-    holder.on('click', function() {
-      return holder.text($('#product-select').val());
-    });
     $('.popup').on('change', dropdown, function() {
       var new_src, sku;
       sku = $(this).find(':selected').data('sku');
       new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src');
-      return $('.main-image').attr('src', new_src);
+      return $(this).find('.main-image').attr('src', new_src);
     });
     $('.video-link').magnificPopup({
       type: 'iframe',

@@ -67,7 +67,9 @@
                                 <h4>Extra Features</h4>
                                 {{settings[productExtras]}}
                             </ul>
-                            {% include 'button-group' %}
+                            {% comment %}{% include 'button-group' %}{% endcomment %}
+                            <a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+                            {% include 'quick-look' %}
                         </div>
                         
                     </div><!--box-->

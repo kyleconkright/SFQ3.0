@@ -2,6 +2,7 @@
 	<div class="wrapper">
 
 		{% for product in collections.speakers.products %}
+		{% assign handle = {{product.handle }} %}
 			{% for tag in product.tags %}
                 {% if tag contains 'available' %}
                 	<div class="frame product">
@@ -16,18 +17,45 @@
 				 		    	{% endif %}
 				 			{% endfor %}
 				 			<form action="/cart/add" method="post" id="{{variant.id }}">
-					 			<p>{{variant.title}}</p>
-					 			<p>{{sku}}</p>
+					 			<h4>{{variant.title}}</h4>
+					 			<p class="sku">{{sku}}</p>
+					 			<div class="price intl">	
+					 			{% if product.compare_at_price > variant.price %}
+					 				<span class="sale">{{ variant.price | money }}</span>
+					 				<span class="orig">{{ product.compare_at_price_max | money }}</span>
+					 			{% else %}
+					 				<span>{{ variant.price | money }}</span>
+					 			{% endif %}
+					 			</div>	
 					 			<input type="hidden" id="product-select" name="id" value="{{variant.id }}" />
-				 			    <input class="add-to-cart" type="submit" value="Add to Cart" id="{{ variant.id }}" />
+					 			<input type="hidden" id="quantity" name="quantity" value="1">
+				 			    <input class="add-to-cart intl" type="submit" value="Add to Cart" id="{{ variant.id }}" />
 				 			</form>
-				 			<form method="post" action="/cart/add" id="{{ variant.id }}">					
-				 			<input type="hidden" name="id" value="{{ variant.id }}" />
-				 			<input type="submit" value="Add to Cart" id="{{ variant.id }}" />
-				 			</form>
+
 			 			</div><!--end variant-->
 					{% endfor %}
 					</div><!--end product-->
+					
+					<div class="frame related-accessories">
+					<h2>Optional Accessories for {{product.title}}</h2>
+					{% for product in collections.accessories.products %}
+						{% for tag in product.tags %}
+							{% if tag contains handle %}
+								{{product.title}}
+								{% if product.variants.size > 1 %}
+									<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+									{% include 'quick-look' %}
+								{%else%}
+								<form action="/cart/add" method="post">
+									<input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
+									<input type="hidden" id="quantity" name="quantity" value="1">
+				 			    	<input class="add-to-cart" type="submit" value="Add to cart" />
+								</form>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+					</div><!--end related-->
 				{% endif %}
 			{% endfor %}
 		{%endfor%}
@@ -48,7 +76,11 @@
 					 		    {% endif %}
 					 		{% endfor %}
 					 		<p class="price">{{product.price | money }}</p>
-					 		<div class="buttons">{% include 'button-group' %}</div>
+	 						<form action="/cart/add" method="post">
+	 							<input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
+	 							<input type="hidden" id="quantity" name="quantity" value="1">
+	 		 			    	<input class="add-to-cart" type="submit" value="Add to cart" />
+	 						</form>
 					 	</div><!--end product-->
 					{% endif %}
 				{% endfor %}
