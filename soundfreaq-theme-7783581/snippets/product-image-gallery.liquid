@@ -1,16 +1,11 @@
-{% comment %}<div id="product-image-gallery">
-{% assign num = 2 %}
-{% for i in (1..num) %}
-    {% capture img %}{{i}}.jpg{% endcapture %}
-    <a href="http://cdn.soundfreaq.com/products/{{product.handle}}/webgallery/{{img}}"><img src="http://cdn.soundfreaq.com/products/{{product.handle}}/webgallery/{{img}}"></a>
 
-{% endfor %}
-</div><!--#product-image-gallery-->{% endcomment %}
 
 <div id="product-image-gallery">
 {% for image in product.images %}
     {% if image.alt contains 'gallery' %}
-    	<a href="{{ image | product_img_url: 'original' }}"><img src="{{ image | product_img_url: 'original' }}">hello</a>
+    	<a href="{{ image | product_img_url: 'original' }}">
+    		<img src="{{ image | product_img_url: 'original' }}">
+    	</a>
     {% endif %}
 {% endfor %}
 </div><!--#product-image-gallery-->

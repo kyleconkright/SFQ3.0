@@ -9,7 +9,11 @@
 	        	{% for variant in product.variants %}
 	        		{% assign sku = {{variant.sku | downcase }} %}
 	        		{% if variant.available %}
-	        			<option data-sku="{{sku}}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+	        			<option data-sku="{{sku}}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}
+
+		        				{% if variant.inventory_quantity < 5 %} - {{ variant.inventory_quantity }} in Stock{%endif%}
+
+	        			</option>
 	        		{% else %}
 	        			<option data-sku="{{sku}}" disabled="disabled" value="{{ variant.id }}">{{ variant.title }} - Sold Out</option>
 	        		{% endif %}
@@ -36,8 +40,12 @@
 
 	    <input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
 	    
+	    {% comment %}<div class="quick-look-options">
+	    	<p><a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a></p>
+	    </div>{% endcomment %}
+
 	    <div class="quick-look-options">
-	    	<a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a>
+	    	
 	    </div>
 	    
 	    <a class="quick-cart" href="../cart">

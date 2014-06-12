@@ -15,48 +15,63 @@ $ ->
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl, a.price.intl').remove()
 
+
+
+
 	#BUY BUTTON
 	$('.open-quick-look').magnificPopup
 		type:'inline'
 		midClick: true
 
+	$('.open-quick-look').on 'click', ->
+		$('.quick-look-options').html('')
+
 	$('a.close').on 'click', (event) ->
 		event.preventDefault()
 		$.magnificPopup.close()
 
-	#CART LOGIC
 
+
+	#CUSTOM CART LOGIC
 	$('.add-to-cart').on 'click', (event) ->
-		cartCount = parseInt($('.cart-count').text())
-		quantity = parseInt($(@).parent().find('#quantity').val())
-		cartUpdate = () -> $('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
 		event.preventDefault()
-		Shopify.addItem(
-			$(@).parent().find('#product-select').val()
-			$(@).parent().find('#quantity').val()
-			cartUpdate()
-			)
+		quantity = parseInt($(@).parent().find('#quantity').val())
+		id = $(@).parent().find('#product-select').val()
+		cartCount = parseInt($('.cart-count').text())
+		optionCopy = '<p><a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a></p>'
+		$.ajax
+			type: 'POST'
+			url: '/cart/add.js'
+			data: 'quantity='+quantity+'&id='+id
+			dataType: 'json'
+			success: ->
+				$('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
+				$('.quick-look-options').html(optionCopy)
+			error: (error) ->
+				console.log error.status
+				switch error.status
+					when 404 then optionCopy = 'Please select an Option'
+					when 422 then optionCopy = 'Sorry, we are out of that item'
 
-	#CUSTOM VERSION - WORK IN PROGRESS
+				$('.quick-look-options').html(optionCopy)
+
+
+
+	#CART LOGIC OLD
 	# $('.add-to-cart').on 'click', (event) ->
 	# 	cartCount = parseInt($('.cart-count').text())
+	# 	quantity = parseInt($(@).parent().find('#quantity').val())
 	# 	cartUpdate = () -> $('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
 	# 	event.preventDefault()
-	# 	quantity = parseInt($(@).parent().find('#quantity').val())
-	# 	id = $(@).parent().find('#product-select').val()
-	# 	console.log id
-	# 	$.ajax
-	# 		type: 'POST'
-	# 		url: '/cart/add.js'
-	# 		data: 'quantity='+quantity+'&id='+id
-	# 		dataType: 'json'
-	# 		success: ->
-	# 			cartUpdate()
-	# 		error: (XMLHttpRequest, textStatus) ->
-	# 			if id is 'null'
-	# 				alert 'whoops'
-	# 			else 
-	# 	  			Shopify.onError(XMLHttpRequest, textStatus)
+	# 	Shopify.addItem(
+	# 		$(@).parent().find('#product-select').val()
+	# 		$(@).parent().find('#quantity').val(),
+	# 		cartUpdate()
+	# 		options.show()
+	# 		)
+	# 	Shopify.onItemAdded(
+	# 		alert 'hi'
+	# 		)
 
 
 
@@ -157,9 +172,24 @@ $ ->
 		})
 
 	#PRODUCT IMAGE GALLERY
-	$("#product-image-gallery").justifiedGallery({
+	$("#product-image-gallery").justifiedGallery
 		'rowHeight':360
-		});
+		'captions': true
+		
+
+
+	#PRODUCT IMAGE GALLERY ROLLOVERS
+	productName = $('span.product-name h2').text().toLowerCase().replace(/\s+/g, '')
+	imageRoll = $('<div class="image-roll"><a href="' + productName + '"><i class="fa fa-pinterest"></i></a><a href="#"><i class="fa fa-picture-o"></i></a><a href="http://facebook.com/"><i class="fa fa-facebook-square"></i></a></div>')
+	$("#product-image-gallery a").hover(
+		-> imageRoll.appendTo(@)
+		-> $(@).find(imageRoll).remove()
+		)
+	
+	imageRoll.on 'click','a', (event) ->
+		event.preventDefault()
+		alert $(@).parents('#product-image-gallery').find('img').attr('src')
+
 
 	#INSTAGRAM
 	insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?'

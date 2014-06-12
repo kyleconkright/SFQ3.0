@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form, baseURL, btns, dropdown, insta_url, menus;
+    var $form, baseURL, btns, dropdown, imageRoll, insta_url, menus, productName;
     baseURL = 'http://www.soundfreaq-theme.myshopify.com/';
     $.getJSON('http://freegeoip.net/json/', function(location) {
       if (location.country_code === 'US') {
@@ -15,19 +15,41 @@
       type: 'inline',
       midClick: true
     });
+    $('.open-quick-look').on('click', function() {
+      return $('.quick-look-options').html('');
+    });
     $('a.close').on('click', function(event) {
       event.preventDefault();
       return $.magnificPopup.close();
     });
     $('.add-to-cart').on('click', function(event) {
-      var cartCount, cartUpdate, quantity;
-      cartCount = parseInt($('.cart-count').text());
-      quantity = parseInt($(this).parent().find('#quantity').val());
-      cartUpdate = function() {
-        return $('.cart-count, .quick-cart-count').text(cartCount += quantity).removeClass('hide');
-      };
+      var cartCount, id, optionCopy, quantity;
       event.preventDefault();
-      return Shopify.addItem($(this).parent().find('#product-select').val(), $(this).parent().find('#quantity').val(), cartUpdate());
+      quantity = parseInt($(this).parent().find('#quantity').val());
+      id = $(this).parent().find('#product-select').val();
+      cartCount = parseInt($('.cart-count').text());
+      optionCopy = '<p><a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a></p>';
+      return $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: 'quantity=' + quantity + '&id=' + id,
+        dataType: 'json',
+        success: function() {
+          $('.cart-count, .quick-cart-count').text(cartCount += quantity).removeClass('hide');
+          return $('.quick-look-options').html(optionCopy);
+        },
+        error: function(error) {
+          console.log(error.status);
+          switch (error.status) {
+            case 404:
+              optionCopy = 'Please select an Option';
+              break;
+            case 422:
+              optionCopy = 'Sorry, we are out of that item';
+          }
+          return $('.quick-look-options').html(optionCopy);
+        }
+      });
     });
     dropdown = $('#product-select');
     $('.popup').on('change', dropdown, function() {
@@ -102,7 +124,19 @@
       prevText: '<i class="fa fa-chevron-left"></i>'
     });
     $("#product-image-gallery").justifiedGallery({
-      'rowHeight': 360
+      'rowHeight': 360,
+      'captions': true
+    });
+    productName = $('span.product-name h2').text().toLowerCase().replace(/\s+/g, '');
+    imageRoll = $('<div class="image-roll"><a href="' + productName + '"><i class="fa fa-pinterest"></i></a><a href="#"><i class="fa fa-picture-o"></i></a><a href="http://facebook.com/"><i class="fa fa-facebook-square"></i></a></div>');
+    $("#product-image-gallery a").hover(function() {
+      return imageRoll.appendTo(this);
+    }, function() {
+      return $(this).find(imageRoll).remove();
+    });
+    imageRoll.on('click', 'a', function(event) {
+      event.preventDefault();
+      return alert($(this).parents('#product-image-gallery').find('img').attr('src'));
     });
     insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?';
     return $.ajax({
