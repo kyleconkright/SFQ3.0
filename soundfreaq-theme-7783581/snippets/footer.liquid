@@ -2,49 +2,100 @@
     
     <div id="buckets" class="frame">    
         <div id="main-buckets" class="wrapper">
+            
+            <!--FIRST MAIN BUCKET-->
+            {% if template contains 'product' %}
+
+                {% assign featReviewImg = {{product.handle | append: '-feat-review-img.png'}} %}
+                {% assign featReviewLink = {{product.handle | append: '-feat-review-link'}} %}
+                <div class="bit-3 main-bucket">
+                    <div class="box" style="background: url('{{ featReviewImg | asset_url }}') center no-repeat">
+                        <a href="{{ settings[featReviewLink] }}"></a>
+                    </div>
+                </div>
+
+            {% else %}
+                <div class="bit-3 main-bucket">
+                    <div class="box" style="background: url('{{ 'main-bucket-1-gen-img.png' | asset_url }}') center no-repeat">
+                        <a href="{{settings.main-bucket-1-gen-link}}"></a>
+                    </div>
+                </div>
+            {% endif %}
+            <!--END FIRST MAIN BUCKET-->
+
+
             <div class="bit-3 main-bucket">
-                <div class="box" style="background: {% if settings.main-bucket-1-img %}url('{{ 'main-bucket-1-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-1-bg}}{% endif %}; color: {{settings.main-bucket-1-font-color}};">
-                    {% if settings.main-bucket-1-switch %}<a href="{{settings.main-bucket-1-link}}">{{ settings.main-bucket-1-text }}</a>{% endif %}
+                <div class="box" style="background: url('{{ 'main-bucket-2-gen-img.png' | asset_url }}') center no-repeat">
+                    <a href="{{settings.main-bucket-2-gen-link}}"></a>
                 </div>
             </div>
 
             <div class="bit-3 main-bucket">
-                <div class="box" style="background: {% if settings.main-bucket-2-img %}url('{{ 'main-bucket-2-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-2-bg}}{% endif %}; color: {{settings.main-bucket-2-font-color}};">
-                    {% if settings.main-bucket-2-switch %}<a href="{{settings.main-bucket-2-link}}">{{ settings.main-bucket-2-text }}</a>{% endif %}
-                </div>
-            </div>
-
-            <div class="bit-3 main-bucket">
-                <div class="box" style="background: {% if settings.main-bucket-3-img %}url('{{ 'main-bucket-3-img.png' | asset_url }}') center no-repeat{% else %}{{settings.main-bucket-3-bg}}{% endif %}; color: {{settings.main-bucket-3-font-color}};">
-                    {% if settings.main-bucket-3-switch %}<a href="{{settings.main-bucket-3-link}}">{{ settings.main-bucket-3-text }}</a>{% endif %}
+                <div class="box" style="background: url('{{ 'main-bucket-3-gen-img.png' | asset_url }}') center no-repeat">
+                    <a href="{{settings.main-bucket-3-gen-link}}"></a>
                 </div>
             </div>
         </div><!--#main-buckets.wrapper-->
 
+
+
         <div id="sub-buckets" class="wrapper">    
+            <!--sub bucket 1-->
             <div class="bit-4 sub-bucket">
                 <div class="box">
-                    {% if settings.sub-bucket-1-switch %}<a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>{% endif %}
+                    <a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>
                 </div>
             </div>
+            <!--end sub bucket 1-->
 
-             <div class="bit-4 sub-bucket">
+            <!--sub bucket 2-->
+            <div class="bit-4 sub-bucket">
                 <div class="box">
-                    {% if settings.sub-bucket-2-switch %}<a href="{{settings.sub-bucket-2-link}}">{{ settings.sub-bucket-2 }}</a>{% endif %}
+                    <a class="intl" href="{{settings.sub-bucket-2-intl-link}}">{{ settings.sub-bucket-2 }}</a>
+                    <a class="us" href="{{settings.sub-bucket-2-us-link}}">{{ settings.sub-bucket-2 }}</a>
                 </div>
             </div>
+            <!--end sub bucket 2-->
 
-             <div class="bit-4 sub-bucket">
-                <div class="box">
-                    {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+            <!--sub bucket 3-->
+            {% if template contains 'product' %}
+                
+                <div class="bit-4 sub-bucket intl">
+                    <div class="box">
+                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                    </div>
                 </div>
-            </div>
 
-             <div class="bit-4 sub-bucket">
+                <div class="bit-4 sub-bucket us">
+                    <div class="box">
+                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                    </div>
+                </div>
+
+            {% else %}
+
+                <div class="bit-4 sub-bucket intl">
+                    <div class="box">
+                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                    </div>
+                </div>
+
+                <div class="bit-4 sub-bucket us">
+                    <div class="box">
+                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                    </div>
+                </div>
+
+            {% endif %}
+            <!--end sub bucket 3-->
+
+            <!--sub bucket 4-->
+            <div class="bit-4 sub-bucket">
                 <div class="box">
                     {% if settings.sub-bucket-4-switch %}<a href="{{settings.sub-bucket-4-link}}">{{ settings.sub-bucket-4 }}</a>{% endif %}
                 </div>
             </div>
+            <!--end sub bucket 4-->
         </div><!--WRAPPER-->
     </div><!--BUCKETS-->
 

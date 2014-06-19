@@ -52,7 +52,7 @@ body {
 
 
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
 	font-weight: 400;
 	line-height: 1em;
 }
@@ -76,6 +76,12 @@ h3 {
 h4 {
 	font-family: $knockout30;
 	font-size: 1.10em;
+}
+
+h5 {
+	font-family: $knockout30;
+	font-size: .8em;
+	color: $gray*1.15;
 }
 
 p {
@@ -589,6 +595,10 @@ div#container {
 						p {
 							margin: $spacefix 0 0;
 						}
+						a.design-note {
+							font-style: italic;
+							font-weight: 700;
+						}
 					}
 					div.right {
 						float: right;
@@ -663,44 +673,38 @@ div#container {
 	#store {
 		padding: $spacefix*2 0;
 		.wrapper {
-			div#speakers {
-				margin: 0 0 $spacefix*4;
-			}
 			.product {
-				padding: $space 0;
-				p.model {
-					font-family: $knockout30;
-					font-size: .85em;
-					color: $gray;
+				margin: 0 0 $spacefix*2;
+			}
+			.related-accessories {
+				margin: $spacefix*2 0;
+			}
+			h2 {
+				margin: 0 0 $spacefix/2;
+			}
+			.variant, .accessory {
+				text-align: center;
+				h5 {
+					margin: $spacefix/4 0 0;
 				}
-				.variant {
-					text-align: center;
-					img {
-						width: 100%;
+				div.price {
+					display: block;
+					width: 100%;
+					margin: $spacefix/2 0;
+					.orig {
+						color: $lightgray/1.1;
+						text-decoration: line-through;
 					}
-					form {
-						p.sku {
-							font-family: $knockout30;
-							font-size: .8em;
-							color: $gray;
-						}
-						div.price {
-							display: block;
-							width: 100%;
-							margin: $spacefix/4 0 $spacefix/2;
-							.orig {
-								color: $lightgray/1.1;
-								text-decoration: line-through;
-							}
-							.sale {
-								color: $blue;
-								font-weight: 700;
-							}
-						}
-						input {
-							font-size: .8em;
-						}
+					.sale {
+						color: $blue;
+						font-weight: 700;
 					}
+				}
+				a.buy-btn {
+					font-size: .75em;
+				}
+				img {
+					width: 100%;
 				}
 			}
 			[class*='bit-']:last-of-type {
@@ -708,6 +712,62 @@ div#container {
 			}
 		}
 	}
+
+	// #store {
+	// 	padding: $spacefix*2 0;
+	// 	.wrapper {
+	// 		div#speakers {
+	// 			margin: 0 0 $spacefix*4;
+	// 		}
+	// 		.product {
+	// 			padding: $space 0;
+	// 			margin: $space 0;
+	// 			h2 {
+	// 				margin: 0 0 $spacefix;
+	// 			}
+	// 			p.model {
+	// 				font-family: $knockout30;
+	// 				font-size: .85em;
+	// 				color: $gray;
+	// 			}
+	// 			.variant {
+	// 				text-align: center;
+	// 				img {
+	// 					width: 100%;
+	// 				}
+	// 				form {
+	// 					p.sku {
+	// 						font-family: $knockout30;
+	// 						font-size: .8em;
+	// 						color: $gray;
+	// 					}
+	// 					div.price {
+	// 						display: block;
+	// 						width: 100%;
+	// 						margin: $spacefix/4 0 $spacefix/2;
+	// 						.orig {
+	// 							color: $lightgray/1.1;
+	// 							text-decoration: line-through;
+	// 						}
+	// 						.sale {
+	// 							color: $blue;
+	// 							font-weight: 700;
+	// 						}
+	// 					}
+	// 					input {
+	// 						font-size: .8em;
+	// 					}
+	// 				}
+	// 			}
+	// 			.related-accessories {
+	// 				margin: $spacefix*2 0 0;
+	// 			}
+	// 		}
+	// 		[class*='bit-']:last-of-type {
+	// 		  	float: left;
+	// 		}
+	// 	}
+	// }
 
 	// ---------------------------- PAGES WITH BLOGS ---------------------------- //
 	// ---------------------------- NEWS, PRESS, ETC ---------------------------- //
@@ -820,6 +880,7 @@ div#container {
 
 							li a {
 								color: $blue;
+								text-decoration: underline;
 							}
 						}
 					}
@@ -918,6 +979,10 @@ div#container {
 		}
 		p {
 			font-size: $pfontsize;
+		}
+		a {
+			font-weight: 700;
+			font-style: italic;
 		}
 	}
 

@@ -1,19 +1,27 @@
 $ ->
 
-	baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
-		
+	# baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
+	
+	
+			
 
-	#INTERNATIONAL HANDLING
-	$.getJSON 'http://freegeoip.net/json/', (location) ->
-		if location.country_code is 'US'
-			$('a.buy-btn.intl, .price.intl').css 'display','inline-block'
-			$('a.where-to-buy-btn.intl').attr 'href', baseURL + 'pages/where-to-buy'
-		else
-			$('a.buy-btn.intl')
-				.text 'Where to Buy'
-				.attr 'href', baseURL + 'pages/where-to-buy-intl'
+	$.getJSON 'http://ipinfo.io/json/', (location) ->
+		if location.country is 'US'
+		# if location.country_code is 'US'	
+			$('a.buy-btn.intl, .price.intl')
 				.css 'display','inline-block'
-			$('a.where-to-buy-btn.intl, a.price.intl').remove()
+			$('a.where-to-buy-btn.intl')
+				.attr 'href', '../pages/where-to-buy'
+			$('#buckets div.intl, #sub-buckets a.intl').remove()
+		else
+			$('a.where-to-buy-btn.intl')
+				.attr 'href', '../pages/where-to-buy-intl'
+			$('a.buy-btn.intl, a.price.intl').remove()	
+			$('#buckets div.us, #subbuckets a.us').remove()
+			$('.intl').remove()
+
+	# $.getJSON 'http://freegeoip.net/json/', (location) ->
+	# 	intlDirect()
 
 
 

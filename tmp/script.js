@@ -1,14 +1,16 @@
 (function() {
   $(function() {
-    var $form, baseURL, btns, dropdown, imageRoll, insta_url, menus, productName;
-    baseURL = 'http://www.soundfreaq-theme.myshopify.com/';
-    $.getJSON('http://freegeoip.net/json/', function(location) {
-      if (location.country_code === 'US') {
+    var $form, btns, dropdown, imageRoll, insta_url, menus, productName;
+    $.getJSON('http://ipinfo.io/json/', function(location) {
+      if (location.country === 'US') {
         $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
-        return $('a.where-to-buy-btn.intl').attr('href', baseURL + 'pages/where-to-buy');
+        $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy');
+        return $('#buckets div.intl, #sub-buckets a.intl').remove();
       } else {
-        $('a.buy-btn.intl').text('Where to Buy').attr('href', baseURL + 'pages/where-to-buy-intl').css('display', 'inline-block');
-        return $('a.where-to-buy-btn.intl, a.price.intl').remove();
+        $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy-intl');
+        $('a.buy-btn.intl, a.price.intl').remove();
+        $('#buckets div.us, #subbuckets a.us').remove();
+        return $('.intl').remove();
       }
     });
     $('.open-quick-look').magnificPopup({

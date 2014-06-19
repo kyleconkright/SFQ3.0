@@ -6,56 +6,41 @@
 			{% for tag in product.tags %}
                 {% if tag contains 'available' %}
                 	<div class="frame product">
-					<h2>{{product.title}}</h2>
-					{% for variant in product.variants %}
-						<div class="bit-5 variant">
-							{% assign sku = {{variant.sku %}
-							{% assign productSelect = {{variant.title %}
-							{% for image in product.images %}
-					 		    {% if image.alt contains sku %}
-					 		    	<img src="{{ image | product_img_url: 'large' }}">
-				 		    	{% endif %}
-				 			{% endfor %}
-				 			<form action="/cart/add" method="post" id="{{variant.id }}">
-					 			<h4>{{variant.title}}</h4>
-					 			<p class="sku">{{sku}}</p>
-					 			<div class="price intl">	
-					 			{% if product.compare_at_price > variant.price %}
-					 				<span class="sale">{{ variant.price | money }}</span>
-					 				<span class="orig">{{ product.compare_at_price_max | money }}</span>
-					 			{% else %}
-					 				<span>{{ variant.price | money }}</span>
-					 			{% endif %}
-					 			</div>	
-					 			<input type="hidden" id="product-select" name="id" value="{{variant.id }}" />
-					 			<input type="hidden" id="quantity" name="quantity" value="1">
-				 			    <input class="add-to-cart intl" type="submit" value="Add to Cart" id="{{ variant.id }}" />
-				 			</form>
+						<h2>{{product.title}}</h2>
+						{% for variant in product.variants %}
+							<div class="bit-5 variant">
+								{% assign sku = {{variant.sku %}
+								{% assign productSelect = {{variant.title %}
+								{% for image in product.images %}
+						 		    {% if image.alt contains sku %}
+						 		    	<img src="{{ image | product_img_url: 'large' }}">
+					 		    	{% endif %}
+					 			{% endfor %}
+					 			<h4>{{ product.title }}</h4>
+					 			<h5>{{ productSelect }}</h5>
+								{% include 'price' %}
+								<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+								{% include 'quick-look' %}
 
-			 			</div><!--end variant-->
-					{% endfor %}
-					</div><!--end product-->
-					
-					<div class="frame related-accessories">
-					<h2>Optional Accessories for {{product.title}}</h2>
-					{% for product in collections.accessories.products %}
-						{% for tag in product.tags %}
-							{% if tag contains handle %}
-								{{product.title}}
-								{% if product.variants.size > 1 %}
-									<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
-									{% include 'quick-look' %}
-								{%else%}
-								<form action="/cart/add" method="post">
-									<input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
-									<input type="hidden" id="quantity" name="quantity" value="1">
-				 			    	<input class="add-to-cart" type="submit" value="Add to cart" />
-								</form>
-								{% endif %}
-							{% endif %}
+				 			</div><!--end variant-->
 						{% endfor %}
-					{% endfor %}
-					</div><!--end related-->
+					
+						<div class="bit-1 related-accessories">
+							<h2>Optional Accessories for {{product.title}}</h2>
+							{% for product in collections.accessories.products %}
+							<div class="bit-5 accessory">
+								{% for tag in product.tags %}
+									{% if tag contains handle %}
+										<h4>{{ product.title }}</h4>
+										{% include 'price' %}
+										<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+										{% include 'quick-look' %}
+									{% endif %}
+								{% endfor %}
+							</div>
+							{% endfor %}
+						</div><!--end related-->
+					</div><!--end product-->
 				{% endif %}
 			{% endfor %}
 		{%endfor%}
@@ -67,20 +52,22 @@
 			{% assign productModel = {{product.handle | append: '-model' }} %}
 				{% for tag in product.tags %}
 	                {% if tag contains 'available' %}
-					 	<div class="bit-4 product">
-					 		<h2>{{ product.title }}</h2>
-					 		<p class="model">{{ settings[productModel] }}</p>
-					 		{% for image in product.images %}
+					 	<div class="bit-5 accessory">
+					 		<h4>{{ product.title }}</h4>
+					 		{% comment %}<p class="model">{{ settings[productModel] }}</p>{% endcomment %}
+					 		{% comment %}{% for image in product.images %}
 					 		    {% if image.alt contains 'store' %}
 					 		        <img src="{{ image | product_img_url: 'large' }}">
 					 		    {% endif %}
-					 		{% endfor %}
-					 		<p class="price">{{product.price | money }}</p>
-	 						<form action="/cart/add" method="post">
+					 		{% endfor %}{% endcomment %}
+					 		{% include 'price' %}
+					 		<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+							{% include 'quick-look' %}
+	 						{% comment %}<form action="/cart/add" method="post">
 	 							<input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
 	 							<input type="hidden" id="quantity" name="quantity" value="1">
 	 		 			    	<input class="add-to-cart" type="submit" value="Add to cart" />
-	 						</form>
+	 						</form>{% endcomment %}
 					 	</div><!--end product-->
 					{% endif %}
 				{% endfor %}

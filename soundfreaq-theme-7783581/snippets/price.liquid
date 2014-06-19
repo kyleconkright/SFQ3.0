@@ -1,0 +1,8 @@
+<div class="price intl">	
+{% if product.compare_at_price > variant.price %}
+	<span class="sale">{{ variant.price | money }}</span>
+	<span class="orig">{{ product.compare_at_price_max | money }}</span>
+{% else %}
+	<span>{% if product.price == 0 %}FREE{% else %}{{product.price | money }}{% endif %}</span>
+{% endif %}
+</div>	

@@ -4,6 +4,7 @@
 
 	<form action="/cart/add" method="post" id="cart-add">
 	    <div id="product-variants">
+	    	{% if product.variants.size > 1 %}
 	       	<select id="product-select" name='id'>
 	       		<option disabled="disabled" selected="selected">Pick an Option</option>
 	        	{% for variant in product.variants %}
@@ -19,6 +20,7 @@
 	        		{% endif %}
 	        	{% endfor %}
 	       	</select>
+	       	{% endif %}
 	       	<select id="quantity" name="quantity">
        	        {% for i in (1..20) %}
        	        	<option>{{i}}</option>
