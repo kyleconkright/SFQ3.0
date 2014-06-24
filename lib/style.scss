@@ -1,6 +1,7 @@
 // VARIABLES
 $spacefix: 16px;
 $space: 2%;
+$articlewidth: 60%;
 
 $sfqblue: #91C3DD;
 $blue: #2DAABE;
@@ -17,6 +18,7 @@ $letterspace: .025em;
 $knockout30: 'Knockout 30 A', 'Knockout 30 B';
 $knockout34: 'Knockout 34 A', 'Knockout 34 B';
 $sentinel: 'Sentinel SSm A', 'Sentinel SSm B';
+$archer: 'Archer SSm A', 'Archer SSm B';
 
 .knockout30 {font-family: $knockout30; font-style: normal; font-weight: 400;}
 .knockout34 {font-family: $knockout34; font-style: normal; font-weight: 400;}
@@ -398,6 +400,19 @@ div#container {
 							justify-content: center;
 							align-items: center;
 							flex-direction: column;
+						}
+					}
+				}
+				.main-bucket {
+					.box {
+						a {display: none;}
+						&:hover a {
+							display: flex;
+							background: rgba(119,196,222,.95);
+							color: $white;
+							font-family: $sentinel;
+							font-style: italic;
+							font-size: 1.75em;
 						}
 					}
 				}
@@ -962,6 +977,18 @@ div#container {
 		}
 	}
 
+	// ---------------------------- HAPPY LISTENING PAGE ---------------------------- //
+
+	div#happy-listening {
+		.wrapper {
+			width: $articlewidth;
+			p {
+				font-size: 1.3em;
+				margin: 0 0 $spacefix*2;
+			}
+		}
+	}
+
 
 	// -------------------- ILLUSTRATION HEADERS ON SUPP PAGES --------------------- //
 	// ----------------- specific styles in appropriate locations ------------------ //
@@ -1095,7 +1122,7 @@ div#container {
 
 	div#post {
 		.wrapper {
-			width: 60%;
+			width: $articlewidth;
 			.article {
 				margin: $spacefix*4 0;
 				h1 {

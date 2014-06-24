@@ -1,11 +1,19 @@
 
 
 <div id="product-image-gallery">
-{% for image in product.images %}
-    {% if image.alt contains 'gallery' %}
-    	<a href="{{ image | product_img_url: 'original' }}">
-    		<img src="{{ image | product_img_url: 'original' }}">
-    	</a>
-    {% endif %}
-{% endfor %}
+	<div id="images">
+	{% for image in product.images %}
+	    {% if image.alt contains 'gallery' %}
+	    	<a>
+	    		<img src="{{ image | product_img_url: 'original' }}">
+	    	</a>
+	    {% endif %}
+	{% endfor %}
+	</div><!--images-->
+
+	<div class="image-roll">
+		<a href="#" data-name="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+		<a href="#" data-name="image"><i class="fa fa-picture-o"></i></a>
+		<a href="#" data-name="facebook" target="_blank"><i class="fa fa-facebook-square"></i></a>
+	</div>
 </div><!--#product-image-gallery-->

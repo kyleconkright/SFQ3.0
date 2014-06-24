@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form, btns, dropdown, imageRoll, insta_url, menus, productName;
+    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip;
     $.getJSON('http://ipinfo.io/json/', function(location) {
       if (location.country === 'US') {
         $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
@@ -125,20 +125,34 @@
       nextText: '<i class="fa fa-chevron-right"></i>',
       prevText: '<i class="fa fa-chevron-left"></i>'
     });
-    $("#product-image-gallery").justifiedGallery({
+    $("#product-image-gallery #images").justifiedGallery({
       'rowHeight': 360,
       'captions': true
     });
-    productName = $('span.product-name h2').text().toLowerCase().replace(/\s+/g, '');
-    imageRoll = $('<div class="image-roll"><a href="' + productName + '"><i class="fa fa-pinterest"></i></a><a href="#"><i class="fa fa-picture-o"></i></a><a href="http://facebook.com/"><i class="fa fa-facebook-square"></i></a></div>');
-    $("#product-image-gallery a").hover(function() {
-      return imageRoll.appendTo(this);
-    }, function() {
-      return $(this).find(imageRoll).remove();
-    });
-    imageRoll.on('click', 'a', function(event) {
-      event.preventDefault();
-      return alert($(this).parents('#product-image-gallery').find('img').attr('src'));
+    imageRoll = $('.image-roll');
+    imageRoll.remove();
+    galleryImg = $('#product-image-gallery #images a img');
+    pinDescrip = $('.product-headline h1').text();
+    $(galleryImg).hover(function() {
+      var imgSrc;
+      $(this).parent().append(imageRoll);
+      imgSrc = $(this).attr('src');
+      return $('.image-roll a').hover(function() {
+        switch ($(this).data('name')) {
+          case 'image':
+            $(this).attr('href', imgSrc).addClass('image');
+            break;
+          case 'pinterest':
+            $(this).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=' + pinDescrip);
+            break;
+          case 'facebook':
+            $(this).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=http://soundfreaq-theme.myshopify.com/products/soundrise');
+        }
+        return $('#images .image-roll a.image').magnificPopup({
+          type: 'image',
+          midClick: true
+        });
+      });
     });
     insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?';
     return $.ajax({

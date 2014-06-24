@@ -171,32 +171,47 @@ $ ->
 		})
 
 	#PRODUCT IMAGE SLIDER
-	$('.product-slider').responsiveSlides({
-		namespace: "slides",
-		nav: true,          
-		pause: true,
-		nextText: '<i class="fa fa-chevron-right"></i>',
+	$('.product-slider').responsiveSlides
+		namespace: "slides"
+		nav: true          
+		pause: true
+		nextText: '<i class="fa fa-chevron-right"></i>'
 		prevText: '<i class="fa fa-chevron-left"></i>'
-		})
+
+
 
 	#PRODUCT IMAGE GALLERY
-	$("#product-image-gallery").justifiedGallery
+	$("#product-image-gallery #images").justifiedGallery
 		'rowHeight':360
 		'captions': true
 		
 
-
 	#PRODUCT IMAGE GALLERY ROLLOVERS
-	productName = $('span.product-name h2').text().toLowerCase().replace(/\s+/g, '')
-	imageRoll = $('<div class="image-roll"><a href="' + productName + '"><i class="fa fa-pinterest"></i></a><a href="#"><i class="fa fa-picture-o"></i></a><a href="http://facebook.com/"><i class="fa fa-facebook-square"></i></a></div>')
-	$("#product-image-gallery a").hover(
-		-> imageRoll.appendTo(@)
-		-> $(@).find(imageRoll).remove()
+	imageRoll = $('.image-roll')
+	imageRoll.remove()
+	galleryImg = $('#product-image-gallery #images a img')
+	pinDescrip = $('.product-headline h1').text()
+	$(galleryImg).hover(
+		->
+			$(@).parent().append(imageRoll)
+			imgSrc = $(@).attr('src')
+			$('.image-roll a').hover(
+				-> 
+					switch $(@).data('name')
+						when 'image' then $(@).attr('href', imgSrc).addClass 'image'
+						when 'pinterest' then $(@).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=' + pinDescrip)
+						when 'facebook' then $(@).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=http://soundfreaq-theme.myshopify.com/products/soundrise')
+
+					$('#images .image-roll a.image').magnificPopup
+						type:'image'
+						midClick: true
+				)
 		)
 	
-	imageRoll.on 'click','a', (event) ->
-		event.preventDefault()
-		alert $(@).parents('#product-image-gallery').find('img').attr('src')
+
+	
+
+
 
 
 	#INSTAGRAM

@@ -8,16 +8,17 @@
 
                 {% assign featReviewImg = {{product.handle | append: '-feat-review-img.png'}} %}
                 {% assign featReviewLink = {{product.handle | append: '-feat-review-link'}} %}
+                {% assign featReviewHover = {{product.handle | append: '-feat-review-hover'}} %}
                 <div class="bit-3 main-bucket">
                     <div class="box" style="background: url('{{ featReviewImg | asset_url }}') center no-repeat">
-                        <a href="{{ settings[featReviewLink] }}"></a>
+                        <a href="{{ settings[featReviewLink] }}">{{ settings[featReviewHover] }}</a>
                     </div>
                 </div>
 
             {% else %}
                 <div class="bit-3 main-bucket">
                     <div class="box" style="background: url('{{ 'main-bucket-1-gen-img.png' | asset_url }}') center no-repeat">
-                        <a href="{{settings.main-bucket-1-gen-link}}"></a>
+                        <a href="{{settings.main-bucket-1-gen-link}}">{{ settings.main-bucket-1-hover }}</a>
                     </div>
                 </div>
             {% endif %}
@@ -26,13 +27,13 @@
 
             <div class="bit-3 main-bucket">
                 <div class="box" style="background: url('{{ 'main-bucket-2-gen-img.png' | asset_url }}') center no-repeat">
-                    <a href="{{settings.main-bucket-2-gen-link}}"></a>
+                    <a href="{{settings.main-bucket-2-gen-link}}">{{ settings.main-bucket-2-hover }}</a>
                 </div>
             </div>
 
             <div class="bit-3 main-bucket">
                 <div class="box" style="background: url('{{ 'main-bucket-3-gen-img.png' | asset_url }}') center no-repeat">
-                    <a href="{{settings.main-bucket-3-gen-link}}"></a>
+                    <a href="{{settings.main-bucket-3-gen-link}}">{{ settings.main-bucket-3-hover }}</a>
                 </div>
             </div>
         </div><!--#main-buckets.wrapper-->
