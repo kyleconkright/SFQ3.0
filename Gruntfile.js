@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 		        	style: 'compressed'
 		      	},
 		      	files: {
-		        	'tmp/style.css': 'lib/style.scss'
+		        	'tmp/style.css': 'lib/style.scss',
+		        	'tmp/checkout.css' : 'lib/checkout.scss'
 		      	}
 		    }
 		},
@@ -24,7 +25,8 @@ module.exports = function(grunt) {
 		autoprefixer: {
             dist: {
                 files: {
-                    'soundfreaq-theme-7783581/assets/style.css.liquid':['tmp/stylemin.css']
+                    'soundfreaq-theme-7783581/assets/style.css.liquid':['tmp/stylemin.css'],
+                    'soundfreaq-theme-7783581/assets/checkout.css.liquid' : 'tmp/checkout.css'
                 }
             }
         },

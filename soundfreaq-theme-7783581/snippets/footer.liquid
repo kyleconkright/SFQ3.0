@@ -63,13 +63,13 @@
                 
                 <div class="bit-4 sub-bucket intl">
                     <div class="box">
-                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                        <a href="{{settings.sub-bucket-3-intl-link}}">{{ settings.sub-bucket-3-intl }}</a>
                     </div>
                 </div>
 
                 <div class="bit-4 sub-bucket us">
                     <div class="box">
-                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                        <a href="{{settings.sub-bucket-3-prod-link}}">{{ settings.sub-bucket-3-prod }}</a>
                     </div>
                 </div>
 
@@ -77,13 +77,13 @@
 
                 <div class="bit-4 sub-bucket intl">
                     <div class="box">
-                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                        <a href="{{settings.sub-bucket-3-intl-link}}">{{ settings.sub-bucket-3-intl }}</a>
                     </div>
                 </div>
 
                 <div class="bit-4 sub-bucket us">
                     <div class="box">
-                        {% if settings.sub-bucket-3-switch %}<a href="{{settings.sub-bucket-3-link}}">{{ settings.sub-bucket-3 }}</a>{% endif %}
+                        <a href="{{settings.sub-bucket-3-gen-link}}">{{ settings.sub-bucket-3-gen }}</a>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
             <!--sub bucket 4-->
             <div class="bit-4 sub-bucket">
                 <div class="box">
-                    {% if settings.sub-bucket-4-switch %}<a href="{{settings.sub-bucket-4-link}}">{{ settings.sub-bucket-4 }}</a>{% endif %}
+                    <a href="{{settings.sub-bucket-4-link}}">{{ settings.sub-bucket-4 }}</a>
                 </div>
             </div>
             <!--end sub bucket 4-->
@@ -152,7 +152,7 @@
                 </ul>
            </div>
 
-           <div class="wire bit-7">
+           <div class="support bit-7">
                 <ul>
                 <h2>{{ linklists.support.title }}</h2>
                 {% for link in linklists.support.links %}

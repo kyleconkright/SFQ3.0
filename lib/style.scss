@@ -94,12 +94,12 @@ b {
 	font-weight: 700;
 }
 
-.buy-btn, .where-to-buy-btn, input.add-to-cart {
+.buy-btn, .where-to-buy-btn, input.add-to-cart, .cart-btn {
 	font-size:1.2em;
 	background: $orange;
 	color: $white;
 	font-family: $knockout34;
-	padding: $space $space*2;
+	padding: $spacefix/2 $spacefix;
 	text-transform: uppercase;
 	display: inline-block;
 	margin: 0 0 2px 0;
@@ -517,11 +517,17 @@ div#container {
 				background-repeat: no-repeat;
 			}
 		}
-		.slick-dots {
-			bottom: -$spacefix*2;
-			li button:before {
-				font-size: 20px;
+		ul.slides_tabs.slides2_tabs {
+			text-align: center;
+			li {
+				display: inline;
+				margin: 0 3px;
+				font-size: .5em;
+				opacity: .25;
 			}
+			li.slides_here {
+				opacity: 1;
+			}	
 		}
 		div.product-info {
 			margin: 0 auto $spacefix*8;
@@ -613,6 +619,9 @@ div#container {
 						a.design-note {
 							font-style: italic;
 							font-weight: 700;
+						}
+						img {
+							width: 100%;
 						}
 					}
 					div.right {
@@ -977,18 +986,6 @@ div#container {
 		}
 	}
 
-	// ---------------------------- HAPPY LISTENING PAGE ---------------------------- //
-
-	div#happy-listening {
-		.wrapper {
-			width: $articlewidth;
-			p {
-				font-size: 1.3em;
-				margin: 0 0 $spacefix*2;
-			}
-		}
-	}
-
 
 	// -------------------- ILLUSTRATION HEADERS ON SUPP PAGES --------------------- //
 	// ----------------- specific styles in appropriate locations ------------------ //
@@ -1119,10 +1116,12 @@ div#container {
 	}
 
 	// ---------------------------- INDIVIDUAL POST PAGE ---------------------------- //
+	// ---------------------------- HAPPY LISTENING PAGE ---------------------------- //
 
-	div#post {
+	div#post, div#happy-listening {
 		.wrapper {
 			width: $articlewidth;
+			min-height: 100vh;
 			.article {
 				margin: $spacefix*4 0;
 				h1 {
@@ -1150,9 +1149,108 @@ div#container {
 		}
 	}
 
+	div#happy-listening {
+		.wrapper {
+
+			.article {
+				margin: 0;
+				.header {
+					height: 40vh;
+					text-align: center;
+					img {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	// -------------------------- WHERE TO BUY ---------------------------- //
+
+	#where-to-buy, #where-to-buy-intl {
+		margin: $spacefix*2 0;
+		text-align: center;
+		div.bit-5 div {
+			margin: $spacefix;
+			img {
+				width: 100%;
+			}
+		}
+		div.bit-5:last-of-type {float: left;}
+	}
 
 } // ----------------------------END CONTAINER ---------------------------- //
 
+
+// -------------------------------- CART ---------------------------------- //
+
+#cart {
+	h2 {
+		text-align: center;
+		margin: $spacefix*3;
+	}
+	table {
+		width: 60%;
+		margin: 0 auto;
+		text-align: left;
+		thead {
+			font-family: $knockout30;
+			text-transform: uppercase;
+			font-size: 1.25em;
+		}
+		tr {
+			border-bottom: 1px solid;
+		}
+		th:first-of-type {
+			width: 40%;
+		}
+		th:last-of-type, td:last-of-type {
+			text-align: right;
+		}
+		th:nth-of-type(2), td:nth-of-type(2),th:nth-of-type(3), td:nth-of-type(3) {
+			text-align: center;
+		}
+	}
+	form {
+		input[type=number] {
+			width: 40px;
+			text-align: right;
+			background: #fff;
+			border: none;
+			border-radius: 2px;
+			padding: 2px 0;
+		}
+	}
+	.options {
+		text-align: center;
+		.subtotal {
+			font-family: $knockout30;
+			font-size: 2em;
+			display: block;
+		}
+		.cart-btn {
+			display: block;
+			margin: $spacefix auto;
+		}
+		input[name=update], a {
+		 	border: none; 
+		 	background: none;
+		 	font-size: .8em;
+		 	text-decoration: underline;
+		 }
+		.note {
+			margin: $spacefix 0 0;
+			p {
+				font-size: .9em;
+			}
+			textarea {
+				margin: $spacefix/2 0 0;
+				border: none;
+				border-radius: 2px;	
+			}
+		}
+	}
+}
 
 
 // ---------------------------- POPUPS ---------------------------- //

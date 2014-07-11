@@ -2,7 +2,7 @@
     <div class="wrapper">
 
         {% for product in collections.frontpage.products %}
-        {% assign productHeadline = {{product.title | handleize | append: '-home-headline' }} %}
+        {% assign productHeadline = {{product.handle | append: '-home-headline' }} %}
             <div class="bit-3 product">
 
                 <ul class="hidden-product-info top frame">

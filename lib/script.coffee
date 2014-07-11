@@ -4,10 +4,10 @@ $ ->
 	
 	
 			
-
-	$.getJSON 'http://ipinfo.io/json/', (location) ->
-		if location.country is 'US'
-		# if location.country_code is 'US'	
+	# $.getJSON 'http://ipinfo.io/json/', (location) ->
+	# 	if location.country is 'US'
+	$.getJSON 'http://freegeoip.net/json/', (location) ->
+		if location.country_code is 'US'	
 			$('a.buy-btn.intl, .price.intl')
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl')
@@ -18,12 +18,11 @@ $ ->
 				.attr 'href', '../pages/where-to-buy-intl'
 			$('a.buy-btn.intl, a.price.intl').remove()	
 			$('#buckets div.us, #subbuckets a.us').remove()
-			$('.intl').remove()
-
-	# $.getJSON 'http://freegeoip.net/json/', (location) ->
-	# 	intlDirect()
+			$('.us').remove()
 
 
+	#OPEN LINKS IN NEW WINDOW
+	$('div.support a[href^="http"]').not('div.support a[href^="{{ shop.url }}"]').attr('target', '_blank')
 
 
 	#BUY BUTTON
@@ -99,17 +98,16 @@ $ ->
 		type:'iframe'
 		midClick: true
 
+
 	# CUSTOM DATA
-	# $.ajax
-	# 	# url: 'http://cdn.shopify.com/s/files/1/0436/0145/t/1/assets/data2.json'
-	# 	url: 'http://cdn.soundfreaq.com/data/data.json?callback=?'
-	# 	type: 'GET'
-	# 	dataType: 'json'
-	# 	success: (results) ->
-	# 		$.each results.pressReleases, ->
-	# 			console.log this.title
-	# 	error: ->
-	# 		console.log 'major fail'	
+	$.ajax
+		url: 'http://cdn.soundfreaq.com/data/data.json?callback=?'
+		type: 'GET'
+		dataType: 'jsonp'
+		success: (data) ->
+			console.log 'getting somewhere'
+		error: ->
+			console.log 'major fail 2'
 
 
 	#FIXED HEADER
@@ -172,11 +170,12 @@ $ ->
 
 	#PRODUCT IMAGE SLIDER
 	$('.product-slider').responsiveSlides
+		auto: false
 		namespace: "slides"
-		nav: true          
-		pause: true
-		nextText: '<i class="fa fa-chevron-right"></i>'
-		prevText: '<i class="fa fa-chevron-left"></i>'
+		pager: true          
+
+	$('ul.slides_tabs.slides2_tabs li a').html('<i class="fa fa-circle"></i>')
+	
 
 
 
@@ -191,6 +190,7 @@ $ ->
 	imageRoll.remove()
 	galleryImg = $('#product-image-gallery #images a img')
 	pinDescrip = $('.product-headline h1').text()
+	thisUrl = $(location).attr('href')
 	$(galleryImg).hover(
 		->
 			$(@).parent().append(imageRoll)
@@ -200,7 +200,7 @@ $ ->
 					switch $(@).data('name')
 						when 'image' then $(@).attr('href', imgSrc).addClass 'image'
 						when 'pinterest' then $(@).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=' + pinDescrip)
-						when 'facebook' then $(@).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=http://soundfreaq-theme.myshopify.com/products/soundrise')
+						when 'facebook' then $(@).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=' + thisUrl + '&picture' + imgSrc)
 
 					$('#images .image-roll a.image').magnificPopup
 						type:'image'

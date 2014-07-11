@@ -1,0 +1,93 @@
+// VARIABLES
+$spacefix: 16px;
+$space: 2%;
+$articlewidth: 60%;
+
+$sfqblue: #91C3DD;
+$blue: #2DAABE;
+$light: #ededed;
+$white:  #f6f6f6;
+$dark: #26272b;
+$orange: #D8AA43;
+$gray: #888;
+$lightgray: #DFE0DD;
+
+$pfontsize: .95em;
+$letterspace: .025em;
+
+$knockout30: 'Knockout 30 A', 'Knockout 30 B';
+$knockout34: 'Knockout 34 A', 'Knockout 34 B';
+$sentinel: 'Sentinel SSm A', 'Sentinel SSm B';
+$archer: 'Archer SSm A', 'Archer SSm B';
+
+body {
+	background: $white;
+	padding: 0;
+	border-top: 30px solid $sfqblue;
+}
+
+#container {
+	#header, #overview, #main, #footer, #products {
+		background: none;
+		padding: 0;
+		border: none;
+	}
+	#header {
+		
+		#logo {
+			background: url('http://cdn.soundfreaq.com/brand/sfq-logo-dark.svg') no-repeat center;
+			height: 100px;
+			background-size: 35%;
+		}
+		#tagline {
+			display: none;
+		}
+	}
+	#overview {
+		h2 {
+			display: none;
+		}
+		span {
+			color: $sfqblue;
+			text-shadow: none;
+		}
+		table#thumbs {
+			div {
+				display: none;
+			}
+		}
+	}
+	#content {
+		background: white;
+		div {
+			border: none;
+			background: none;
+			padding: 0;
+			h3 {
+				margin: 0 0 $spacefix/2;
+				border: none;
+			}
+			td.lbl {
+				padding: 4px 0 14px;
+			}
+			input[type=text] {
+				border-width: 0 0 1px 0;
+				background: none;
+				padding: 0px 4px 0;
+				width: 90%;
+			}
+			input#commit-button {
+				background: $orange;
+				padding: 8px 16px;
+				color: $white;
+				text-transform: uppercase;
+				border: none;
+				font-family: arial black;
+				font-size: 1.15em;
+			}
+		}	
+	}
+	#footer {
+		
+	}
+}

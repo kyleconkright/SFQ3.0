@@ -1,8 +1,8 @@
 (function() {
   $(function() {
-    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip;
-    $.getJSON('http://ipinfo.io/json/', function(location) {
-      if (location.country === 'US') {
+    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip, thisUrl;
+    $.getJSON('http://freegeoip.net/json/', function(location) {
+      if (location.country_code === 'US') {
         $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
         $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy');
         return $('#buckets div.intl, #sub-buckets a.intl').remove();
@@ -10,9 +10,10 @@
         $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy-intl');
         $('a.buy-btn.intl, a.price.intl').remove();
         $('#buckets div.us, #subbuckets a.us').remove();
-        return $('.intl').remove();
+        return $('.us').remove();
       }
     });
+    $('div.support a[href^="http"]').not('div.support a[href^="{{ shop.url }}"]').attr('target', '_blank');
     $('.open-quick-look').magnificPopup({
       type: 'inline',
       midClick: true
@@ -63,6 +64,17 @@
     $('.video-link').magnificPopup({
       type: 'iframe',
       midClick: true
+    });
+    $.ajax({
+      url: 'http://cdn.soundfreaq.com/data/data.json?callback=?',
+      type: 'GET',
+      dataType: 'jsonp',
+      success: function(data) {
+        return console.log('getting somewhere');
+      },
+      error: function() {
+        return console.log('major fail 2');
+      }
     });
     $('div#header').scrollToFixed();
     menus = $('div#header #search, div#header #menu');
@@ -119,12 +131,11 @@
       navContainer: '#quote-slider'
     });
     $('.product-slider').responsiveSlides({
+      auto: false,
       namespace: "slides",
-      nav: true,
-      pause: true,
-      nextText: '<i class="fa fa-chevron-right"></i>',
-      prevText: '<i class="fa fa-chevron-left"></i>'
+      pager: true
     });
+    $('ul.slides_tabs.slides2_tabs li a').html('<i class="fa fa-circle"></i>');
     $("#product-image-gallery #images").justifiedGallery({
       'rowHeight': 360,
       'captions': true
@@ -133,6 +144,7 @@
     imageRoll.remove();
     galleryImg = $('#product-image-gallery #images a img');
     pinDescrip = $('.product-headline h1').text();
+    thisUrl = $(location).attr('href');
     $(galleryImg).hover(function() {
       var imgSrc;
       $(this).parent().append(imageRoll);
@@ -146,7 +158,7 @@
             $(this).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=' + pinDescrip);
             break;
           case 'facebook':
-            $(this).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=http://soundfreaq-theme.myshopify.com/products/soundrise');
+            $(this).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=' + thisUrl + '&picture' + imgSrc);
         }
         return $('#images .image-roll a.image').magnificPopup({
           type: 'image',
