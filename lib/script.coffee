@@ -4,10 +4,10 @@ $ ->
 	
 	
 			
-	# $.getJSON 'http://ipinfo.io/json/', (location) ->
-	# 	if location.country is 'US'
-	$.getJSON 'http://freegeoip.net/json/', (location) ->
-		if location.country_code is 'US'	
+	$.getJSON 'http://ipinfo.io/json/', (location) ->
+		if location.country is 'US'
+	# $.getJSON 'http://freegeoip.net/json/', (location) ->
+	# 	if location.country_code is 'US'	
 			$('a.buy-btn.intl, .price.intl')
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl')
@@ -37,9 +37,13 @@ $ ->
 		event.preventDefault()
 		$.magnificPopup.close()
 
+	#QUICK ADD MODAL
+	#INDIVIDUAL VARIANTS ON SHOP PAGE
+	$('body').on 'click', ->
+		$('<div id="modal">hello</div>').prependTo('body').delay(2000).fadeOut()
+		
 
-
-	#CUSTOM CART LOGIC
+	#CUSTOM ADD TO CART LOGIC
 	$('.add-to-cart').on 'click', (event) ->
 		event.preventDefault()
 		quantity = parseInt($(@).parent().find('#quantity').val())

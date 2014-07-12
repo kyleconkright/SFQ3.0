@@ -1447,7 +1447,17 @@ and (max-width : 800px) {
 
 
 
+// MODAL
 
+#modal {
+	position: fixed;
+	z-index: 10000;
+	line-height: 60px;
+	text-align: center;
+	width: 100%;
+	height: 60px;
+	background: $sfqblue;
+}
 
 
 

@@ -2,24 +2,25 @@
 
  	<h2>{{ product.title }}</h2>
 
+
 	<form action="/cart/add" method="post" id="cart-add">
 	    <div id="product-variants">
-	    	{% if product.variants.size > 1 %}
-	       	<select id="product-select" name='id'>
-	       		<option disabled="disabled" selected="selected">Pick an Option</option>
-	        	{% for variant in product.variants %}
-	        		{% assign sku = {{variant.sku | downcase }} %}
-	        		{% if variant.available %}
-	        			<option data-sku="{{sku}}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}
+		    {% if product.variants.size > 1 %}
+		       	<select id="product-select" name='id'>
+		       		<option disabled="disabled" selected="selected">Pick an Option</option>
+		        	{% for variant in product.variants %}
+		        		{% assign sku = {{variant.sku | downcase }} %}
+		        		{% if variant.available %}
+		        			<option data-sku="{{sku}}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}
 
-		        				{% if variant.inventory_quantity < 5 %} - {{ variant.inventory_quantity }} in Stock{%endif%}
+			        				{% if variant.inventory_quantity < 5 %} - {{ variant.inventory_quantity }} in Stock{%endif%}
 
-	        			</option>
-	        		{% else %}
-	        			<option data-sku="{{sku}}" disabled="disabled" value="{{ variant.id }}">{{ variant.title }} - Sold Out</option>
-	        		{% endif %}
-	        	{% endfor %}
-	       	</select>
+		        			</option>
+		        		{% else %}
+		        			<option data-sku="{{sku}}" disabled="disabled" value="{{ variant.id }}">{{ variant.title }} - Sold Out</option>
+		        		{% endif %}
+		        	{% endfor %}
+		       	</select>
 	       	{% endif %}
 	       	<select id="quantity" name="quantity">
        	        {% for i in (1..20) %}
@@ -30,11 +31,11 @@
 	       		<img class="main-image" src="{{ product.featured_image | product_img_url: 'large' }}">
 	       		<ul id="preload" >
 	       		{% for image in product.images %}
-	       		{% if image.alt contains 'SFQ' %}
-	       		  <li>
-	       		     <img style="display: none;" src="{{ image | product_img_url: 'large' }}" alt="" />
-	       		  </li>
-	       		{% endif %}
+		       		{% if image.alt contains 'SFQ' %}
+					<li>
+						<img style="display: none;" src="{{ image | product_img_url: 'large' }}" alt="" />
+					</li>
+		       		{% endif %}
 	       		{% endfor %}
 	       		</ul>
 	       	</div>	
