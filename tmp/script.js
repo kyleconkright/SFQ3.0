@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip, thisUrl;
+    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip, rightDiv, thisUrl;
     $.getJSON('http://ipinfo.io/json/', function(location) {
       if (location.country === 'US') {
         $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
@@ -25,14 +25,29 @@
       event.preventDefault();
       return $.magnificPopup.close();
     });
-    $('body').on('click', function() {
-      return $('<div id="modal">hello</div>').prependTo('body').delay(2000).fadeOut();
+    dropdown = $('#product-select');
+    $('.popup').on('change', dropdown, function() {
+      var new_src, sku;
+      sku = $(this).find(':selected').data('sku');
+      new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src');
+      return $(this).find('.main-image').attr('src', new_src);
     });
     $('.add-to-cart').on('click', function(event) {
-      var cartCount, id, optionCopy, quantity;
+      var cartCount, hasHave, id, name, optionCopy, plural, quantity;
       event.preventDefault();
       quantity = parseInt($(this).parent().find('#quantity').val());
       id = $(this).parent().find('#product-select').val();
+      name = $(this).parent().find(':selected').data('name');
+      if (name == null) {
+        name = $(this).parent().find('#product-name').data('name');
+      }
+      if (quantity > 1) {
+        plural = 's';
+        hasHave = 'have';
+      } else {
+        plural = '';
+        hasHave = 'has';
+      }
       cartCount = parseInt($('.cart-count').text());
       optionCopy = '<p><a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a></p>';
       return $.ajax({
@@ -42,7 +57,8 @@
         dataType: 'json',
         success: function() {
           $('.cart-count, .quick-cart-count').text(cartCount += quantity).removeClass('hide');
-          return $('.quick-look-options').html(optionCopy);
+          $('.quick-look-options').html(optionCopy);
+          return $('<div id="modal">' + quantity + ' ' + name + '' + plural + ' <span>' + hasHave + ' been added to your cart</span></div>').stop().prependTo('body').delay(2000).fadeOut();
         },
         error: function(error) {
           console.log(error.status);
@@ -56,28 +72,6 @@
           return $('.quick-look-options').html(optionCopy);
         }
       });
-    });
-    dropdown = $('#product-select');
-    $('.popup').on('change', dropdown, function() {
-      var new_src, sku;
-      sku = $(this).find(':selected').data('sku');
-      new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src');
-      return $(this).find('.main-image').attr('src', new_src);
-    });
-    $('.video-link').magnificPopup({
-      type: 'iframe',
-      midClick: true
-    });
-    $.ajax({
-      url: 'http://cdn.soundfreaq.com/data/data.json?callback=?',
-      type: 'GET',
-      dataType: 'jsonp',
-      success: function(data) {
-        return console.log('getting somewhere');
-      },
-      error: function() {
-        return console.log('major fail 2');
-      }
     });
     $('div#header').scrollToFixed();
     menus = $('div#header #search, div#header #menu');
@@ -168,6 +162,14 @@
           midClick: true
         });
       });
+    });
+    $('.video-link').magnificPopup({
+      type: 'iframe',
+      midClick: true
+    });
+    rightDiv = $('#main-features div.bit-2 div');
+    rightDiv.has('img').css({
+      'width': '100%'
     });
     insta_url = 'https://api.instagram.com/v1/users/239381321/media/recent/?client_id=b64a4afe94a34684bcb7f61c86bc6c4a&count=9&callback=?';
     return $.ajax({

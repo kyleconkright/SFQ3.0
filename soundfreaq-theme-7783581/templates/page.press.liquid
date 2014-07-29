@@ -21,7 +21,7 @@
 				    						{% if tag contains 'icon' %}
 				    						{% capture pressLogo %}{{ tag }}.png{% endcapture %}
 				    							{% if article.excerpt contains 'http' %}
-				    								<a href="{{article.excerpt}}" target="_blank"><img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}"></a>
+				    								<a class="full-link" href="{{article.excerpt}}" target="_blank">Read full article at<img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}"></a>
 				    							{% else %}
 				    								<img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}">
 				    							{% endif %}
@@ -63,7 +63,7 @@
 	        				<ul>
                                 <li><a href="http://cdn.soundfreaq.com/productsheets/{{productURL}}-product-sheet.pdf">Product Sheet</a></li>
 	        					<li><a href="#">Images</a></li>
-                                <li><a href="#">Design Note</a></li>
+                                <li><a href="http://cdn.soundfreaq.com/designnotes/{{productURL}}-design-note.pdf">Design Note</a></li>
 	        				</ul>
 	        			</div>
 	        		</div>

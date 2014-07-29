@@ -40,64 +40,66 @@
 
 
 
-        <div id="sub-buckets" class="wrapper">    
-            <!--sub bucket 1-->
-            <div class="bit-4 sub-bucket">
-                <div class="box">
-                    <a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>
-                </div>
-            </div>
-            <!--end sub bucket 1-->
-
-            <!--sub bucket 2-->
-            <div class="bit-4 sub-bucket">
-                <div class="box">
-                    <a class="intl" href="{{settings.sub-bucket-2-intl-link}}">{{ settings.sub-bucket-2 }}</a>
-                    <a class="us" href="{{settings.sub-bucket-2-us-link}}">{{ settings.sub-bucket-2 }}</a>
-                </div>
-            </div>
-            <!--end sub bucket 2-->
-
-            <!--sub bucket 3-->
-            {% if template contains 'product' %}
-                
-                <div class="bit-4 sub-bucket intl">
+        <div id="sub-buckets">
+            <div class="wrapper">    
+                <!--sub bucket 1-->
+                <div class="bit-4 sub-bucket">
                     <div class="box">
-                        <a href="{{settings.sub-bucket-3-intl-link}}">{{ settings.sub-bucket-3-intl }}</a>
+                        <a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>
                     </div>
                 </div>
+                <!--end sub bucket 1-->
 
-                <div class="bit-4 sub-bucket us">
+                <!--sub bucket 2-->
+                <div class="bit-4 sub-bucket">
                     <div class="box">
-                        <a href="{{settings.sub-bucket-3-prod-link}}">{{ settings.sub-bucket-3-prod }}</a>
+                        <a class="intl" href="{{settings.sub-bucket-2-intl-link}}">{{ settings.sub-bucket-2 }}</a>
+                        <a class="us" href="{{settings.sub-bucket-2-us-link}}">{{ settings.sub-bucket-2 }}</a>
                     </div>
                 </div>
+                <!--end sub bucket 2-->
 
-            {% else %}
+                <!--sub bucket 3-->
+                {% if template contains 'product' %}
+                    
+                    <div class="bit-4 sub-bucket intl">
+                        <div class="box">
+                            <a href="{{settings.sub-bucket-3-intl-link}}">{{ settings.sub-bucket-3-intl }}</a>
+                        </div>
+                    </div>
 
-                <div class="bit-4 sub-bucket intl">
+                    <div class="bit-4 sub-bucket us">
+                        <div class="box">
+                            <a href="{{settings.sub-bucket-3-prod-link}}">{{ settings.sub-bucket-3-prod }}</a>
+                        </div>
+                    </div>
+
+                {% else %}
+
+                    <div class="bit-4 sub-bucket intl">
+                        <div class="box">
+                            <a href="{{settings.sub-bucket-3-intl-link}}">{{ settings.sub-bucket-3-intl }}</a>
+                        </div>
+                    </div>
+
+                    <div class="bit-4 sub-bucket us">
+                        <div class="box">
+                            <a href="{{settings.sub-bucket-3-gen-link}}">{{ settings.sub-bucket-3-gen }}</a>
+                        </div>
+                    </div>
+
+                {% endif %}
+                <!--end sub bucket 3-->
+
+                <!--sub bucket 4-->
+                <div class="bit-4 sub-bucket">
                     <div class="box">
-                        <a href="{{settings.sub-bucket-3-intl-link}}">{{ settings.sub-bucket-3-intl }}</a>
+                        <a href="{{settings.sub-bucket-4-link}}">{{ settings.sub-bucket-4 }}</a>
                     </div>
                 </div>
-
-                <div class="bit-4 sub-bucket us">
-                    <div class="box">
-                        <a href="{{settings.sub-bucket-3-gen-link}}">{{ settings.sub-bucket-3-gen }}</a>
-                    </div>
-                </div>
-
-            {% endif %}
-            <!--end sub bucket 3-->
-
-            <!--sub bucket 4-->
-            <div class="bit-4 sub-bucket">
-                <div class="box">
-                    <a href="{{settings.sub-bucket-4-link}}">{{ settings.sub-bucket-4 }}</a>
-                </div>
-            </div>
-            <!--end sub bucket 4-->
-        </div><!--WRAPPER-->
+                <!--end sub bucket 4-->
+            </div><!--WRAPPER-->
+        </div><!--sub buckets-->
     </div><!--BUCKETS-->
 
 

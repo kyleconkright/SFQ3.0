@@ -1,5 +1,5 @@
 <div class="frame" id="product-page">  
-        <span class="product-name"><h2>{{ product.title }}</h2></span>
+        <div class="wrapper"><span class="product-name"><h2>{{ product.title }}</h2></span></div>
 
         <div class="product-slider">
             {% for image in product.images %}
@@ -38,7 +38,7 @@
             <div class="bit-5">
                 <ul class="product-downloads">
                     <li><a href="http://userguides.soundfreaq.com/us/{{product.title | handleize }}_user-guide.pdf" target="_blank"><i class="fa fa-book"></i> User Guide</a></li>
-                    <li><i class="fa fa-wrench"></i> Tech Specs</li>
+                    <li><a href="http://cdn.soundfreaq.com/productsheets/{{product.title | handleize }}-product-sheet.pdf" target="_blank"><i class="fa fa-wrench"></i> Tech Specs</a></li>
                     <li><a href="http://soundfreaq.desk.com/" target="_blank"><i class="fa fa-comments-o"></i> Support</a></li>
                 </ul>
             </div>

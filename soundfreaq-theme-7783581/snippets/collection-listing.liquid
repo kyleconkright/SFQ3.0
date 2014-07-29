@@ -19,8 +19,14 @@
 					 			<h4>{{ product.title }}</h4>
 					 			<h5>{{ productSelect }}</h5>
 								{% include 'price' %}
-								<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
-								{% include 'quick-look' %}
+								{% comment %}<a href="#{{product.handle}}-quick-look" class="buy-btn intl add-to-cart">Add to Cart</a>{% endcomment %}
+								<form action="/cart/add" method="post" id="cart-add">
+									<input type="hidden" id="product-select" name='id' value="{{variant.id}}">
+									<input type="hidden" id="product-name" data-name="{{product.title}} {{variant.title}}" value="{{product.title}} {{variant.title}}">
+									<input type="hidden" id="quantity" name="quantity" value="1">
+									<input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
+								</form>
+								{% comment %}{% include 'quick-look' %}{% endcomment %}
 
 
 				 			</div><!--end variant-->

@@ -37,17 +37,31 @@ $ ->
 		event.preventDefault()
 		$.magnificPopup.close()
 
-	#QUICK ADD MODAL
-	#INDIVIDUAL VARIANTS ON SHOP PAGE
-	$('body').on 'click', ->
-		$('<div id="modal">hello</div>').prependTo('body').delay(2000).fadeOut()
-		
+
+
+	#PREVIEW IMAGE QUICK LOOK
+	dropdown = $('#product-select')
+
+	$('.popup').on 'change', dropdown, ->
+		sku = $(@).find(':selected').data('sku')
+		new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src')
+		$(@).find('.main-image').attr('src', new_src)
+
 
 	#CUSTOM ADD TO CART LOGIC
 	$('.add-to-cart').on 'click', (event) ->
 		event.preventDefault()
 		quantity = parseInt($(@).parent().find('#quantity').val())
 		id = $(@).parent().find('#product-select').val()
+		name = $(@).parent().find(':selected').data('name')
+		if not name?
+			name = $(@).parent().find('#product-name').data('name')
+		if quantity > 1
+			plural = 's'
+			hasHave = 'have'
+		else
+			plural = ''
+			hasHave = 'has'
 		cartCount = parseInt($('.cart-count').text())
 		optionCopy = '<p><a href="../cart">Checkout</a> | <a class="close" href="#">Continue Shopping</a></p>'
 		$.ajax
@@ -58,6 +72,7 @@ $ ->
 			success: ->
 				$('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
 				$('.quick-look-options').html(optionCopy)
+				$('<div id="modal">' + quantity + ' ' + name + '' + plural + ' <span>' + hasHave + ' been added to your cart</span></div>').stop().prependTo('body').delay(2000).fadeOut()
 			error: (error) ->
 				console.log error.status
 				switch error.status
@@ -86,37 +101,10 @@ $ ->
 
 
 
-	#PREVIEW IMAGE QUICK LOOK
-	dropdown = $('#product-select')
-
-	$('.popup').on 'change', dropdown, ->
-		sku = $(@).find(':selected').data('sku')
-		new_src = $('.popup #quick-preview-image #preload li img[src*=' + sku + ']').attr('src')
-		$(@).find('.main-image').attr('src', new_src)
-
-
-
-
-	#PRODUCT VIDEO POPUP
-	$('.video-link').magnificPopup
-		type:'iframe'
-		midClick: true
-
-
-	# CUSTOM DATA
-	$.ajax
-		url: 'http://cdn.soundfreaq.com/data/data.json?callback=?'
-		type: 'GET'
-		dataType: 'jsonp'
-		success: (data) ->
-			console.log 'getting somewhere'
-		error: ->
-			console.log 'major fail 2'
 
 
 	#FIXED HEADER
 	$('div#header').scrollToFixed()
-
 
 
 	#MENU + SEARCH
@@ -162,6 +150,7 @@ $ ->
 	$('#product-compare ul.holder > li:even').css 'background-color':'#dfdfdf'			
 						
 
+
 	#QUOTE SLIDER
 	$('.quote-slider').responsiveSlides({
 		namespace: "slides",
@@ -172,6 +161,7 @@ $ ->
 		navContainer: '#quote-slider',
 		})
 
+
 	#PRODUCT IMAGE SLIDER
 	$('.product-slider').responsiveSlides
 		auto: false
@@ -180,8 +170,6 @@ $ ->
 
 	$('ul.slides_tabs.slides2_tabs li a').html('<i class="fa fa-circle"></i>')
 	
-
-
 
 	#PRODUCT IMAGE GALLERY
 	$("#product-image-gallery #images").justifiedGallery
@@ -213,7 +201,15 @@ $ ->
 		)
 	
 
-	
+	#PRODUCT VIDEO POPUP
+	$('.video-link').magnificPopup
+		type:'iframe'
+		midClick: true
+
+	#PRODUCT FEATURE RIGHT WIDTH FIX
+	rightDiv = $('#main-features div.bit-2 div')
+
+	rightDiv.has('img').css 'width':'100%'
 
 
 

@@ -95,7 +95,7 @@ b {
 }
 
 .buy-btn, .where-to-buy-btn, input.add-to-cart, .cart-btn {
-	font-size:1.2em;
+	font-size: .9em;
 	background: $orange;
 	color: $white;
 	font-family: $knockout34;
@@ -340,7 +340,6 @@ div#container {
 				font-size: $pfontsize;
 			}
 			.hidden-product-info {
-				font-size: .75em;
 				display:none;
 				position: absolute;
 				width: 100%;
@@ -442,7 +441,7 @@ div#container {
 					border: none;
 				}
 			}
-			#sub-buckets.wrapper {
+			#sub-buckets {
 				width: 100%;
 				background: $light;
 				padding: $spacefix/2 0;
@@ -489,10 +488,10 @@ div#container {
 
 	div#product-page {
 		.product-name {
-			width: 95%;
 			position: absolute;
 			z-index: 100;
-			left: 2.5%;
+			padding: 0 1.25%;
+			width: 50%;
 			h2 {
 				background: $sfqblue;
 				color: $white;
@@ -504,15 +503,15 @@ div#container {
 			background: #FFFFFF;
 			max-width: 100%;
 			width: 100%;
-			height: 0px;
-			max-height: 772px;
-			min-height: 515px;
+			height: 40vw;
+			max-height: 515px;
+			min-height: 215px;
 			margin: 0 0 $spacefix;
 			div {
 				width: 100%;
 				height: 100%;
 				display: block;
-				background-size: 100%;
+				background-size: contain;
 				background-position: bottom;
 				background-repeat: no-repeat;
 			}
@@ -605,7 +604,7 @@ div#container {
 		#features {
 			margin: $spacefix*4 auto;
 			div.feature, div.sub-feature {
-				margin: 0 0 $spacefix*4;
+				margin: 0 0 $spacefix*8;
 				div {
 					div {
 						width:90%;
@@ -724,9 +723,6 @@ div#container {
 						font-weight: 700;
 					}
 				}
-				a.buy-btn {
-					font-size: .75em;
-				}
 				img {
 					width: 100%;
 				}
@@ -804,6 +800,7 @@ div#container {
 			.story {
 				padding: 0 $space*2.5 0 0;
 				margin: 0 0 $spacefix*2 0;
+				min-height: 250px;
 				h2 {
 				}
 				time {
@@ -827,10 +824,20 @@ div#container {
 						padding: $spacefix/8 $spacefix/4;
 					}
 				}
-				img.logo {
-					height: 20px;
-					margin: $spacefix 0 0;
+				.full-link {
+						font-size: .8em;
+						font-family: $knockout30;
+						margin: $spacefix 0 0;
+						display: block;
+					img.logo {
+						height: 20px;
+						margin: $spacefix/8 0 0;
+						display: block;
+					}
 				}
+			}
+			.story:last-of-type {
+				float: left;
 			}
 		}
 	}
@@ -1250,6 +1257,12 @@ div#container {
 			}
 		}
 	}
+	.empty-cart {
+		text-align: center;
+		a {
+			text-decoration: underline;
+		}
+	}
 }
 
 
@@ -1448,15 +1461,22 @@ and (max-width : 800px) {
 
 
 // MODAL
-
 #modal {
 	position: fixed;
 	z-index: 10000;
-	line-height: 60px;
 	text-align: center;
 	width: 100%;
-	height: 60px;
+	padding: $spacefix;
 	background: $sfqblue;
+	font-family: $knockout30;
+	color: $white;
+	font-size: 2em;
+	span {
+		display: block;
+		font-size: .65em;
+		font-family: $sentinel;
+		color: $light;
+	}
 }
 
 
