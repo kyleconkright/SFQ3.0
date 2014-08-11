@@ -1,15 +1,20 @@
-
-
-
-
-
-
-
 <div class="frame" id="post">    
     <div class="wrapper">
 
         <div class="article">
-            <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+            
+            <div class="pre">
+                <div class="bit-2">
+                    <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+                </div>
+                <div class="bit-2">
+                    {% if article.excerpt contains 'http' %}
+                        <a href="{{article.excerpt}}" target="_blank">original article <i class="fa fa-angle-double-right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+            
+
             <h1 class="title">{{ article.title }}</h1>
             {% assign test = article.content | split: '<!-- split -->' %}
             <span class="sub">{{ test[0] }}</p></span>
@@ -29,7 +34,7 @@
         </div><!--.article-->
 
         {% if blog.next_article or blog.previous_article %}
-        <p class="clearfix"> 
+        <p class="clearfix nextprev"> 
           {% if blog.next_article %}
           <span class="left">{{ '&larr; Next Post' | link_to: blog.next_article }}</span>
           {% endif %}    

@@ -869,7 +869,11 @@ div#container {
 			margin: 0 0 $spacefix*2;
 			color: $blue;
 		}
-		ul#insta {
+		ul.socialfeed {
+			margin: 0 0 $spacefix*4;
+			h2 {
+				margin: $spacefix/4 0;
+			}
 			li {
 
 				img {
@@ -1131,6 +1135,23 @@ div#container {
 			min-height: 100vh;
 			.article {
 				margin: $spacefix*4 0;
+				.pre {
+					width: 100%;
+					display: block;
+					float: left;
+					border-bottom: 1px solid #eee;
+					padding: 0 0 $spacefix/2;
+					margin: 0 0 $spacefix/2;
+					time {
+						color: $blue;
+						font-weight: 700;
+					}
+					.bit-2:last-of-type {
+						text-align: right;
+						font-size: .8em;
+						font-style: italic;
+					}
+				}
 				h1 {
 					font-weight: 700;
 					line-height: 1.2em;
@@ -1144,14 +1165,12 @@ div#container {
 				p {
 					margin: $spacefix 0;
 				}
-				time {
-					display: block;
-					font-weight: 700;
-					color: $blue;
-					border-bottom: 1px solid #eee;
-					padding: 0 0 $spacefix/2;
-					margin: 0 0 $spacefix/2;
+				.meta {
+					display: none;
 				}
+			}
+			.nextprev {
+				display: none;
 			}
 		}
 	}

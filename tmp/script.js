@@ -21,9 +21,9 @@
     $('.open-quick-look').on('click', function() {
       return $('.quick-look-options').html('');
     });
-    $('a.close').on('click', function(event) {
+    $('.close').on('click', function(event) {
       event.preventDefault();
-      return $.magnificPopup.close();
+      return alert('hello');
     });
     dropdown = $('#product-select');
     $('.popup').on('change', dropdown, function() {
@@ -58,7 +58,11 @@
         success: function() {
           $('.cart-count, .quick-cart-count').text(cartCount += quantity).removeClass('hide');
           $('.quick-look-options').html(optionCopy);
-          return $('<div id="modal">' + quantity + ' ' + name + '' + plural + ' <span>' + hasHave + ' been added to your cart</span></div>').stop().prependTo('body').delay(2000).fadeOut();
+          $('<div id="modal">' + quantity + ' ' + name + '' + plural + ' <span>' + hasHave + ' been added to your cart</span></div>').stop().prependTo('body').delay(2000).fadeOut();
+          return $('.close').on('click', function(event) {
+            event.preventDefault();
+            return $.magnificPopup.close();
+          });
         },
         error: function(error) {
           console.log(error.status);
@@ -140,7 +144,7 @@
     imageRoll = $('.image-roll');
     imageRoll.remove();
     galleryImg = $('#product-image-gallery #images a img');
-    pinDescrip = $('.product-headline h1').text();
+    pinDescrip = $('.product-name h2').text();
     thisUrl = $(location).attr('href');
     $(galleryImg).hover(function() {
       var imgSrc;
@@ -152,7 +156,7 @@
             $(this).attr('href', imgSrc).addClass('image');
             break;
           case 'pinterest':
-            $(this).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=' + pinDescrip);
+            $(this).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=Soundfreaq ' + pinDescrip);
             break;
           case 'facebook':
             $(this).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=' + thisUrl + '&picture' + imgSrc);
@@ -177,9 +181,10 @@
       url: insta_url,
       dataType: 'jsonp',
       success: function(results) {
-        return $.each(results.data, function() {
+        $.each(results.data, function() {
           return $('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta');
         });
+        return $('<a href="http://www.instagram.com/soundfreaq" target="_blank">follow on instagram</a>').appendTo('ul#insta');
       },
       error: function() {
         return console.log('insta fail');

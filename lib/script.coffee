@@ -33,9 +33,10 @@ $ ->
 	$('.open-quick-look').on 'click', ->
 		$('.quick-look-options').html('')
 
-	$('a.close').on 'click', (event) ->
+	$('.close').on 'click', (event) ->
 		event.preventDefault()
-		$.magnificPopup.close()
+		# $.magnificPopup.close()
+		alert 'hello'
 
 
 
@@ -73,6 +74,9 @@ $ ->
 				$('.cart-count, .quick-cart-count').text(cartCount +=quantity).removeClass 'hide'
 				$('.quick-look-options').html(optionCopy)
 				$('<div id="modal">' + quantity + ' ' + name + '' + plural + ' <span>' + hasHave + ' been added to your cart</span></div>').stop().prependTo('body').delay(2000).fadeOut()
+				$('.close').on 'click', (event) ->
+					event.preventDefault()
+					$.magnificPopup.close()
 			error: (error) ->
 				console.log error.status
 				switch error.status
@@ -80,6 +84,7 @@ $ ->
 					when 422 then optionCopy = 'Sorry, we are out of that item'
 
 				$('.quick-look-options').html(optionCopy)
+
 
 
 
@@ -181,7 +186,7 @@ $ ->
 	imageRoll = $('.image-roll')
 	imageRoll.remove()
 	galleryImg = $('#product-image-gallery #images a img')
-	pinDescrip = $('.product-headline h1').text()
+	pinDescrip = $('.product-name h2').text()
 	thisUrl = $(location).attr('href')
 	$(galleryImg).hover(
 		->
@@ -191,7 +196,7 @@ $ ->
 				-> 
 					switch $(@).data('name')
 						when 'image' then $(@).attr('href', imgSrc).addClass 'image'
-						when 'pinterest' then $(@).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=' + pinDescrip)
+						when 'pinterest' then $(@).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=Soundfreaq ' + pinDescrip)
 						when 'facebook' then $(@).attr('href', 'http://www.facebook.com/sharer/sharer.php?u=' + thisUrl + '&picture' + imgSrc)
 
 					$('#images .image-roll a.image').magnificPopup
@@ -224,5 +229,6 @@ $ ->
 		success: (results) ->
 			$.each results.data, ->
 				$('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta')
+			$('<a href="http://www.instagram.com/soundfreaq" target="_blank">follow on instagram</a>').appendTo('ul#insta')
 		error: ->
 			console.log 'insta fail'

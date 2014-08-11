@@ -23,7 +23,7 @@
 		       	</select>
 		    {% else %}
 		       	<input type="hidden" id="product-select" name="id" value="{{product.variants.first.id}}">
-		       	<input type="hidden" id="product-name" data-name="hello">
+		       	<input type="hidden" id="product-name" data-name="{{product.title}}">
 	       	{% endif %}
 	       	<select id="quantity" name="quantity">
        	        {% for i in (1..20) %}
