@@ -1,0 +1,14 @@
+<div id="news" class="frame">
+{% include 'page-header-illustration' %}
+
+    <div class="wrapper blog-entries">
+
+    <ul class="frame">
+        {% for article in blogs.news.articles %}
+            {% include 'blogroll' %}  
+        {% endfor %}
+    </ul>
+  
+    </div><!--WRAPPER-->
+
+</div><!--BLOG-->

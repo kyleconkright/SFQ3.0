@@ -24,6 +24,15 @@
     		<p>{{ settings[blogsub] }}</p>
     	</div>
 
+{% elsif template contains 'news' %}
+<div id="page-header" class="frame" style="background-image: url({{ pagebg | asset_url }})">
+    <div class="wrapper">
+
+        <div class="bit-1"><h1>{{ settings[pageh1] }}</h1></div>
+        <div class="bit-3">
+            <p>{{ settings[pagesub] }}</p>
+        </div>
+
 {% else %}
 <div id="page-header" class="frame" style="background-image: url({{ pagebg | asset_url }})">
     <div class="wrapper">

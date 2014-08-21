@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 	form = $('.popup form')
 
 	// if ($.cookie('popup') != '1') {
@@ -7,10 +8,26 @@ $(document).ready(function() {
 	    	$(window).load(function() {
 	    		$.magnificPopup.open({
 	    			items: {
-	    			    src: '<div class="popup" style="background-color: {{ settings.mailing-list-popup-bg-color }}">{% if settings.mailing-list-popup-image %}<img src="{{ "popup-img.png" | asset_url }}">{% else %}<h2>{{ settings.mailing-list-popup-header }}</h2>{% endif %}<form><label>{{ settings.mailing-list-popup-top }}</label><input type="text" placeholder="your email" name="EMAIL" id="mce-EMAIL"><input type="submit" value="signup"><input type="hidden" name="b_1a463054a5823c402f5c28c6c_fd0c707a7d" value=""></form>{% if settings.mailing-list-terms-switch %}<p class="terms">{{ settings.mailing-list-terms }}</p>{% endif %}</div>',
+	    			    src: '<div id="newsletter2" class="popup" style="background-color: {{ settings.mailing-list-popup-bg-color }}">{% if settings.mailing-list-popup-image %}<img src="{{ "popup-img.png" | asset_url }}">{% else %}<h2>{{ settings.mailing-list-popup-header }}</h2>{% endif %}<form><label>{{ settings.mailing-list-popup-top }}</label><input type="text" placeholder="your email" name="EMAIL" id="mce-EMAIL"><input type="submit" value="signup"><input type="hidden" name="b_1a463054a5823c402f5c28c6c_fd0c707a7d" value=""></form>{% if settings.mailing-list-terms-switch %}<p class="terms">{{ settings.mailing-list-terms }}</p>{% endif %}</div>',
 	    			    type: 'inline',
 	    			    preloader: false
 	    			}
+	    		});
+	    		$('#newsletter2 form').on('submit', function(event){
+	    			event.preventDefault();
+	    			$.ajax({
+						type: 'GET',
+						url: 'http://soundfreaq.us7.list-manage.com/subscribe/post-json?u=1a463054a5823c402f5c28c6c&amp;id=fd0c707a7d&c=?',
+						data: $(this).serialize(),
+						dataType: 'json',
+						contentType: 'application/json; charset=utf-8',
+						error: function(err) {
+							alert('no');
+						},
+						success: function(data) {
+							$('label').text('Thanks! Check your inbox to confirm.')
+						}
+					});
 	    		});
 	    	});
 	    {% endif %}

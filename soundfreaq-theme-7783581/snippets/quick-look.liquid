@@ -30,6 +30,8 @@
        	        	<option>{{i}}</option>
        	        {% endfor %}
        	    </select>
+
+       	    {% if product.images.size > 0 %}
 	       	<div id="quick-preview-image">
 	       		<img class="main-image" src="{{ product.featured_image | product_img_url: 'large' }}">
 	       		<ul id="preload" >
@@ -41,7 +43,9 @@
 		       		{% endif %}
 	       		{% endfor %}
 	       		</ul>
-	       	</div>	
+	       	</div>
+	       	{% endif %}
+
 	    </div><!-- product-variants -->
 
 	    <input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />

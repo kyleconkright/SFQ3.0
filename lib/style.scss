@@ -695,9 +695,14 @@ div#container {
 
 	#store {
 		padding: $spacefix*2 0;
+		text-align: center;
 		.wrapper {
+			width: 70%;
+			h1 {
+				margin: 0 0 $spacefix;
+			}
 			.product {
-				margin: 0 0 $spacefix*2;
+				margin: 0;
 			}
 			.related-accessories {
 				margin: $spacefix*2 0;
@@ -707,6 +712,7 @@ div#container {
 			}
 			.variant, .accessory {
 				text-align: center;
+				margin: $spacefix*2 0;
 				h5 {
 					margin: $spacefix/4 0 0;
 				}
@@ -731,116 +737,65 @@ div#container {
 			  	float: left;
 			}
 		}
+		#accessories, #collection {
+			padding: $spacefix*2 0;
+			h1 {
+				padding: $spacefix*2;
+			}
+		}
 	}
 
-	// #store {
-	// 	padding: $spacefix*2 0;
-	// 	.wrapper {
-	// 		div#speakers {
-	// 			margin: 0 0 $spacefix*4;
-	// 		}
-	// 		.product {
-	// 			padding: $space 0;
-	// 			margin: $space 0;
-	// 			h2 {
-	// 				margin: 0 0 $spacefix;
-	// 			}
-	// 			p.model {
-	// 				font-family: $knockout30;
-	// 				font-size: .85em;
-	// 				color: $gray;
-	// 			}
-	// 			.variant {
-	// 				text-align: center;
-	// 				img {
-	// 					width: 100%;
-	// 				}
-	// 				form {
-	// 					p.sku {
-	// 						font-family: $knockout30;
-	// 						font-size: .8em;
-	// 						color: $gray;
-	// 					}
-	// 					div.price {
-	// 						display: block;
-	// 						width: 100%;
-	// 						margin: $spacefix/4 0 $spacefix/2;
-	// 						.orig {
-	// 							color: $lightgray/1.1;
-	// 							text-decoration: line-through;
-	// 						}
-	// 						.sale {
-	// 							color: $blue;
-	// 							font-weight: 700;
-	// 						}
-	// 					}
-	// 					input {
-	// 						font-size: .8em;
-	// 					}
-	// 				}
-	// 			}
-	// 			.related-accessories {
-	// 				margin: $spacefix*2 0 0;
-	// 			}
-	// 		}
-	// 		[class*='bit-']:last-of-type {
-	// 		  	float: left;
-	// 		}
-	// 	}
-	// }
 
 	// ---------------------------- PAGES WITH BLOGS ---------------------------- //
 	// ---------------------------- NEWS, PRESS, ETC ---------------------------- //
 	// ----------------- specific styles in appropriate locations --------------- //
 
-	#content {
+	.blog-entries {
 		padding: $spacefix*4 0;
-		.main {
-			padding: 0;
-			.story {
-				padding: 0 $space*2.5 0 0;
-				margin: 0 0 $spacefix*2 0;
-				min-height: 250px;
-				h2 {
-				}
-				time {
-					font-size: .85em;
-					display: block;
-					margin: $spacefix/2 0;
-					font-weight: 700;
-					color: $blue;
-				}
-				p.article {
-					text-align: justify;
-				}
-				.more-btn {
-					margin: $spacefix 0 $spacefix/2;
-				}
-				ul li.tags {
-					a {
-						font-size: $pfontsize/1.65;
-						color: $light;
-						background: $sfqblue;
-						padding: $spacefix/8 $spacefix/4;
-					}
-				}
-				.full-link {
-						font-size: .8em;
-						font-family: $knockout30;
-						margin: $spacefix 0 0;
-						display: block;
-					img.logo {
-						height: 20px;
-						margin: $spacefix/8 0 0;
-						display: block;
-					}
+		.story {
+			padding: 0 $space*2.5 0 0;
+			margin: 0 0 $spacefix*2 0;
+			min-height: 275px;
+			h2 {
+			}
+			time {
+				font-size: .85em;
+				display: block;
+				margin: $spacefix/2 0;
+				font-weight: 700;
+				color: $blue;
+			}
+			p.article {
+				text-align: justify;
+			}
+			.more-btn {
+				margin: $spacefix 0 $spacefix/2;
+			}
+			ul li.tags {
+				a {
+					font-size: $pfontsize/1.65;
+					color: $light;
+					background: $sfqblue;
+					padding: $spacefix/8 $spacefix/4;
 				}
 			}
-			.story:last-of-type {
-				float: left;
+			.full-link {
+					font-size: .8em;
+					font-family: $knockout30;
+					margin: $spacefix 0 0;
+					display: block;
+				img.logo {
+					height: 20px;
+					margin: $spacefix/8 0 0;
+					display: block;
+				}
 			}
 		}
+		.story:last-of-type {
+			float: left;
+		}
 	}
+
 
 
 	// -------------------------- MAIN NEWS FEED -------------------------- //
@@ -863,7 +818,7 @@ div#container {
 
 	.sidebar {
 		border-left: 1px solid $light;
-		padding: 0 0 0 $space;
+		padding: $spacefix*4 0 $spacefix*4 $spacefix*2;
 		#press-releases li {
 			font-size: .75em;
 			margin: 0 0 $spacefix*2;
@@ -889,7 +844,9 @@ div#container {
 
 	div#press-page {
 		.wrapper {
-			
+			.blog-entries {
+				padding: 0;
+			}
 		}
 		h3 {
 			text-transform: uppercase;
@@ -897,6 +854,7 @@ div#container {
 		}
 		#media-resources {
 			font-family: $knockout30;
+			padding: $spacefix*4 0;
 			.box {
 				.bit-3 {
 					padding: $space;
@@ -1291,7 +1249,7 @@ div#container {
 .popup {
   position: relative;
   background: $sfqblue;
-  padding: 20px;
+  padding: $spacefix;
   width: auto;
   max-width: 500px;
   margin: 20px auto;

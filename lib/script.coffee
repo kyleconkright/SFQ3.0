@@ -86,8 +86,6 @@ $ ->
 				$('.quick-look-options').html(optionCopy)
 
 
-
-
 	#CART LOGIC OLD
 	# $('.add-to-cart').on 'click', (event) ->
 	# 	cartCount = parseInt($('.cart-count').text())
@@ -103,8 +101,6 @@ $ ->
 	# 	Shopify.onItemAdded(
 	# 		alert 'hi'
 	# 		)
-
-
 
 
 
@@ -148,6 +144,11 @@ $ ->
 					$('label').text('Thanks! Check your inbox to confirm.')
 				else 
 					alert 'not valid email'
+
+	
+
+
+
 
 
 	#PRODUCT COMPARE EVEN/ODD STYLING

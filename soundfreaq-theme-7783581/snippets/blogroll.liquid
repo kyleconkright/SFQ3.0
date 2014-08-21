@@ -1,0 +1,17 @@
+
+<li class="{% if template contains 'news' %}bit-3{% else %}bit-2{%endif%} story">
+    <h2>{{ article.title }}</h2>
+    <p class="date"><time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time></p>
+    <p class="article">{{ article.content | strip_html | truncatewords: 30 }}</p>
+    {% for tag in article.tags %}
+        {% if tag contains 'icon' %}
+        {% capture pressLogo %}{{ tag }}.png{% endcapture %}
+            {% if article.excerpt contains 'http' %}
+                <a class="full-link" href="{{article.excerpt}}" target="_blank">Read full article at<img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}"></a>
+            {% else %}
+                <img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}">
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</li>
+                    

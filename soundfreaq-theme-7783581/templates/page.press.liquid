@@ -4,45 +4,6 @@
     
     <div class="wrapper">
 
-    	<div id="content">
-
-    		<div class="main bit-66">
-    			<div id="in-the-news">
-    				<h3>In The News</h3>
-    				<ul class="frame">
-    					{% for article in blogs.news.articles %}
-    						{% for tag in article.tags %}
-	    						{% if tag contains 'press' && 'review' %}
-			    					<li class="bit-2 story">
-			    						<h2>{{ article.title }}</h2>
-			    						<p class="date"><time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time></p>
-			    						<p class="article">{{ article.content | strip_html | truncatewords: 30 }}</p>
-			    						{% for tag in article.tags %}
-				    						{% if tag contains 'icon' %}
-				    						{% capture pressLogo %}{{ tag }}.png{% endcapture %}
-				    							{% if article.excerpt contains 'http' %}
-				    								<a class="full-link" href="{{article.excerpt}}" target="_blank">Read full article at<img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}"></a>
-				    							{% else %}
-				    								<img class="logo" src="http://cdn.soundfreaq.com/pressicons/{{ pressLogo }}">
-				    							{% endif %}
-				    						{% endif %}
-			    						{% endfor %}
-			    					</li>
-			    				{% endif %}	
-			    			{% endfor %}	
-    					{% endfor %}
-    				</ul>
-    			</div><!--in-the-news-->
-    		</div>
-
-    		<div class="sidebar bit-3">
-    			<h3>Press Releases</h3>
-    			<ul id="press-releases" class="frame">
-    				{{ page.content }}	
-    			</ul>
-    		</div>
-
-    	</div><!--CONTENT-->
 
     	<div id="media-resources" class="bit-1">
     		<h3>Media Resources</h3>
@@ -70,6 +31,32 @@
         		{% endfor %}
     		</div>
     	</div><!--media-resources-->
+
+        <div id="content">
+
+            <div class="main bit-66">
+                <div id="in-the-news" class="blog-entries">
+                    <h3>In The News</h3>
+                    <ul class="frame">
+                        {% for article in blogs.news.articles %}
+                            {% for tag in article.tags %}
+                                {% if tag contains 'press' && 'review' %}
+                                    {% include 'blogroll' %}
+                                {% endif %} 
+                            {% endfor %}    
+                        {% endfor %}
+                    </ul>
+                </div><!--in-the-news-->
+            </div>
+
+            <div class="sidebar bit-3">
+                <h3>Press Releases</h3>
+                <ul id="press-releases" class="frame">
+                    {{ page.content }}  
+                </ul>
+            </div>
+
+        </div><!--CONTENT-->
 
     	<div id="asi" class="bit-1">
     		<h2>As Seen In</h2>

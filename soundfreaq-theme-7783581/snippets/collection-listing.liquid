@@ -1,6 +1,8 @@
 <div id="store" class="frame">
 	<div class="wrapper">
 
+		<div id="speakers">
+		<h1>Speakers</h1>
 		{% for product in collections.speakers.products %}
 		{% assign handle = {{product.handle }} %}
 			{% for tag in product.tags %}
@@ -51,6 +53,7 @@
 				{% endif %}
 			{% endfor %}
 		{%endfor%}
+		<div><!--end speakers-->
 
 	
 

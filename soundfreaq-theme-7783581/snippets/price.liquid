@@ -3,6 +3,6 @@
 	<span class="sale">{{ variant.price | money }}</span>
 	<span class="orig">{{ product.compare_at_price_max | money }}</span>
 {% else %}
-	<span>{% if product.price == 0 %}FREE{% else %}{{product.price | money }}{% endif %}</span>
+	<span>{% if variant.price == 0 %}FREE{% else %}{{variant.price | money }}{% endif %}</span>
 {% endif %}
-</div>	
+</div>
