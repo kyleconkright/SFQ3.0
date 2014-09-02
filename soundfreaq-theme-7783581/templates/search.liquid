@@ -14,12 +14,12 @@ selectors inside search.css.
 
 <div id="searchresults">
   
-    <form action="/search" method="get" class="search-form" role="search">
+    {% comment %}<form action="/search" method="get" class="search-form" role="search">
         <p>
             <input type="text" name="q" value="{{ search.terms | escape }}" />
             <input type="submit" value="Search store..." />
         </p>
-    </form>
+    </form>{% endcomment %}
   
     {% comment %}
     search.performed is false when accessing the /search page without a 'q' parameter set
@@ -46,13 +46,13 @@ selectors inside search.css.
         {% for item in search.results %}
         <li class="clearfix">
             <h3>{{ item.title | link_to: item.url }}</h3>
-            {% if item.featured_image %}
+            {% comment %}{% if item.featured_image %}
             <div class="result-image">
                 <a href="{{ item.url }}" title="{{ item.title | escape }}">
                     {{ item.featured_image.src | product_img_url: 'small' | img_tag: item.featured_image.alt }}
                 </a>
             </div>
-            {% endif %}
+            {% endif %}{% endcomment %}
             <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>        
         </li>
       

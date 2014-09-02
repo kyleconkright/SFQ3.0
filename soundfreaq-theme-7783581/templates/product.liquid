@@ -35,9 +35,12 @@
                 {% endif %}
             </div>
 
+            {% assign productModel = {{product.handle | append: '-model' }} %}
+
             <div class="bit-5">
                 <ul class="product-downloads">
-                    <li><a href="http://userguides.soundfreaq.com/us/{{product.title | handleize }}_user-guide.pdf" target="_blank"><i class="fa fa-book"></i> User Guide</a></li>
+
+                    <li><a href="http://userguides.soundfreaq.com/us/{{ settings[productModel] | downcase }}_user-guide.pdf" target="_blank"><i class="fa fa-book"></i> User Guide</a></li>
                     <li><a href="http://cdn.soundfreaq.com/productsheets/{{product.title | handleize }}-product-sheet.pdf" target="_blank"><i class="fa fa-wrench"></i> Tech Specs</a></li>
                     <li><a href="http://soundfreaq.desk.com/" target="_blank"><i class="fa fa-comments-o"></i> Support</a></li>
                 </ul>

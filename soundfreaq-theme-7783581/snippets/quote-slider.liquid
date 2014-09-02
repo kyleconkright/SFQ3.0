@@ -33,7 +33,7 @@
                                 <p class="source" style="text-align: {{settings[textAlign]}};"><i class="fa fa-minus"></i><img src="{{ currentSource | asset_url }}"</p>
                             </div>
                             {% endif %}
-                            <a href="{{settings[currentLink]}}" class="learn more-btn">Learn More about {{product.title}}</a>
+                            <a href="{{settings[currentLink]}}" class="learn">Read More about <span class="product">{{product.title}}</span></a>
                         </li>
                     {% endif %}
                 {% endfor %}
@@ -58,7 +58,7 @@
                             <p class="quote"><q>{{settings[currentQuote]}}</q></p>
                             <p class="source"><i class="fa fa-minus"></i><img src="{{ currentSource | asset_url }}"</p>
                         </div>
-                        <a href="{{settings[currentLink]}}" target="_blank" class="learn more-btn">Full Review</a>
+                        <a href="{{settings[currentLink]}}" target="_blank" class="learn">Full Review</a>
                     </li>
                 {% endif %}
             {% endfor %}

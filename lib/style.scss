@@ -378,40 +378,41 @@ div#container {
 
 
 	div#footer {
+
 		div#buckets {
 			.wrapper {
-				width: 100%;
 				padding: 0 $space/2;
 				.main-bucket, .sub-bucket {
 					text-align: center;
 					padding: $spacefix*2 $spacefix;
 					.box {
-						background: $orange;
-						background-size: cover !important;
-						margin: 0 auto;
-						height: 40vh;
-						max-height: 220px;
-						min-height: 150px;
-						a {
-							display: flex;
-							width: 100%;
-							height: 100%;
-							justify-content: center;
-							align-items: center;
-							flex-direction: column;
-						}
+						
 					}
 				}
 				.main-bucket {
 					.box {
-						a {display: none;}
-						&:hover a {
-							display: flex;
+						background-size: cover !important;
+						height: 40vh;
+						max-height: 220px;
+						min-height: 150px;
+						position: relative;
+						display: flex;
+						a {
 							background: rgba(119,196,222,.95);
 							color: $white;
 							font-family: $sentinel;
 							font-style: italic;
 							font-size: 1.75em;
+							flex: 1;
+							display: none;
+							align-items: center;
+							justify-content: center;
+							width: 100%;
+							height: 100%;
+							position: absolute;
+						}
+						&:hover a {
+							display: flex;
 						}
 					}
 				}
@@ -448,6 +449,9 @@ div#container {
 				overflow: hidden;
 			}	
 		}
+
+		
+
 		div#newsletter {
 			background: $dark;
 			color: $white;
@@ -497,6 +501,7 @@ div#container {
 				color: $white;
 				padding: $spacefix/2 $space;
 				display: inline-block;
+				position: fixed;
 			}
 		}
 		div.product-slider {
@@ -514,6 +519,8 @@ div#container {
 				background-size: contain;
 				background-position: bottom;
 				background-repeat: no-repeat;
+				position: absolute !important;
+				z-index: 100000;
 			}
 		}
 		ul.slides_tabs.slides2_tabs {
@@ -750,82 +757,119 @@ div#container {
 	// ---------------------------- NEWS, PRESS, ETC ---------------------------- //
 	// ----------------- specific styles in appropriate locations --------------- //
 
-	.blog-entries {
-		padding: $spacefix*4 0;
-		.story {
-			padding: 0 $space*2.5 0 0;
-			margin: 0 0 $spacefix*2 0;
-			min-height: 275px;
-			h2 {
-			}
-			time {
-				font-size: .85em;
-				display: block;
-				margin: $spacefix/2 0;
-				font-weight: 700;
-				color: $blue;
-			}
-			p.article {
-				text-align: justify;
-			}
-			.more-btn {
-				margin: $spacefix 0 $spacefix/2;
-			}
-			ul li.tags {
-				a {
-					font-size: $pfontsize/1.65;
-					color: $light;
-					background: $sfqblue;
-					padding: $spacefix/8 $spacefix/4;
-				}
-			}
-			.full-link {
-					font-size: .8em;
-					font-family: $knockout30;
-					margin: $spacefix 0 0;
-					display: block;
-				img.logo {
-					height: 20px;
-					margin: $spacefix/8 0 0;
-					display: block;
-				}
-			}
-		}
-		.story:last-of-type {
-			float: left;
-		}
-	}
-
-
-
-	// -------------------------- MAIN NEWS FEED -------------------------- //
-
-	#blog {
+	.blog {
 		#content {
+			padding: $spacefix*4 0;
 			.main {
 				.story {
-					h1 {
-						a {
-							line-height: 1.05em;
+					padding: 0 $spacefix*4 0 0;
+					min-height: 275px;
+					time {
+						font-size: .85em;
+						display: block;
+						margin: $spacefix/2 0;
+						font-weight: 700;
+						color: $blue;
+					}
+					.full-link {
+						font-size: .8em;
+						font-family: $knockout30;
+						margin: $spacefix 0 0;
+						display: block;
+						img {
+							height: 20px;
+							margin: $spacefix/8 0 0;
+							display: block;
 						}
 					}
 				}
+				.story:last-of-type {
+					float: left;
+				}
 			}
 		}
 	}
+
+
+	// .blog-entries {
+	// 	padding: $spacefix*4 0;
+	// 	.story {
+	// 		padding: 0 $space*2.5 0 0;
+	// 		margin: 0 0 $spacefix*2 0;
+	// 		min-height: 275px;
+	// 		h2 {
+	// 		}
+	// 		time {
+	// 			font-size: .85em;
+	// 			display: block;
+	// 			margin: $spacefix/2 0;
+	// 			font-weight: 700;
+	// 			color: $blue;
+	// 		}
+	// 		p.article {
+	// 			text-align: justify;
+	// 		}
+	// 		.more-btn {
+	// 			margin: $spacefix 0 $spacefix/2;
+	// 		}
+	// 		ul li.tags {
+	// 			a {
+	// 				font-size: $pfontsize/1.65;
+	// 				color: $light;
+	// 				background: $sfqblue;
+	// 				padding: $spacefix/8 $spacefix/4;
+	// 			}
+	// 		}
+	// 		.full-link {
+	// 				font-size: .8em;
+	// 				font-family: $knockout30;
+	// 				margin: $spacefix 0 0;
+	// 				display: block;
+	// 			img.logo {
+	// 				height: 20px;
+	// 				margin: $spacefix/8 0 0;
+	// 				display: block;
+	// 			}
+	// 		}
+	// 	}
+	// 	.story:last-of-type {
+	// 		float: left;
+	// 	}
+	// }
+
+
+
+	// -------------------------- WHAT'S HAPPENING FEED -------------------------- //
+
+	#news { //whats-happening
+		#page-header {
+			color: #F6D0DD;
+		}
+	}  
 
 	// ---------------------------- SIDEBAR CONTENT ---------------------------- //
 
 	.sidebar {
+		#awards {
+			img {
+				max-width: 50%;
+			}
+		}
+		h2 {
+			margin: 0 0 $spacefix/2;
+		}
 		border-left: 1px solid $light;
-		padding: $spacefix*4 0 $spacefix*4 $spacefix*2;
+		padding: 0 0 0 $spacefix*2;
 		#press-releases li {
 			font-size: .75em;
 			margin: 0 0 $spacefix*2;
 			color: $blue;
 		}
+		#facebook-like {
+			margin: $spacefix*2 0;
+		}
 		ul.socialfeed {
-			margin: 0 0 $spacefix*4;
+			overflow: hidden;
 			h2 {
 				margin: $spacefix/4 0;
 			}
@@ -962,7 +1006,7 @@ div#container {
 
 	div#page-header {
 		// height: 55vh;
-		padding: $space 0 $space*6;
+		padding: $space*2 0 $space*5;
 		background-size: cover;
 		background-position: bottom;
 		background-repeat: no-repeat;
@@ -976,6 +1020,10 @@ div#container {
 		a {
 			font-weight: 700;
 			font-style: italic;
+		}
+		i {
+			font-size: 1.75em;
+			margin: 0 5px 0 0;
 		}
 	}
 
@@ -1079,6 +1127,14 @@ div#container {
 					bottom: $spacefix/2;
 					right: $spacefix/2;
 					padding: $spacefix/3 $spacefix;
+					background: $white;
+					color: #aaa;
+					text-transform: uppercase;
+					font-family: $knockout30;
+					span.product {
+						font-family: $knockout30;
+						color: $dark;
+					}
 				}
 			}
 		}
@@ -1245,6 +1301,9 @@ div#container {
 
 // ---------------------------- POPUPS ---------------------------- //
 
+#newsletter2 {
+	padding: $spacefix*4 $spacefix*2;
+}
 
 .popup {
   position: relative;
@@ -1429,6 +1488,27 @@ and (max-width : 800px) {
 				display: block;
 				margin: $spacefix*1.6 auto !important;
 				border: none !important;
+			}
+		}
+		div#page-header {
+			// height: 55vh;
+			padding: $space*3;
+			background-color: $sfqblue;
+			background-image: none !important;
+			h1 {
+				font-size: 3em;
+				padding: 0 0 $space*2 0;
+			}
+			p {
+				font-size: $pfontsize;
+			}
+			a {
+				font-weight: 700;
+				font-style: italic;
+			}
+			i {
+				font-size: 1.75em;
+				margin: 0 5px 0 0;
 			}
 		}
 	}

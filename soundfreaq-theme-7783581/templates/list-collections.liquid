@@ -71,7 +71,7 @@
 						<div id="collection" class="frame">
 						<h1 id="{{collection.handle}}">{{collection.title}}</h1>
 							{% for product in collections.novogratz.products %}
-								{% for variant in product.variants %}
+								{% for variant in product.variants offset: 1 %}
 									<div class="bit-3 variant">
 									{% if variant.title contains 'Novogratz' %}
 										{% assign variantTitle  = {{variant.title | split: ' - ' }} %}
@@ -102,7 +102,7 @@
 
 
 			<div id="accessories" class="frame">
-				<h1>Accesories</h1>
+				<h1>Accessories</h1>
 				{% for product in collections.accessories.products %}
 				{% assign productModel = {{product.handle | append: '-model' }} %}
 					{% for tag in product.tags %}

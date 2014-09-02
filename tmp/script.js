@@ -13,7 +13,6 @@
         return $('.us').remove();
       }
     });
-    $('div.support a[href^="http"]').not('div.support a[href^="{{ shop.url }}"]').attr('target', '_blank');
     $('.open-quick-look').magnificPopup({
       type: 'inline',
       midClick: true
@@ -184,7 +183,7 @@
         $.each(results.data, function() {
           return $('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta');
         });
-        return $('<a href="http://www.instagram.com/soundfreaq" target="_blank">follow on instagram</a>').appendTo('ul#insta');
+        return $('<a href="http://www.instagram.com/soundfreaq" target="_blank">follow on instagram</a>').insertAfter('ul#insta h2');
       },
       error: function() {
         return console.log('insta fail');

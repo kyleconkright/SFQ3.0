@@ -43,7 +43,7 @@
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="cart-count {% if cart.item_count == 0 %}hide{% endif %}">{{cart.item_count}}</span>   
                             </a>
-                            <a href="#" class="searchbtn" data-name="search"><i class="fa fa-search"></i></a>
+                            {% comment %}<a href="#" class="searchbtn" data-name="search"><i class="fa fa-search"></i></a>{% endcomment %}
                             <a href="#" class="menubtn" data-name="menu"><i class="fa fa-bars"></i></a>
                         </div><!--NAV-->
                     </div><!--WRAPPER-->
@@ -129,5 +129,6 @@
     {{ 'script-no-grunt.js' | asset_url | script_tag }}
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6966432/744402/css/fonts.css" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <div id="fb-root"></div>
     </body>
 </html>

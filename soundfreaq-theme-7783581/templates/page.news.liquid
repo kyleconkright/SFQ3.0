@@ -1,13 +1,25 @@
-<div id="news" class="frame">
+<div id="news" class="frame blog">
 {% include 'page-header-illustration' %}
 
-    <div class="wrapper blog-entries">
+    <div class="wrapper">
 
-    <ul class="frame">
-        {% for article in blogs.news.articles %}
-            {% include 'blogroll' %}  
-        {% endfor %}
-    </ul>
+	    <div id="content">
+
+	        <div class="main bit-66 blog-entries">
+	                
+	            <ul>
+	                {% for article in blogs.news.articles %}
+	                    {% include 'blogroll' %}  
+	                {% endfor %}
+	            </ul>
+	                
+	       	</div><!--.main-->
+	  
+	        <div class="sidebar bit-3">
+	            {% include 'social-sidebar' %}
+	        </div><!--.sidebar-->
+
+	    </div><!--#content-->
   
     </div><!--WRAPPER-->
 

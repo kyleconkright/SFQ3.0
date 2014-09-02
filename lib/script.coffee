@@ -1,8 +1,6 @@
 $ ->
 
 	# baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
-	
-	
 			
 	$.getJSON 'http://ipinfo.io/json/', (location) ->
 		if location.country is 'US'
@@ -22,7 +20,8 @@ $ ->
 
 
 	#OPEN LINKS IN NEW WINDOW
-	$('div.support a[href^="http"]').not('div.support a[href^="{{ shop.url }}"]').attr('target', '_blank')
+	# $('div.support a[href^="http"]').not('div.support a[href^="{{ shop.url }}"]').attr('target', '_blank')
+	# $('div.support a[href^="http"]').not('div.support a[href^="soundfreaq.com"]').attr('target', '_blank')
 
 
 	#BUY BUTTON
@@ -145,11 +144,6 @@ $ ->
 				else 
 					alert 'not valid email'
 
-	
-
-
-
-
 
 	#PRODUCT COMPARE EVEN/ODD STYLING
 	$('#product-compare ul.holder > li:odd').css 'background-color':'#eee'
@@ -230,6 +224,6 @@ $ ->
 		success: (results) ->
 			$.each results.data, ->
 				$('<li class="bit-3"><a target="_blank" href="' + this.link + '"><img src="' + this.images.low_resolution.url + '"></a></li>').appendTo('ul#insta')
-			$('<a href="http://www.instagram.com/soundfreaq" target="_blank">follow on instagram</a>').appendTo('ul#insta')
+			$('<a href="http://www.instagram.com/soundfreaq" target="_blank">follow on instagram</a>').insertAfter('ul#insta h2')
 		error: ->
 			console.log 'insta fail'
