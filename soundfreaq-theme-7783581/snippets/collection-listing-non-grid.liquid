@@ -8,7 +8,7 @@
 			{% for tag in product.tags %}
                 {% if tag contains 'available' %}
                 	<div class="frame product">
-						
+						<h2>{{product.title}}</h2>
 						{% for variant in product.variants %}
 							<div class="bit-5 variant">
 								{% assign sku = {{variant.sku %}
@@ -21,6 +21,7 @@
 					 			<h4>{{ product.title }}</h4>
 					 			<h5>{{ productSelect }}</h5>
 								{% include 'price' %}
+								{% comment %}<a href="#{{product.handle}}-quick-look" class="buy-btn intl add-to-cart">Add to Cart</a>{% endcomment %}
 								<form action="/cart/add" method="post" id="cart-add">
 									<input type="hidden" id="product-select" name='id' value="{{variant.id}}">
 									<input type="hidden" id="product-name" data-name="{{product.title}} {{variant.title}}" value="{{product.title}} {{variant.title}}">
@@ -32,7 +33,23 @@
 
 				 			</div><!--end variant-->
 						{% endfor %}
-					</div>
+					
+						<div class="bit-1 related-accessories">
+							<h2>Optional Accessories for {{product.title}}</h2>
+							{% for product in collections.accessories.products %}
+							<div class="bit-5 accessory">
+								{% for tag in product.tags %}
+									{% if tag contains handle %}
+										<h4>{{ product.title }}</h4>
+										{% include 'price' %}
+										<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+										{% include 'quick-look' %}
+									{% endif %}
+								{% endfor %}
+							</div>
+							{% endfor %}
+						</div><!--end related-->
+					</div><!--end product-->
 				{% endif %}
 			{% endfor %}
 		{%endfor%}

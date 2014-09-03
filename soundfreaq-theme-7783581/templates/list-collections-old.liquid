@@ -1,0 +1,106 @@
+<div id="store">
+	<div class="wrapper">
+
+		
+		<h1>Speakers Test</h1>
+		{% for product in collections.speakers.products %}
+		{% assign handle = {{product.handle }} %}
+			{% for tag in product.tags %}
+                {% if tag contains 'available' %}
+                	<div class="frame product">
+
+						{% for variant in product.variants %}
+							<div class="bit-3 variant">
+								{% assign sku = {{variant.sku %}
+								{% assign productSelect = {{variant.title %}
+								{% for image in product.images %}
+						 		    {% if image.alt contains sku %}
+						 		    	<img src="{{ image | product_img_url: 'large' }}">
+					 		    	{% endif %}
+					 			{% endfor %}
+					 			<h4>{{ product.title }}</h4>
+					 			<h5>{{ productSelect }}</h5>
+								{% include 'price' %}
+								{% comment %}<a href="#{{product.handle}}-quick-look" class="buy-btn intl add-to-cart">Add to Cart</a>{% endcomment %}
+								<form action="/cart/add" method="post" id="cart-add">
+									<input type="hidden" id="product-select" name='id' value="{{variant.id}}">
+									<input type="hidden" id="product-name" data-name="{{product.title}} {{variant.title}}" value="{{product.title}} {{variant.title}}">
+									<input type="hidden" id="quantity" name="quantity" value="1">
+									<input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
+								</form>
+								{% comment %}{% include 'quick-look' %}{% endcomment %}
+
+
+				 			</div><!--end variant-->
+						{% endfor %}
+
+						{% for product in collections.accessories.products %}
+							{% for tag in product.tags %}
+								{% if tag contains handle %}
+									{% assign options = true %}
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
+					</div><!--end product-->
+				{% endif %}
+			{% endfor %}
+		{%endfor%}
+
+
+			<div id="collection">
+				{% for collection in collections %}
+					{% if collection.title contains 'Novogratz' %}
+						<div id="collection" class="frame">
+						<h1 id="{{collection.handle}}">{{collection.title}}</h1>
+							{% for product in collections.novogratz.products %}
+								{% for variant in product.variants offset: 1 %}
+									<div class="bit-3 variant">
+									{% if variant.title contains 'Novogratz' %}
+										{% assign variantTitle  = {{variant.title | split: ' - ' }} %}
+										{% for image in product.images %}
+								 		    {% if image.alt contains variant.sku %}
+								 		    	<img src="{{ image | product_img_url: 'large' }}">
+							 		    	{% endif %}
+							 			{% endfor %}
+							 			<h4>{{product.title}}</h4>
+										<h5>{{variantTitle[1]}}</h5>
+										{% include 'price' %}
+										<form action="/cart/add" method="post" id="cart-add">
+											<input type="hidden" id="product-select" name='id' value="{{variant.id}}">
+											<input type="hidden" id="product-name" data-name="{{product.title}} {{variant.title}}" value="{{product.title}} {{variant.title}}">
+											<input type="hidden" id="quantity" name="quantity" value="1">
+											<input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
+										</form>
+									{% endif %}
+									</div>
+								{% endfor %}
+							{% endfor %}
+						</div><!--end each collection-->
+					{% endif %}
+				{% endfor %}
+			</div><!--end collections-->	
+		
+
+
+
+			<div id="accessories" class="frame">
+				<h1>Accessories</h1>
+				{% for product in collections.accessories.products %}
+				{% assign productModel = {{product.handle | append: '-model' }} %}
+					{% for tag in product.tags %}
+		                {% if tag contains 'available' %}
+						 	<div class="bit-3 accessory">
+						 		<h4>{{ product.title }}</h4>
+						 		{% include 'accessory-price' %}
+						 		<a href="#{{product.handle}}-quick-look" class="buy-btn intl open-quick-look">Add to Cart</a>
+								{% include 'quick-look' %}
+		 						
+						 	</div><!--end product-->
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</div><!--#accessories-->
+
+	</div><!--.wrapper-->
+</div><!--#store-->
+

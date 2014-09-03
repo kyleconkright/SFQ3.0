@@ -76,6 +76,9 @@
         }
       });
     });
+    $('#soldout').on('click', function(e) {
+      return e.preventDefault();
+    });
     $('div#header').scrollToFixed();
     menus = $('div#header #search, div#header #menu');
     btns = $('div#header .menubtn, div#header .searchbtn');

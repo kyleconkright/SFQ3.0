@@ -36,7 +36,9 @@
                                 <p>{{ item.title }}</p>
                                 {% for image in item.product.images %}
                                     {% if image.alt contains sku %}
-                                        <img src="{{ image | product_img_url: 'medium' }}">
+                                        {% unless image.alt contains 'store' %}
+                                            <img src="{{ image | product_img_url: 'medium' }}">
+                                        {% endunless %}
                                     {% endif %}
                                 {% endfor %}
                             </a>

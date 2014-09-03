@@ -84,6 +84,14 @@ $ ->
 
 				$('.quick-look-options').html(optionCopy)
 
+	$('#soldout').on 'click', (e)->
+		e.preventDefault()
+
+
+
+	
+
+
 
 	#CART LOGIC OLD
 	# $('.add-to-cart').on 'click', (event) ->

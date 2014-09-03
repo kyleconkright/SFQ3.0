@@ -94,7 +94,7 @@ b {
 	font-weight: 700;
 }
 
-.buy-btn, .where-to-buy-btn, input.add-to-cart, .cart-btn {
+.buy-btn, .where-to-buy-btn, input.add-to-cart, .cart-btn, .soldout {
 	font-size: .9em;
 	background: $orange;
 	color: $white;
@@ -105,6 +105,11 @@ b {
 	margin: 0 0 2px 0;
 	border: none;
 	cursor: pointer;
+}
+
+.soldout {
+	background: $lightgray;
+	color: $dark;
 }
 
 .buy-btn, .price.intl {
@@ -286,7 +291,7 @@ div#container {
 
 
 	div#hero {
-		background-position: bottom;
+		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		color: $light;
@@ -300,6 +305,7 @@ div#container {
 		div.entry {
 			font-size: $pfontsize;
 			width: 90%;
+			color: $dark;
 			img {
 				width: 100%;
 			}
@@ -321,8 +327,8 @@ div#container {
 		div.entry:nth-of-type(2) {
 			margin: $spacefix*1.6 0;
 			padding: $spacefix*2 0;
-			border: solid rgba(255,255,255,.25);
-			border-width: 0 0 1px 0;
+			// border: solid rgba(255,255,255,.25);
+			// border-width: 0 0 1px 0;
 		}
 	}
 	div#products-grid {
@@ -704,53 +710,113 @@ div#container {
 		padding: $spacefix*2 0;
 		text-align: center;
 		.wrapper {
-			width: 70%;
-			h1 {
-				margin: 0 0 $spacefix;
-			}
-			.product {
-				margin: 0;
-			}
-			.related-accessories {
-				margin: $spacefix*2 0;
-			}
+			width: 80%;
 			h2 {
-				margin: 0 0 $spacefix/2;
+				text-align: left;
+				border-bottom: 1px solid $light;
+				padding: 0 0 $spacefix;
 			}
-			.variant, .accessory {
-				text-align: center;
-				margin: $spacefix*2 0;
-				h5 {
-					margin: $spacefix/4 0 0;
-				}
-				div.price {
-					display: block;
-					width: 100%;
-					margin: $spacefix/2 0;
-					.orig {
-						color: $lightgray/1.1;
-						text-decoration: line-through;
+			.frame {
+				margin: 0 0 $spacefix*2;
+				.variant, .accessory {
+					border-bottom: 1px solid $light;
+					margin: 0 16px -16px;
+					padding: $spacefix*2 0;
+					img {
+						width: 70%;
 					}
-					.sale {
-						color: $blue;
-						font-weight: 700;
+					img, h4, h5, div.price {
+						margin: 0 0 $spacefix/3;
+					}
+					h4 {
+						font-size: 1.5em;
+					}
+					h5 {
+						font-size: 1em;
+					}
+					#soldout {
+						background: $lightgray;
+						color: $dark;
+						cursor: default;
+					}
+					div.price {
+						display: block !important;
 					}
 				}
-				img {
-					width: 100%;
+				.bit-3 {
+					margin: $spacefix 0;
+				}
+				.bit-3:nth-child(3n+3) {
+					border: solid $light;
+					border-width: 0 1px;
+				}
+				.bit-3:last-of-type {
+					float: left;
+					.variant {
+						border: none;
+					}
 				}
 			}
-			[class*='bit-']:last-of-type {
-			  	float: left;
-			}
-		}
-		#accessories, #collection {
-			padding: $spacefix*2 0;
-			h1 {
-				padding: $spacefix*2;
+			div#collections {
+				
 			}
 		}
 	}
+
+
+	// #store {
+	// 	padding: $spacefix*2 0;
+	// 	text-align: center;
+	// 	.wrapper {
+	// 		width: 80%;
+	// 		h1 {
+	// 			margin: 0 0 $spacefix;
+	// 		}
+	// 		.product {
+	// 			margin: 0 0 $spacefix*4;
+	// 			border-bottom: 1px solid $blue;
+	// 		}
+	// 		.related-accessories {
+	// 			margin: $spacefix*2 0;
+	// 		}
+	// 		h2 {
+	// 			margin: 0 0 $spacefix/2;
+	// 			font-size: 3em;
+	// 		}
+	// 		.variant, .accessory {
+	// 			text-align: center;
+	// 			margin: $spacefix*2 0;
+	// 			h5 {
+	// 				margin: $spacefix/4 0 0;
+	// 			}
+	// 			div.price {
+	// 				display: block;
+	// 				width: 100%;
+	// 				margin: $spacefix/2 0;
+	// 				.orig {
+	// 					color: $lightgray/1.1;
+	// 					text-decoration: line-through;
+	// 				}
+	// 				.sale {
+	// 					color: $blue;
+	// 					font-weight: 700;
+	// 				}
+	// 			}
+	// 			img {
+	// 				width: 100%;
+	// 			}
+	// 		}
+	// 		[class*='bit-']:last-of-type {
+	// 		  	float: left;
+	// 		}
+	// 	}
+	// 	#accessories, #collection {
+	// 		padding: $spacefix*2 0;
+	// 		h1 {
+	// 			padding: $spacefix*2;
+	// 		}
+	// 	}
+	// }
 
 
 	// ---------------------------- PAGES WITH BLOGS ---------------------------- //
@@ -763,7 +829,7 @@ div#container {
 			.main {
 				.story {
 					padding: 0 $spacefix*4 0 0;
-					min-height: 275px;
+					min-height: 325px;
 					time {
 						font-size: .85em;
 						display: block;
