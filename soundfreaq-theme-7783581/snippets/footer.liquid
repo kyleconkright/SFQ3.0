@@ -11,7 +11,7 @@
                 {% assign featReviewHover = {{product.handle | append: '-feat-review-hover'}} %}
                 <div class="bit-3 main-bucket">
                     <div class="box" style="background: url('{{ featReviewImg | asset_url }}') center no-repeat">
-                        <a href="{{ settings[featReviewLink] }}">{{ settings[featReviewHover] }}</a>
+                        <a href="{{ settings[featReviewLink] }}" target="_blank">{{ settings[featReviewHover] }}</a>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                 <!--sub bucket 1-->
                 <div class="bit-4 sub-bucket">
                     <div class="box">
-                        <a href="{{settings.sub-bucket-1-link}}" target="_blank">{{ settings.sub-bucket-1 }}</a>
+                        <a href="{{settings.sub-bucket-1-link}}">{{ settings.sub-bucket-1 }}</a>
                     </div>
                 </div>
                 <!--end sub bucket 1-->
@@ -165,7 +165,7 @@
                 </ul>
            </div>
 
-           <div class="store bit-7">
+           <div class="store bit-7 intl">
                 <ul>
                 <h2>{{ linklists.store-links.title }}</h2>
                 {% for link in linklists.store-links.links %}

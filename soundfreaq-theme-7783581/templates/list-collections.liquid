@@ -1,4 +1,4 @@
-<div id="store">
+<div id="store" class="intl">
 	<div class="wrapper">
 
 		
@@ -71,7 +71,11 @@
 												<input type="hidden" id="product-select" name='id' value="{{variant.id}}">
 												<input type="hidden" id="product-name" data-name="{{product.title}} {{variant.title}}" value="{{product.title}} {{variant.title}}">
 												<input type="hidden" id="quantity" name="quantity" value="1">
+												{% if variant.inventory_quantity > 0 %}
 												<input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
+											{% else %}
+												<input class="add-to-cart" type="submit" value="Sold Out" id="soldout" />
+											{% endif %}
 											</form>
 										{% endif %}
 										</div>

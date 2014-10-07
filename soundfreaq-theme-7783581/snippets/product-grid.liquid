@@ -10,7 +10,7 @@
                         {% if tag contains 'coming-soon' %}
                             <li class="bit-1"><p class="price buy-btn intl">Coming Soon</p></li>
                         {% else %}
-                            <li class="bit-1"><a href="{{ product.url }}" class="buy-btn price intl">{{ product.price_max | money }}</a></li>
+                            <li class="bit-1"><a href="{{ product.url }}" class="buy-btn price intl">{{ product.price_min | money }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>

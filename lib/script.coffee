@@ -2,10 +2,10 @@ $ ->
 
 	# baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
 			
-	$.getJSON 'http://ipinfo.io/json/', (location) ->
-		if location.country is 'US'
-	# $.getJSON 'http://freegeoip.net/json/', (location) ->
-	# 	if location.country_code is 'US'	
+	# $.getJSON 'http://ipinfo.io/json/', (location) ->
+	# 	if location.country is 'US'
+	$.getJSON 'http://freegeoip.net/json/', (location) ->
+		if location.country_code is 'US'	
 			$('a.buy-btn.intl, .price.intl')
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl')
@@ -17,6 +17,9 @@ $ ->
 			$('a.buy-btn.intl, a.price.intl').remove()	
 			$('#buckets div.us, #subbuckets a.us').remove()
 			$('.us').remove()
+			$('.store.intl').remove()
+			$('#store').remove()
+
 
 
 	#OPEN LINKS IN NEW WINDOW
@@ -89,7 +92,7 @@ $ ->
 
 
 
-	
+
 
 
 

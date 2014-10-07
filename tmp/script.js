@@ -1,8 +1,8 @@
 (function() {
   $(function() {
     var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip, rightDiv, thisUrl;
-    $.getJSON('http://ipinfo.io/json/', function(location) {
-      if (location.country === 'US') {
+    $.getJSON('http://freegeoip.net/json/', function(location) {
+      if (location.country_code === 'US') {
         $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
         $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy');
         return $('#buckets div.intl, #sub-buckets a.intl').remove();
@@ -10,7 +10,9 @@
         $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy-intl');
         $('a.buy-btn.intl, a.price.intl').remove();
         $('#buckets div.us, #subbuckets a.us').remove();
-        return $('.us').remove();
+        $('.us').remove();
+        $('.store.intl').remove();
+        return $('#store').remove();
       }
     });
     $('.open-quick-look').magnificPopup({

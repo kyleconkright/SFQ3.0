@@ -13,7 +13,7 @@
 		        		{% if variant.available %}
 		        			<option data-sku="{{sku}}" data-name="{{variant.title}} {{product.title}}" id="product-name" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}
 
-			        				{% if variant.inventory_quantity < 5 %} - {{ variant.inventory_quantity }} in Stock{%endif%}
+			        				{% if variant.inventory_quantity < 5 %}{% comment %} - {{ variant.inventory_quantity }} in Stock{% endcomment %}{%endif%}
 
 		        			</option>
 		        		{% else %}

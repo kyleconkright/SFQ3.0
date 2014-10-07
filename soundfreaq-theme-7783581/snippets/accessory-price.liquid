@@ -3,6 +3,16 @@
 	<span class="sale">{{ product.price | money }}</span>
 	<span class="orig">{{ product.compare_at_price_max | money }}</span>
 {% else %}
-	<span>{% if product.price == 0 %}FREE{% else %}{{product.price | money }}{% endif %}</span>
+	<span>
+		{% if product.price == 0 %}
+			FREE
+		{% else %}
+			{% if product.price_min != product.price_max %}
+				{{product.price_min | money }} - {{product.price_max | money }}
+			{% else %}
+				{{product.price_min | money }}
+			{% endif %}
+		{% endif %}
+	</span>
 {% endif %}
 </div>
