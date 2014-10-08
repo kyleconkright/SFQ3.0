@@ -1,11 +1,11 @@
 $ ->
 
 	# baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
-			
-	# $.getJSON 'http://ipinfo.io/json/', (location) ->
-	# 	if location.country is 'US'
-	$.getJSON 'http://freegeoip.net/json/', (location) ->
-		if location.country_code is 'US'	
+
+	$.getJSON 'http://ipinfo.io/json/', (location) ->
+		if location.country is 'US'
+	# $.getJSON 'http://freegeoip.net/json/', (location) ->
+	# 	if location.country_code is 'US'	
 			$('a.buy-btn.intl, .price.intl')
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl')
@@ -14,7 +14,7 @@ $ ->
 		else
 			$('a.where-to-buy-btn.intl')
 				.attr 'href', '../pages/where-to-buy-intl'
-			$('a.buy-btn.intl, a.price.intl').remove()	
+			$('a.buy-btn.intl, a.price.intl').remove()
 			$('#buckets div.us, #subbuckets a.us').remove()
 			$('.us').remove()
 			$('.store.intl').remove()
@@ -152,20 +152,20 @@ $ ->
 			success: (data) ->
 				if ($('input[name=EMAIL]').val().indexOf('@') != -1 and $('input[name=EMAIL]').val().indexOf('.') != -1)
 					$('label').text('Thanks! Check your inbox to confirm.')
-				else 
+				else
 					alert 'not valid email'
 
 
 	#PRODUCT COMPARE EVEN/ODD STYLING
 	$('#product-compare ul.holder > li:odd').css 'background-color':'#eee'
-	$('#product-compare ul.holder > li:even').css 'background-color':'#dfdfdf'			
-						
+	$('#product-compare ul.holder > li:even').css 'background-color':'#dfdfdf'
+
 
 
 	#QUOTE SLIDER
 	$('.quote-slider').responsiveSlides({
 		namespace: "slides",
-		nav: true,          
+		nav: true,
 		pause: true,
 		nextText: '<i class="fa fa-chevron-right"></i>',
 		prevText: '<i class="fa fa-chevron-left"></i>',
@@ -177,16 +177,16 @@ $ ->
 	$('.product-slider').responsiveSlides
 		auto: false
 		namespace: "slides"
-		pager: true          
+		pager: true
 
 	$('ul.slides_tabs.slides2_tabs li a').html('<i class="fa fa-circle"></i>')
-	
+
 
 	#PRODUCT IMAGE GALLERY
 	$("#product-image-gallery #images").justifiedGallery
 		'rowHeight':360
 		'captions': true
-		
+
 
 	#PRODUCT IMAGE GALLERY ROLLOVERS
 	imageRoll = $('.image-roll')
@@ -199,7 +199,7 @@ $ ->
 			$(@).parent().append(imageRoll)
 			imgSrc = $(@).attr('src')
 			$('.image-roll a').hover(
-				-> 
+				->
 					switch $(@).data('name')
 						when 'image' then $(@).attr('href', imgSrc).addClass 'image'
 						when 'pinterest' then $(@).attr('href', 'http://pinterest.com/pin/create/link/?media=' + imgSrc + '&description=Soundfreaq ' + pinDescrip)
@@ -210,7 +210,7 @@ $ ->
 						midClick: true
 				)
 		)
-	
+
 
 	#PRODUCT VIDEO POPUP
 	$('.video-link').magnificPopup
