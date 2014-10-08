@@ -1,14 +1,14 @@
 <div class="frame" id="cart">
     <div class="wrapper">
-          
+
         {% if cart.item_count > 0 %}
 
         <h2>You're almost to Happy Listening</h2>
 
         <form action="/cart" method="post">
-          
+
             <table>
-            
+
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -17,14 +17,14 @@
                         <th>Total</th>
                     </tr>
                 </thead>
-            
+
                 <tbody>
 
-                {% for item in cart.items %} 
-                    {% assign sku = item.sku %}  
-                
-                
-                  
+                {% for item in cart.items %}
+                    {% assign sku = item.sku %}
+
+
+
                     {% if forloop.first %}
                         {% assign collection_url = item.product.collections.first.url %}
                         {% if collection_url == '/collections/frontpage' or collection_url == '' %}{% assign collection_url = '/collections/all' %}{% endif %}
@@ -55,23 +55,23 @@
                         </td>{% endcomment %}
                     </tr>
                 {% endfor %}
-            
+
                 </tbody>
-            
+
             </table>
-          
+
           {% comment %}
           For the checkout and update buttons to work, they need to use
           a name attribute set to 'checkout' and 'update', respectively. That's case-sensitive.
           {% endcomment %}
-          
+
             <div class="options">
                 <p>Subtotal</p><span class="subtotal">{{ cart.total_price | money }}</span>
-                <input class="cart-btn" type="submit" name="checkout" value="Pay Now" /> 
+                <input class="cart-btn" type="submit" name="checkout" value="Pay Now" />
 
                 <a href="../../products">Continue shopping</a>
-                <input type="submit" name="update" value="Update cart" />   
-                
+                <input type="submit" name="update" value="Update cart" />
+
                 {% if additional_checkout_buttons %}
                 <p class="additional-checkout-buttons">
                   {{ content_for_additional_checkout_buttons }}
@@ -80,7 +80,7 @@
                 <div class="note">
                     <p>Add a note</p>
                     <textarea name="note">{{ cart.note }}</textarea>
-                </div>   
+                </div>
             </div>
         </form>
 
@@ -91,5 +91,10 @@
         </div>
 
         {% endif %}
+        <div class="shipping-info">
+            <p>Our 30-Day Return Policy* lets you buy with confidence. Unfortunately, we can only ship to the continental US; we ship from MN via Ground.  In stock orders received after 1PM ET will ship the following business day.  Expedited 2-Day orders that ship on Thursday will arrive the following Monday.</p>
+
+            <p>*Please email store@soundfreaq.com within 30 days of purchase to receive a Return Authorization # (does not apply to accessories); customers are responsible for return shipping costs.</p>
+        </div>
     </div><!--.wrapper-->
 </div><!--#cart-->

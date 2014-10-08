@@ -38,7 +38,7 @@ $archer: 'Archer SSm A', 'Archer SSm B';
 	text-decoration: none;
 }
 
-*, *:before, *:after { 
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -120,7 +120,7 @@ b {
 	font-family: $knockout30;
 	text-transform: capitalize;
 	color: $dark/1.5;
-	background: $light/1.15; 
+	background: $light/1.15;
 }
 
 .more-btn {
@@ -176,12 +176,12 @@ div#container {
 
 	div#header {
 		background: $light;
-		
+
 		div#grip {
 			position: relative;
-			
+
 			div#header-holder {
-		
+
 				div.wrapper {
 
 					div.nav, div.logo {
@@ -392,7 +392,7 @@ div#container {
 					text-align: center;
 					padding: $spacefix*2 $spacefix;
 					.box {
-						
+
 					}
 				}
 				.main-bucket {
@@ -453,10 +453,10 @@ div#container {
 				background: $light;
 				padding: $spacefix/2 0;
 				overflow: hidden;
-			}	
+			}
 		}
 
-		
+
 
 		div#newsletter {
 			background: $dark;
@@ -539,7 +539,7 @@ div#container {
 			}
 			li.slides_here {
 				opacity: 1;
-			}	
+			}
 		}
 		div.product-info {
 			margin: 0 auto $spacefix*8;
@@ -758,7 +758,7 @@ div#container {
 				}
 			}
 			div#collections {
-				
+
 			}
 		}
 	}
@@ -911,7 +911,7 @@ div#container {
 		#page-header {
 			color: #F6D0DD;
 		}
-	}  
+	}
 
 	// ---------------------------- SIDEBAR CONTENT ---------------------------- //
 
@@ -947,7 +947,7 @@ div#container {
 			}
 		}
 	}
-	
+
 
 
 	// ---------------------------- PRESS PAGE ---------------------------- //
@@ -1154,7 +1154,7 @@ div#container {
 					font-size: $pfontsize*2;
 					line-height: 1.3em;
 				}
-				q { 
+				q {
 					quotes: '\201c' '\201d';
 					position: relative;
 					line-height: .9em;
@@ -1339,7 +1339,7 @@ div#container {
 			margin: $spacefix auto;
 		}
 		input[name=update], a {
-		 	border: none; 
+		 	border: none;
 		 	background: none;
 		 	font-size: .8em;
 		 	text-decoration: underline;
@@ -1352,7 +1352,7 @@ div#container {
 			textarea {
 				margin: $spacefix/2 0 0;
 				border: none;
-				border-radius: 2px;	
+				border-radius: 2px;
 			}
 		}
 	}
@@ -1360,6 +1360,16 @@ div#container {
 		text-align: center;
 		a {
 			text-decoration: underline;
+		}
+	}
+	.shipping-info {
+		width: 55%;
+		margin: $spacefix*2 auto 0;
+		font-size: .8em;
+		text-align: center;
+		color: $gray;
+		p {
+			margin: 0 0 $spacefix;
 		}
 	}
 }
@@ -1450,7 +1460,7 @@ div#quick-look .popup {
 }
 
 
-@media only screen 
+@media only screen
 and (max-width : 980px)
  {
 
@@ -1514,7 +1524,7 @@ and (max-width : 980px)
 }
 
 
-@media only screen 
+@media only screen
 and (max-width : 800px) {
 	.mobile-hide {
 		display: none !important;
@@ -1540,10 +1550,10 @@ and (max-width : 800px) {
 				}
 			}
 		}
-		div#hero { 
+		div#hero {
 			background-color: $sfqblue;
 			background-image: none !important;
-			div.brand-img { 
+			div.brand-img {
 				img {
 					margin: $spacefix*2 auto 0;
 					width: 95%;
@@ -1601,8 +1611,3 @@ and (max-width : 800px) {
 		color: $light;
 	}
 }
-
-
-
-
-
