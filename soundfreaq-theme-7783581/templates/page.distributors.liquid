@@ -1,0 +1,42 @@
+<div class="frame blog" id="press-page">
+
+    <div class="wrapper">
+
+
+    	<div id="media-resources" class="bit-1">
+    		<!-- <h3>Media Resources</h3> -->
+    		<div class="box">
+    			{% for product in collections.frontpage.products %}
+        		{% assign productModel = {{product.handle | append: '-model' }} %}
+        		{% assign productURL = {{product.title | handleize }} %}
+        		{% comment %}{% assign productModel = {{product.title | handleize | append: '-home-headline' }} %}{% endcomment %}
+	        		<div class="bit-3">
+	        			<div class="info">
+	        				<h2>{{ product.title }}</h2>
+	        				<h4 class="model">{{settings[productModel]}}</h4>
+	        				{% for image in product.images %}
+	        				    {% if image.alt contains 'grid' %}
+	        				        <img src="{{ image | product_img_url: 'large' }}">
+	        				    {% endif %}
+	        				{% endfor %}
+	        				<ul>
+                                <li><a href="http://cdn.soundfreaq.com/productsheets/{{productURL}}-product-sheet.pdf">Product Sheet</a></li>
+	        					<li><a href="http://cdn.soundfreaq.com/pressimages/{{productURL}}-images.zip">Images</a></li>
+                                <li><a href="http://cdn.soundfreaq.com/designnotes/{{productURL}}-design-note.pdf">Design Note</a></li>
+	        				</ul>
+	        			</div>
+	        		</div>
+        		{% endfor %}
+    		</div>
+    	</div><!--media-resources-->
+
+        <div id="content" class="distributor-content">
+
+            {{ page.content }}
+
+        </div><!--CONTENT-->
+
+
+    </div><!--WRAPPER-->
+
+</div><!--DISTRIBUTORS PAGE-->

@@ -507,7 +507,7 @@ div#container {
 				color: $white;
 				padding: $spacefix/2 $space;
 				display: inline-block;
-				position: fixed;
+				// position: fixed;
 			}
 		}
 		div.product-slider {
@@ -985,6 +985,23 @@ div#container {
 								color: $blue;
 								text-decoration: underline;
 							}
+						}
+					}
+				}
+			}
+		}
+		// distributor content
+		.distributor-content {
+			ul {
+				padding: 0 2%;
+				margin: 0 0 $space*2;
+				ul {
+					padding: 0;
+					li {
+						a {
+							color: $blue;
+							font-size: .9em;
+							text-decoration: underline;
 						}
 					}
 				}

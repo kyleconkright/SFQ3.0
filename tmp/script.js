@@ -1,8 +1,9 @@
 (function() {
   $(function() {
-    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, pinDescrip, rightDiv, thisUrl;
-    $.getJSON('http://ipinfo.io/json/', function(location) {
-      if (location.country === 'US') {
+    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, onSuccess, pinDescrip, rightDiv, thisUrl;
+    onSuccess = function(location) {
+      console.log(JSON.stringify(location.country.iso_code));
+      if (location.country.iso_code === 'US') {
         $('a.buy-btn.intl, .price.intl').css('display', 'inline-block');
         $('a.where-to-buy-btn.intl').attr('href', '../pages/where-to-buy');
         return $('#buckets div.intl, #sub-buckets a.intl').remove();
@@ -14,7 +15,8 @@
         $('.store.intl').remove();
         return $('#store').remove();
       }
-    });
+    };
+    geoip2.country(onSuccess);
     $('.open-quick-look').magnificPopup({
       type: 'inline',
       midClick: true
@@ -82,6 +84,9 @@
       return e.preventDefault();
     });
     $('div#header').scrollToFixed();
+    $('.product-name').scrollToFixed({
+      marginTop: 60
+    });
     menus = $('div#header #search, div#header #menu');
     btns = $('div#header .menubtn, div#header .searchbtn');
     $('div#header .nav').on('click', '.menubtn, .searchbtn', function(e) {

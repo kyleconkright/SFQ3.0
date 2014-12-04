@@ -2,10 +2,30 @@ $ ->
 
 	# baseURL = 'http://www.soundfreaq-theme.myshopify.com/'
 
-	$.getJSON 'http://ipinfo.io/json/', (location) ->
-		if location.country is 'US'
+	#FREE IP LOOKUP
+	# $.getJSON 'http://ipinfo.io/json/', (location) ->
+	# 	if location.country is 'US'
 	# $.getJSON 'http://freegeoip.net/json/', (location) ->
-	# 	if location.country_code is 'US'	
+	# 	if location.country_code is 'US'
+		# 	$('a.buy-btn.intl, .price.intl')
+		# 		.css 'display','inline-block'
+		# 	$('a.where-to-buy-btn.intl')
+		# 		.attr 'href', '../pages/where-to-buy'
+		# 	$('#buckets div.intl, #sub-buckets a.intl').remove()
+		# else
+		# 	$('a.where-to-buy-btn.intl')
+		# 		.attr 'href', '../pages/where-to-buy-intl'
+		# 	$('a.buy-btn.intl, a.price.intl').remove()
+		# 	$('#buckets div.us, #subbuckets a.us').remove()
+		# 	$('.us').remove()
+		# 	$('.store.intl').remove()
+		# 	$('#store').remove()
+
+
+	#PAID IP LOOKUP - MAXMIND
+	onSuccess = (location) ->
+		console.log JSON.stringify(location.country.iso_code)
+		if location.country.iso_code is 'US'
 			$('a.buy-btn.intl, .price.intl')
 				.css 'display','inline-block'
 			$('a.where-to-buy-btn.intl')
@@ -19,6 +39,8 @@ $ ->
 			$('.us').remove()
 			$('.store.intl').remove()
 			$('#store').remove()
+
+	geoip2.country(onSuccess)
 
 
 
@@ -116,6 +138,9 @@ $ ->
 
 	#FIXED HEADER
 	$('div#header').scrollToFixed()
+	$('.product-name').scrollToFixed(
+		marginTop: 60
+	)
 
 
 	#MENU + SEARCH
