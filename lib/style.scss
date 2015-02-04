@@ -380,6 +380,20 @@ div#container {
 				}
 			}
 		}
+		div.product.need-help {
+			min-height: 200px;
+			margin: 20px 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			div {
+				display: flex;
+				justify-content: center;
+			}
+			&:hover {
+
+			}
+		}
 	}
 
 
@@ -545,6 +559,9 @@ div#container {
 			margin: 0 auto $spacefix*8;
 			.product-headline {
 				margin: 0 0 $spacefix;
+				h1 {
+					width: 90%;
+				}
 			}
 			div.product-description {
 				padding: 0 10% 0 0;

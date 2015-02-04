@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var $form, btns, dropdown, galleryImg, imageRoll, insta_url, menus, onSuccess, pinDescrip, rightDiv, thisUrl;
+    var $form, btns, dropdown, frontPageProducts, galleryImg, imageRoll, insta_url, menus, onSuccess, pinDescrip, rightDiv, thisUrl;
     onSuccess = function(location) {
       console.log(JSON.stringify(location.country.iso_code));
       if (location.country.iso_code === 'US') {
@@ -83,6 +83,10 @@
     $('#soldout').on('click', function(e) {
       return e.preventDefault();
     });
+    frontPageProducts = $('#products-grid .product').length;
+    if (frontPageProducts = 6) {
+      $('<div class="bit-66 need-help product"><div><a href="../pages/compare"><h2>Click here to compare the main features of all the speakers.</h2></a></div></div>').appendTo('#products-grid .wrapper');
+    }
     $('div#header').scrollToFixed();
     $('.product-name').scrollToFixed({
       marginTop: 60

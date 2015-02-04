@@ -114,6 +114,11 @@ $ ->
 
 
 
+	#FRONT PAGE PRODUCT GRID
+	frontPageProducts = $('#products-grid .product').length
+
+	if frontPageProducts = 6
+		$('<div class="bit-66 need-help product"><div><a href="../pages/compare"><h2>Click here to compare the main features of all the speakers.</h2></a></div></div>').appendTo('#products-grid .wrapper')
 
 
 
@@ -141,6 +146,7 @@ $ ->
 	$('.product-name').scrollToFixed(
 		marginTop: 60
 	)
+
 
 
 	#MENU + SEARCH

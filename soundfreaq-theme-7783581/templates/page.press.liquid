@@ -1,7 +1,9 @@
 {% include 'page-header-illustration' %}
 
-<div class="frame blog" id="press-page">  
-    
+
+
+<div class="frame blog" id="press-page">
+
     <div class="wrapper">
 
 
@@ -24,7 +26,11 @@
 	        				<ul>
                                 <li><a href="http://cdn.soundfreaq.com/productsheets/{{productURL}}-product-sheet.pdf">Product Sheet</a></li>
 	        					<li><a href="http://cdn.soundfreaq.com/pressimages/{{productURL}}-images.zip">Images</a></li>
-                                <li><a href="http://cdn.soundfreaq.com/designnotes/{{productURL}}-design-note.pdf">Design Note</a></li>
+                                {% if settings[productModel] contains '10' or settings[productModel] contains '09' or settings[productModel] contains '08' %}
+                                    <li><a href="http://cdn.soundfreaq.com/designnotes/{{productURL}}-design-note.pdf">Design Note</a></li>
+                                {% else %}
+                                    <li>&nbsp;</li>
+                                {% endif %}
 	        				</ul>
 	        			</div>
 	        		</div>
@@ -42,8 +48,8 @@
                             {% for tag in article.tags %}
                                 {% if tag contains 'press' && 'review' %}
                                     {% include 'blogroll' %}
-                                {% endif %} 
-                            {% endfor %}    
+                                {% endif %}
+                            {% endfor %}
                         {% endfor %}
                     </ul>
                 </div><!--in-the-news-->
@@ -52,7 +58,7 @@
             <div class="sidebar bit-3">
                 <h3>Press Releases</h3>
                 <ul id="press-releases" class="frame">
-                    {{ page.content }}  
+                    {{ page.content }}
                 </ul>
             </div>
 
@@ -66,9 +72,9 @@
     		    {% if settings[show] %}
     		    	<div class="bit-6"><img src="{{ asiIcon | asset_url }}"></div>
     		    {% endif %}
-    		{% endfor %}    
+    		{% endfor %}
     	</div><!--asi-->
-    	
+
     </div><!--WRAPPER-->
 
 </div><!--PRESS PAGE-->

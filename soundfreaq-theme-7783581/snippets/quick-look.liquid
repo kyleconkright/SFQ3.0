@@ -17,7 +17,7 @@
 
 		        			</option>
 		        		{% else %}
-		        			<option data-sku="{{sku}}" disabled="disabled" value="{{ variant.id }}">{{ variant.title }} - Sold Out</option>
+		        			<option data-sku="{{sku}}" disabled="disabled" value="{{ variant.id }}">{{ variant.title }} - Sold Out - {{ variant.price | money }}</option>
 		        		{% endif %}
 		        	{% endfor %}
 		       	</select>
@@ -51,9 +51,9 @@
 	    <input class="add-to-cart" type="submit" value="Add to cart" id="addtocart" />
 
 	    <div class="quick-look-options"></div>
-	    
+
 	    <a class="quick-cart" href="../cart">
-	        <span>You have <span class="quick-cart-count">{{cart.item_count}}</span> <span class="item">item(s)</span> in your cart</span>   
+	        <span>You have <span class="quick-cart-count">{{cart.item_count}}</span> <span class="item">item(s)</span> in your cart</span>
 	    </a>
 	</form>
 
